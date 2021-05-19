@@ -42,7 +42,7 @@ Destory(L):撤销运算
 
 ```
 
-## 2.2.2顺序表的运算
+### 2.2.2顺序表的运算
 
 ```
  theme: 顺序表的插入和删除运算
@@ -69,14 +69,14 @@ Status Delete(SeqList*L ,int){
 ```
 
 
-## 单链表的定义
+### 2.3.1单链表的定义
 
 ```
 复习:
 
 # 线性表的顺序结构的优缺点:
 - 优点: 随机存取
-        存储空间利用率搞
+        存储空间利用率高
 - 缺点: 插入,删除效率低
         必须按事先估计的最大元素个数分配
         连续的存储空间,难以临时扩大
@@ -95,3 +95,63 @@ Status Delete(SeqList*L ,int){
 |element|link|
 |----|----|
 数据|地址
+
+```C
+// 单链表类型的定义
+
+typedef struct node 
+{
+  ElementType element; //结点的数据域
+  struct node *link   //结点的指针域
+}Node;
+typedef struct singleList
+{
+  struct node* first;
+  int n;
+}SingleList;
+```
+
+    # 单链表的基本概念
+     - 结构定义
+
+
+### 2.3.2单链表的插入操作
+
+    # 功能:
+     - 在给定元素ai之后插入值为X的元素.
+     - (a0,a1,......,ai+1,...., an-1)
+插入语步骤
+
+1. 生成数据域为x的的新结点,指针q指向新结点
+2. 从头结点开始,找到元素ai所在结点,指针p指向该结点;
+3. 将新结点插入在ai所在结点之后.
+若 i = -1 ,则表示将新结点插入在元素a0之前;
+若 i > -1,则表示将新结点插入在单链表的中间位置;
+
+
+```C
+Status Insert (StringleList*L,int i ,ElemType x)
+{
+  Node*p,*q;
+  int j;
+  if(i < -1 || i > L->n-1)
+  return ERROR;
+  p = L-> first;
+  for(j = ;j < i; j++>)p = p->link;  //从头结点开始查找
+  q = malloc(sizeof(Node)); //生成新结点q
+  q -> element = x;
+  if(i > -1)
+  {
+    q -> link = p ->link;  //新结点插在单链表中间位置的情况
+    p ->link =q;
+  }
+  else
+  {
+    q ->link = L->first;  //新结点插在插在a0之前,成为新的头结点
+    L->first=q;
+  }
+  L->n++  // 表长增加1
+  return Ok;
+}
+
+```
