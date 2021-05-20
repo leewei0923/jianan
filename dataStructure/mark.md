@@ -155,3 +155,96 @@ Status Insert (StringleList*L,int i ,ElemType x)
 }
 
 ```
+
+### 2.3.3单链表的删除操作
+
+
+    # 功能
+     - 删除元素ai
+
+    # 
+    1. 从first开始查找ai所在结点, p指向该结点,
+       q指向该结点之前驱结点
+    2. 从单链表中删除元素ai所在结点
+       若i==0 ,则表示删除头结点
+       若i> 0 ,则表示删除结点在单链表的中间位置;
+    3. 释放元素ai所在结点的空间
+
+**删除结点在单链表的中间位置**
+
+**单链表的删除程序实现**
+```C
+Status Delete(SingleList*L,int i){
+  int l;
+  NOde*p,*q;
+  if(!L->n)
+  return ERROR;
+  if(i < 0|| i >L->n-1)
+  return ERROR
+  q = L->first;
+  p = L->first;
+  for(j = 0;j < i-1;j++>)q=q->link; //q指向ai-1
+  if(i == 0)
+  L ->first = L-link;              // 删除的是头结点
+  else
+  {
+    p = q->link;                    // p指向ai
+    q->link = p->link;              //从单链表中删除p所指得结点
+  }
+  free(p);                          //释放p所值结点的存储空间
+  L->n--;
+  return OK;
+}
+```
+
+
+### 2.3.4带表头结点的单链表
+
+    # 步骤
+    1. 从表头结点开始,找到元素ai
+       所在结点,指针p指向该结点
+    2. 生成数据域为x的新结点,指针q指向新结点
+    3. 将新结点插入单链表
+    4. 表长加1
+
+
+```C
+Status Insert(HeaderList*h,int i,ElemType x)
+{
+  node*p,*q;
+  int j;
+  if(i <-1 || i > h->n-1){
+    return ERROR;
+  }
+  p = h->head;
+  for(j=0;j <= i;j++)p = p->link; //从头结点开始查找
+  q=(Node*)malloc(sizeof(Node));//生成新结点
+  q->element =x;
+  q->link=p->link;      //新结点插入单链表
+  p->link=q
+  h->n++; //表长增加1
+  return OK;
+} 
+```
+
+**带表头结点的单链表删除运算**
+```C
+Status Delete(HeaderList*h,int i)
+{
+  int j;
+  Node*p,*q;
+  if(!h ->n)
+  return ERROR;
+  if(i < 0||i >h->n-1)
+  return ERROR;
+  q =h->head;
+  for(j =0;j <i ; j++) q=q->link; //从表头结点开始查找
+  p = q->link;
+  q->link = p->link;              //从单链表中删除p所指结点
+  free(p)                         //释放p所指结点的存储空间
+  h->n--;                         //表长减一
+  return OK;
+
+}
+
+```
