@@ -248,3 +248,18 @@ Status Delete(HeaderList*h,int i)
 }
 
 ```
+
+### 2.3.5循环链表及双向链表
+
+
+**双向列表的结构**
+
+```C
+typedef struct duNode
+{
+  ElemType element; //结点的数据域
+  struct duNode*llink; //结点的左指针域,存储直接前驱结点的地址
+  struct duNode*rlink; //结点的右指针域,存储直接后驱结点的地址
+}
+
+```
