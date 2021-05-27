@@ -30,4 +30,5 @@
  - 无重复字符的最长子串 / longest substring without repeating character 2021.05.21
  - 寻找两个正序数组的中位数 / median of two sorted arrays 2021.05.22
  - 最长回文子串  / longest palindromic substring  2021.05.23
+ - [翻转数字 / reverse integer 2021.05.27](/jsSuanFa/reverse.md)
 
