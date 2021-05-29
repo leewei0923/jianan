@@ -31,4 +31,5 @@
  - 寻找两个正序数组的中位数 / median of two sorted arrays 2021.05.22
  - 最长回文子串  / longest palindromic substring  2021.05.23
  - [翻转数字 / reverse integer 2021.05.27](/jsSuanFa/reverse.md)
+ - [字符串转换成整数 /string to integer atoi](/jsSuanFa/string-to-integer-atoi.md)
 
