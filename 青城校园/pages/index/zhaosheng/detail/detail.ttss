@@ -1,0 +1,65 @@
+/* pages/zuzhi/zuzhi.wxss */
+.main{
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  /* 最左边的固定选择 */
+  .categroy-left{
+    width: 30%;
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+    box-sizing: border-box;
+    position: fixed;
+  }
+  .categroy-left .cate-list{
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    border-left: 3px solid #fff;
+    margin-bottom: 40rpx;
+    padding: 10rpx;
+  }
+  .categroy-left .cate-list.active{
+    color: #AB956D;
+    border-color: #AB956D;
+  }
+
+  /* 右边展示 */
+  .categroy-right{
+    width: 70%;
+    height: 100%;
+    position: relative;
+    left: 30%;
+  }
+
+  .cate-box{
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .cate-title{
+    background-color: #F5F5F5;
+    width: 100%;
+    height: 64rpx;
+    color: #333333;
+    font-size: 40rpx;
+    font-weight: 900;
+    padding: 10rpx;
+  }
+  .cate-content{
+    display: flex;
+    flex-direction: column;
+    color: #888888;
+  }
+
+
+  .nodata{
+    font-size: 14px;
+    text-align: center;
+    color: #AB956D;
+    margin-top: 100px;
+  }
+  

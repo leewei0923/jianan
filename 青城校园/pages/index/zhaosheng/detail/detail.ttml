@@ -1,0 +1,31 @@
+<view class="main">
+<!-- 左边选择器 -->
+  <view class="categroy-left">
+    <!-- 当前项的id等于item项的id或者当前的下标等于item的下标时，那个就是当前状态- -->
+    <view tt:for="{{category}}" tt:key="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchTab" class="cate-list {{curIndex === index?'active':''}}">{{item.name}}</view>
+  </view>
+  <!-- 右边展示 -->
+  <scroll-view class="categroy-right" scroll-y="{{}}" scroll-into-view="{{toView}}" scroll-with-animation="true">
+    <view tt:if="{{category[curIndex].isChild}}">
+      <block tt:for="{{category[curIndex].classification[currentClassId].zhuanye}}"  wx:key="idx">
+      <!-- 具体专业信息展示 -->
+        <view id="{{item.id}}" class="cate-box">
+        <!-- 最先给用户看到的标题 -->
+          <view class="cate-title" bindtap="showBtn" data-idx="{{item.z_id}}">
+            <text>{{item.name}}</text>
+            <!-- <image src="/images/icons/xiangxia.png" mode="" /> -->
+          </view>
+        <!-- 具体信息 -->
+          <view class="cate-content">
+            <text>专业名称: {{item.name}}</text>
+            <text>学制: {{item.duration}}</text>
+            <text>颁发学位: {{item.degree}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- 若无数据，则显示暂无数据 -->
+    <view class="nodata" tt:else>该分类暂无数据</view>
+  </scroll-view>
+
+</view>

@@ -1,0 +1,59 @@
+/* 标题设置 */
+
+.dTitile{
+    width: 100%;
+    height: 66rpx;
+    position: relative;
+    /* left: 5px; */
+    padding: 20rpx;
+    background: #F8F8F9;
+    border: 1px solid #F7F8F7;
+}
+
+.dTitile::before{
+    content: "";
+    display: inline-block;
+    width: 10rpx;
+    height: 40rpx;
+    background-color: chocolate;
+}
+.dTitile text{
+    font-size: 50rpx;
+    position: relative;
+    left: 40rpx;
+}
+
+.dContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 66rpx;
+    position: relative;
+    /* left: 5px; */
+    padding: 20rpx;
+    background: #F8F8F9;
+    border: 1px solid #F7F8F7;
+}
+/* 简介 */
+.dContent .dContent_title::before{
+    content: "";
+    display: inline-block;
+    width: 10rpx;
+    height: 40rpx;
+    background-color: chocolate;
+    margin: 0 40rpx 0 0;
+}
+.dContent .dContent_title{
+    font-size: 50rpx;
+    position: relative;
+
+}
+/* 内容 */
+.dContent .decontent_txt{
+    width: 90%;
+    text-align: justify;
+    text-indent: 30px;
+    margin: 10px 0 0 5px;
+    
+}
+

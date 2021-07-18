@@ -1,0 +1,43 @@
+<view class="container" style="width: 100%;">
+  <!-- 顶部tab栏 -->
+  <scroll-view scroll-x="true">
+    <view class="top_switch" style="width:{{buildData.length * 150 < windowWidth ? windowWidth : buildData.length * 150}}rpx">
+      <label tt:for="{{buildData}}" tt:key="{{id}}" id="{{index}}" bindtap="changePage" class="top_switch_btn {{isSelectorType == index ? 'active' : ''}}">{{item.name}}</label>
+    </view>
+  </scroll-view>
+
+  <!-- 地图模块 -->
+  <map id="myMap" longitude="{{map.longitude}}" latitude="{{map.latitude}}" style="width: 100%; height: 300px;" scale="{{buildData[isSelectorType].scale}}" markers="{{buildData[isSelectorType].data}}" bindmarkertap="markertap"  include-points="{{buildData[isSelectorType].data}}">
+    <!--  -->
+    <cover-view class="control">
+      <!-- 定位 -->
+      <cover-view>
+      <cover-image class="img" src="/images/qcmap/location.png"/>
+      </cover-view>
+      <!-- 放大 -->
+      <cover-view>
+        <cover-image class="img" src="/images/qcmap/expand.png"/>
+      </cover-view>
+    </cover-view>
+  </map>
+
+  <!-- 显示数量 -->
+
+  <view class="middle_count">
+    <text>{{buildData[isSelectorType].name}}——共有{{buildData[isSelectorType].data.length}}建筑物</text>
+  </view>
+
+  <!-- 内容容器 -->
+
+  <view class="mapContent">
+    <!-- 滑动的组件 -->
+    <scroll-view scroll-y="true" style="height: 40vh;">
+      <!--  放置地点的navigation-->
+      <view tt:for="{{buildData[isSelectorType].data}}" class="mapContentBox">
+        <navigator url="/pages/qcmap/details/details?pid={{isSelectorType}}&cid={{index}}"  hover-class="className" class="mapContentBoxNav">
+          <view>{{item.name}}</view>
+        </navigator>
+      </view>
+    </scroll-view>
+  </view>
+</view>

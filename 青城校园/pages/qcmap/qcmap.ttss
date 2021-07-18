@@ -1,0 +1,60 @@
+/* 顶部选项栏 */
+
+.container .top_switch {
+    background-color: #5642d3;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container .top_switch .top_switch_btn {
+    font-size: 30rpx;
+    color: white;
+    letter-spacing: 3rpx;
+    height: 50rpx;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    top: 15rpx;
+}
+
+.active {
+    border-bottom: solid white;
+    height: 50rpx;
+    display: inline-block;
+}
+
+/* 中间 */
+
+.middle_count {
+    width: 100%;
+    height: 60rpx;
+    background-color: #F3F3F3;
+    padding: 20rpx;
+    position: relative;
+    border: 1px solid #d1cece;
+}
+.middle_count text{
+    line-height: 60rpx;
+    text-align: center;
+    position: relative;
+    left: 20%;
+    font-weight: 10px;
+}
+
+/* 具体内容部分 */
+.mapContent {
+    width: 100%;
+}
+
+.mapContent .mapContentBox {
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 1px solid #d1cece;
+}
+.mapContent .mapContentBox .mapContentBoxNav{
+    position: relative;
+    left: 10%;
+    font-size: 20px;
+    top: 10px;
+}

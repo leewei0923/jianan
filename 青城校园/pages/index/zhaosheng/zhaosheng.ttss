@@ -1,0 +1,113 @@
+/* 顶部标题栏 */
+
+
+.container .topTitle {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.container .topTitle .topTitleTxt_1{
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+}
+
+.container .topTitle .topTitleTxt_2{
+    position: absolute;
+    top: 70%;
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+    font: 600;
+}
+.container .topTitle .topTitleTxt_2::after{
+    content: '';
+    display: block;
+    width: 76rpx;
+    height: 12rpx;
+    background-color: chocolate;
+}
+.container .topTitle image{
+    width: 100%;
+    height: 500rpx;
+    background-color: cornflowerblue;
+}
+
+/* 导航栏 */
+
+.container .zhao_nav{
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F5FF;
+    color: #2F54EB;
+    position: relative;
+    top: 10rpx;
+    width: 100%;
+    height: 230rpx;
+
+}
+
+.container .zhao_nav .zhao_title {
+    display: flex;
+    flex-direction: row;
+    margin: 20rpx;
+
+}
+.container .zhao_nav .zhao_title text{
+    font-size: 40rpx;
+}
+.container .zhao_nav .zhao_title image{
+    width: 100rpx;
+    height: 40rpx;
+    position: relative;
+    left: 10rpx;
+    top: 10rpx;
+}
+
+.container .zhao_nav .nav_detail{
+    display: flex;
+    flex-direction: row;
+    margin: 25rpx;
+}
+.container .zhao_nav .nav_detail navigator{
+    margin: 10rpx;
+    padding: 15rpx;
+    font-size: 40rpx;
+}
+
+.nav_touch{
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 20rpx;
+}
+
+/* 招生内容 */
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.content .section{
+    display: flex;
+    flex-direction: column;
+}
+
+.content .section image{
+    padding: 20rpx;
+}
+.content .section .title {
+    color: #E64A19;
+    font-weight: 800;
+    font-size: 40rpx;
+    margin: 20rpx;
+}
+
+.content .section .content{
+    color: #737373;
+    font-weight: 500;
+    font-size: 30rpx;
+    padding: 20rpx;
+}

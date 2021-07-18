@@ -1,0 +1,35 @@
+<!-- 招生页面 -->
+
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="topTitle">
+    <!-- <image src="https://www.qdc.edu.cn/files/2021/05/12/2385f3f1b6a3571deb937b0446fecd8b.jpg" mode="" /> -->
+    <image src="" mode="" />
+    <text class="topTitleTxt_1">Admission</text>
+    <text class="topTitleTxt_2">招生</text>
+  </view>
+
+  <!-- 招生导航栏 -->
+  <view class="zhao_nav">
+    <view class="zhao_title">
+      <text>招生导航</text>
+      <image src="/images/icons/arrow.png" mode="" />
+    </view>
+    <view class="nav_detail">
+      <navigator url="/pages/index/zhaosheng/detail/detail?classification=0&name=本科招生" hover-class="nav_touch">本科招生</navigator>
+      <navigator url="/pages/index/zhaosheng/detail/detail?classification=1&name=专科招生" hover-class="nav_touch">专科招生</navigator>
+      <navigator url="/pages/index/zhaosheng/detail/detail?classification=2&name=专升本招生" hover-class="nav_touch">专升本招生</navigator>
+    </view>
+  </view>
+
+  <view class="content">
+  
+  <view class="section" tt:for={{zhaoSheng}} tt:key={{index}}>
+
+    <image src="{{item.imgPath}}" mode="" />
+    <text class="title">{{item.title}}</text>
+    <text class="content">{{item.desc}}</text>
+  </view>
+  
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<view class="container">
+  <!-- 轮播图 -->
+
+  <swiper indicator-dots="{{img.indicatorDots}}" autoplay="{{img.autoplay}}" interval="{{img.interval}}">
+    <block tt:for="{{buildData[Dpid].data[Dcid].img}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+  <!-- 标题 -->
+  <view class="dTitile">
+    <text>{{buildData[Dpid].data[Dcid].name}}</text>
+  </view>
+
+  <!-- 具体信息 -->
+  <view class="dContent">
+    <view class="sign"></view>
+    <text class="dContent_title">简介</text>
+    <text class="decontent_txt">{{buildData[Dpid].data[Dcid].description}}</text>
+  </view>
+
+  <!-- 留言板 -->
+  <view class="messageBord">
+    <!-- 留言板-头像 -->
+    <view class="messageAvator">
+      <image src="" mode="" />
+    </view>
+
+    <!-- 留言板 用户名-提交时间 -->
+
+    <view class="userBox">
+      <view class="userName">
+        <text></text>
+      </view>
+      <view class="submitTime">
+        <text></text>
+      </view>
+    </view>
+
+      <!-- 内容 -->
+    <view class="messageContent">
+      <text></text>
+    </view>
+  </view>
+</view>

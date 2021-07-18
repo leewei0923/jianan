@@ -1,0 +1,16 @@
+{
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true
+    },
+    "appid": "tt93cee5730cf6b36601",
+    "projectname": "青城校园",
+    "condition": {
+        "miniprogram": {
+            "current": -1
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/zhaosheng/zhaosheng",
+    "pages/index/zhaosheng/detail/detail",
+    "pages/index/about/about",
+    "pages/qcmap/qcmap",
+    "pages/qcmap/details/details",
+    "pages/talkTime/talkTime",
+    "pages/mine/mine"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Mini Program",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "borderStyle":"black",
+    "selectedColor":"black",
+    "list":[
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"images/icons/shouye.png",
+        "selectedIconPath":"images/icons/shouye_1.png"
+      },
+      {
+        "pagePath": "pages/qcmap/qcmap",
+        "text": "Map",
+        "iconPath":"images/icons/map.png",
+        "selectedIconPath":"images/icons/map_1.png"
+      },
+      {
+        "pagePath": "pages/talkTime/talkTime",
+        "text": "青城圈",
+        "iconPath":"images/icons/talkTime.png",
+        "selectedIconPath":"images/icons/talkTime_1.png"
+      }
+      
+    ]
+  }
+}

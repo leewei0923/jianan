@@ -1,0 +1,87 @@
+/* 顶部标题栏 */
+.container .topTitle {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.container .topTitle .topTitleTxt_1{
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+}
+
+.container .topTitle .topTitleTxt_2{
+    position: absolute;
+    top: 70%;
+    font-size: 30px;
+    color: white;
+    margin: 10px;
+    font: 600;
+}
+.container .topTitle .topTitleTxt_2::after{
+    content: '';
+    display: block;
+    width: 76rpx;
+    height: 12rpx;
+    background-color: chocolate;
+}
+.container .topTitle image{
+    width: 100%;
+    height: 500rpx;
+    background-size: 100% 100%;
+    /* background-color: cornflowerblue; */
+}
+
+
+/* 学校具体内容 */
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.content .section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.content .section image{
+    padding: 20rpx;
+    width: 95%;
+    height: 66vw;
+}
+.content .section .title {
+    color: #E64A19;
+    font-weight: 800;
+    font-size: 40rpx;
+    margin: 20rpx;
+}
+
+.content .section .content{
+    color: #737373;
+    font-weight: 500;
+    font-size: 30rpx;
+    padding: 20rpx;
+}
+
+/* 核心价值观 */
+
+
+.aboutDetails {
+    background-color: #E64A19;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin: 0rpx 20rpx;
+}
+.aboutDetails .details_title{
+    font-size: 40rpx;
+    font-weight: 800;
+    margin: 10rpx;
+}
+.aboutDetails .details_content {
+    margin: 10rpx;
+}

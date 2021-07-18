@@ -1,0 +1,31 @@
+<!-- e:\byteProgram\qingCity\qingcity\青城校园\pages\index\about\about.ttml -->
+<!-- 招生页面 -->
+
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="topTitle">
+    <image src="https://www.qdc.edu.cn/files/2021/06/04/6e593a8e489c628a826f054aaf370193.jpg" mode="" />
+    <!-- <image src="" mode="" /> -->
+    <text class="topTitleTxt_1">About Us</text>
+    <text class="topTitleTxt_2">关于我们</text>
+  </view>
+
+  <view class="content">
+    <view class="section" tt:for="{{qcuAbout}}" tt:key="{{index}}">
+      <image src="{{item.imgPath}}" tt:if="{{item.imgPath != ''}}" mode="" />
+      <text class="title">{{item.title}}</text>
+      <text class="content" hidden="{{item.desc.type == 'motto'}}">{{item.desc}}</text>
+      <!-- 当与原格式不同的时候 -->
+      <view class="aboutDetails" tt:if="{{item.desc.type == 'motto'}}" tt:for="{{item.desc.details}}" tt:for-item="detail">
+        <text class="details_title">{{detail.title}}</text>
+        <text class="details_content">{{detail.content}}</text>
+      </view>
+    </view>
+    <view style="width:100%;height:40px;background:white;"></view>
+
+
+    <!-- 放置电话地址 -->
+
+
+  </view>
+</view>

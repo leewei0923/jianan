@@ -1,0 +1,68 @@
+<!-- 图片轮播图 -->
+
+<view class="container">
+  <!-- 图片展示滑块 -->
+  <view class="photoShow">
+    <swiper indicator-dots="{{photoSet.indicatorDots}}" autoplay="{{photoSet.autoplay}}" interval="{{photoSet.interval}}" duration="{{photoSet.duration}}">
+      <block tt:for="{{photos}}">
+        <swiper-item>
+          <text class="photoTxt">{{item.text}}</text>
+          <image src="{{item.path}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="slogan">
+    <image src="/images/img/indexImg/qdc_logo.png" mode="" class="slo_logo" />
+    <text class="slo_txt">正心修身</text>
+  </view>
+  <!-- 导航栏 -->
+  <view class="navigationGo">
+    <navigator url="/pages/index/zhaosheng/zhaosheng" redirect hover-class="className" class="navBox">
+      <!-- <image src="" mode="" /> -->
+      <view class="navImgShow"></view>
+      <text class="navTxt">招生</text>
+    </navigator>
+
+    <navigator url="" redirect hover-class="className" class="navBox">
+      <!-- <image src="" mode="" /> -->
+      <view class="navImgShow"></view>
+      <text class="navTxt">教育教学</text>
+    </navigator>
+
+    <navigator url="" redirect hover-class="className" class="navBox">
+      <view class="navImgShow"></view>
+      <!-- <image src="" mode="" /> -->
+      <text class="navTxt">大学生活</text>
+    </navigator>
+
+    <navigator url="/pages/index/about/about" redirect hover-class="className" class="navBox">
+      <view class="navImgShow"></view>
+      <!-- <image src="" mode="" /> -->
+      <text class="navTxt">关于我们</text>
+    </navigator>
+
+    <navigator url="" open-type="redirect" hover-class="className" class="navBox">
+      <view class="navImgShow"></view>
+      <!-- <image src="" mode="" /> -->
+      <text class="navTxt">青城圈</text>
+    </navigator>
+  </view>
+
+  <!-- 新闻标题栏部分 -->
+  
+    <!-- 热点标题 -->
+    <view class="QCHot_logo" id="navbar">
+      <view class="column {{isFixedTop?'fixed':''}}" >
+        <view class="block active">学院头条</view>
+        
+      </view>
+      <!-- 用于吸顶后 占位用的 -->
+      <view class="column" wx:if="{{isFixedTop}}"></view>
+    </view>
+  
+
+  <block wx:for="{{20}}" wx:key="list">
+ <view style="width: 100%; height: 120rpx; background: #f0f0f0; margin: 20rpx auto;"></view>
+</block>
+</view>
