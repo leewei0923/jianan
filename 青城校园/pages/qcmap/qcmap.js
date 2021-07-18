@@ -30,6 +30,7 @@ Page({
       }
     });
   },
+  
   changePage: function (e) {
 
     this.setData({
@@ -43,5 +44,5 @@ Page({
 
   // 设置返回是去的同样的路径
 
- 
+
 })

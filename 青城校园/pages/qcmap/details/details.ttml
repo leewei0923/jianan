@@ -23,26 +23,26 @@
   </view>
 
   <!-- 留言板 -->
-  <view class="messageBord">
+  <view class="messageBord" tt:for="{{messageSign == messageData[Dpid].mod_id ? messageData[Dpid].mod_data : [1,2,3,4] }}">
     <!-- 留言板-头像 -->
     <view class="messageAvator">
-      <image src="" mode="" />
+      <image src="{{item.avator}}" mode="" />
     </view>
 
     <!-- 留言板 用户名-提交时间 -->
 
     <view class="userBox">
       <view class="userName">
-        <text></text>
+        <text>{{item.name}}</text>
       </view>
       <view class="submitTime">
-        <text></text>
+        <text>{{item.time}}</text>
       </view>
     </view>
 
       <!-- 内容 -->
     <view class="messageContent">
-      <text></text>
+      <text>{{item.content}}</text>
     </view>
   </view>
 </view>

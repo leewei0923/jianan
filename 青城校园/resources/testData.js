@@ -16,15 +16,15 @@ mod_data:[   用来展示具体内容
 
 module.exports.message=[
     {
-        mod_id:'',
+        mod_id: '00',
         mod_data:[
             {
-                id:'',
-                name:'',
-                time:'', 
+                id:'0',
+                name:'小红',
+                time:'2021.07.18', 
                 avator:'',
-                like:'',             
-                content:''
+                like:'2',             
+                content:'真棒'
             },
             
         ]
