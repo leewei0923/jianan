@@ -35,7 +35,7 @@ Page({
 
     this.setData({
       isSelectorType: e.target.id
-    })
+      })
   },
   // 获取标记点地图的下标
   markertap:function(e){

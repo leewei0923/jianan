@@ -9,7 +9,6 @@
     </block>
   </swiper>
 
-
   <!-- 标题 -->
   <view class="dTitile">
     <text>{{buildData[Dpid].data[Dcid].name}}</text>
@@ -23,7 +22,7 @@
   </view>
 
   <!-- 留言板 -->
-  <view class="messageBord" tt:for="{{messageSign == messageData[Dpid].mod_id ? messageData[Dpid].mod_data : [1,2,3,4] }}">
+  <view class="messageBord" tt:for="{{messageSign == messageData[Dpid].mod_data[c_idIndex].c_id ? messageData[Dpid].mod_data[Dcid].c_data : [1,2,3,4] }}">
     <!-- 留言板-头像 -->
     <view class="messageAvator">
       <image src="{{item.avator}}" mode="" />
@@ -31,18 +30,29 @@
 
     <!-- 留言板 用户名-提交时间 -->
 
-    <view class="userBox">
-      <view class="userName">
-        <text>{{item.name}}</text>
+    <view class="liuyanBox">
+      <view class="userBox">
+        <view class="userName">
+          <text>{{item.name}}</text>
+        </view>
+        <view class="submitTime">
+          <text>{{item.time}}</text>
+        </view>
       </view>
-      <view class="submitTime">
-        <text>{{item.time}}</text>
-      </view>
-    </view>
 
       <!-- 内容 -->
-    <view class="messageContent">
-      <text>{{item.content}}</text>
+      <view>
+        <text>{{item.content}}</text>
+      </view>
     </view>
   </view>
+  <!-- 用来占位 -->
+      <view style="width: 100%; height: 120rpx; background: white; margin: 20rpx auto;"></view>
+  <!--  发布留言的功能-->
+
+    <form class="subTalk" bindsubmit="formSubmit">
+      <input type="text" class="subTalkInput" placeholder="请输入留言的内容" name="liuyan"  bindconfirm="inputVal" value=""/>
+      <button form-type="submit" class="subTalkBtn">提交</button>
+    </form>
+
 </view>

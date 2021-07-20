@@ -27,7 +27,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 66rpx;
     position: relative;
     /* left: 5px; */
     padding: 20rpx;
@@ -54,6 +53,87 @@
     text-align: justify;
     text-indent: 30px;
     margin: 10px 0 0 5px;
-    
+    position: relative;
 }
 
+/* 留言板部分 */
+
+.messageBord{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: #EFEFEF;
+    padding: 20rpx;
+    margin-bottom: 10rpx;
+}
+
+.messageAvator image{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin: 20rpx;
+}
+
+.liuyanBox {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    margin: 10rpx;
+}
+
+/* 用户名 时间部分 */
+
+.liuyanBox .userBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.userBox  .userName text{
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #010101;
+}
+
+.userBox .submitTime {
+    position: relative;
+    left: 20%;
+}
+
+.userBox .submitTime text{
+    font-size: 30rpx;
+    color: #949494;
+}
+
+.liuyanBox  .messageContent  text{
+    font-size: 30rpx;
+    color: #949494;
+}
+
+/* 提交留言的 */
+
+
+.subTalk{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: fixed;
+    top: 88%;
+    padding: 30rpx;
+    background-color: white;
+}
+
+.subTalk .subTalkInput{
+    width: 70%;
+    padding: 10rpx;
+    background-color: #EFEFEF;
+    margin: 10rpx;
+}
+
+.subTalk .subTalkBtn{
+    background-color: #1AAD19;
+    height: 70rpx;
+    margin: 10rpx;
+    color: white;
+    line-height: 70rpx;
+    text-align: center;
+}
