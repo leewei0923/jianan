@@ -1,43 +1,160 @@
-.container{
+/* @font-face {font-family:pang;src:url(https://qi.7miaoyu.com/pang.ttf)} */
+
+/* 加载外部的字体 */
+
+.container {
     position: relative;
     width: 100%;
     height: 100%;
 }
-.top_bar_back {
-    background: #19097D;
+
+.topTitle {
     width: 100%;
+    height: 150rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.topTitle .title_logo {
+    width: 100;
     height: 130rpx;
+    line-height: 130rpx;
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    top: 20%;
+    letter-spacing: 15px;
+    font-family: 'pang', 'kaiTi';
+}
+
+/* 轮播图部分 */
+
+.container_lunbo {
+    display: flex;
+    justify-content: space-around;
+}
+
+.lunbo {
+    width: 95%;
+    height: 260rpx;
     position: relative;
 }
 
-.top_bar_back .top_bar_title {
-    color: white;
-    position: inherit;
-    font-size: 50rpx;
-    left: 36%;
-    top: 30%;
+.lunbo image {
+    width: 95%;
+    height: 80%;
+    border-radius: 10rpx;
 }
 
-.add{
-    width: 80rpx;
-    height: 80rpx;
-    position: fixed;
-    top: 90%;
-    left: 80%;
-}
-.mine {
-    width: 80rpx;
-    height: 80rpx;
-    position: fixed;
-    top: 4%;
-    left: 10rpx;
-}
+/* bar栏 */
 
-.bac{
+.talk_bar {
+    display: grid;
     width: 100%;
-    height: 100vh;
-    background-color: rgb(0,0,0,0.5);
-    z-index: 12;
-    position: absolute;
-    color: blanchedalmond;
+    height: 160rpx;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 180rpx;
+    grid-gap: 20rpx;
+    justify-content: space-around;
 }
+
+.talk_bar .navBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.talk_bar .navBox image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.talk_bar .navBox text{
+    font-size: 30rpx;
+}
+
+/* 精选区 */
+
+.coBox{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: center;
+    
+}
+
+.chosen_content {
+    display: flex;
+    width: 95%;
+    height: 660rpx;
+    flex-direction: column;
+    margin-top: 20rpx;
+}
+
+/* 头像、昵称、来源、设备信息 */
+
+.chosen_content .chosen_header {
+    display: grid;
+    /* grid-template-columns: 100rpx 200rpx ; */
+    grid-template-areas: "left top top ." "left middleLeft middleRight middleRight";
+}
+
+.chosen_content .chosen_header .chosenAvator {
+    grid-area: left;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    justify-self: start;
+}
+
+.chosen_content .chosen_header .chosenName {
+    grid-area: top;
+    font-size: 30rpx;
+    position: relative;
+    left: -50rpx;
+}
+
+.chosen_content .chosen_header .chosenOriginn {
+    grid-area: middleLeft;
+    font-size: 24rpx;
+    position: relative;
+    left: -50rpx;
+}
+
+.chosen_content .chosen_header .chosenPhone {
+    grid-area: middleRight;
+    font-size: 24rpx;
+    position: relative;
+    left: -80rpx;
+}
+
+/* 具体文章 */
+.chosen_content .chosenAticle{
+    font-size: 32rpx;
+    width: 100%;
+    margin-top: 25rpx;
+}
+
+/* 图片 */
+.chosen_content .chosen_images{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20rpx;
+    width: 100%;
+    height: 350rpx;
+    justify-content: space-around;
+    margin-top: 25rpx;
+}
+.chosen_content .chosen_images .chosenImg{
+    background-color: #5ed6fd;
+}
+
+/* 交互区 */
+.chosen_content .chosen_interactive{
+    display: flex;
+    justify-content: space-around;
+}
+
+

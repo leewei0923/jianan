@@ -1,0 +1,47 @@
+
+/* 顶部bar */
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.top_bar_box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100rpx;
+}
+
+.top_bar_box .topBar{
+    display: flex;
+    flex-direction: column;
+    height: 100rpx;
+
+}
+
+.top_bar_box .topBar .topBarTitle{
+    font-size: 40rpx;
+    letter-spacing: 20rpx;
+    /* font-weight: 400; */
+    
+}
+
+.activeBar{
+    font-size: 46rpx;
+    font-weight: 700;
+    font-size: 50rpx;
+    line-height: 54rpx;
+    text-align: center;
+    justify-items: center;
+}
+
+.activeBar::after{
+    content: "";
+    display: inline-block;
+    height: 15rpx;
+    background-color: chartreuse;
+    width: 85%;
+    border-radius: 50px;
+    
+    margin-top: 10rpx;
+}

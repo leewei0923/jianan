@@ -1,0 +1,74 @@
+<view class="container">
+  <view class="topTitle">
+    <text class="topTitleText">全部</text>
+  </view>
+
+  <!-- 活动或者广告 -->
+  <view class="tuTu_ad">
+    <image src="https://i01piccdn.sogoucdn.com/d40471e77a92da15" class="leftAd" mode="" />
+    <image src="https://i04piccdn.sogoucdn.com/99118a2774d4dbae" class="rightAd" mode="" />
+  </view>
+
+  <!-- 图片瀑布 -->
+  <view class="tuTu_container">
+    <view class="tuTu_photo_box">
+      <!-- 左边图片 -->
+      <view class="leftPhoto">
+        <!-- 主图片 -->
+        <image src="https://i03piccdn.sogoucdn.com/b620f4b61d56600a" class="leftPhotoMain" mode="" />
+        <!-- 用户的话 -->
+        <text>刘浩存好看</text>
+        <!-- 头像 网名 赞的人数 -->
+        <view class="leftPhoto_avator">
+          <image src="/images/qcmap/man.jpg" mode="" class="leftPhotoImg"/>
+          <text class="leftPhoto_name">伟伟大同学</text>
+
+          <view class="leftPhoto_like">
+            <image src="/images/talkTime/icon/like.png" mode="" class="likeImg"/>
+            <text class="likeCount">400</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 开始 -->
+
+      <view class="leftPhoto">
+        <!-- 主图片 -->
+        <image src="https://i03piccdn.sogoucdn.com/b620f4b61d56600a" class="leftPhotoMain" mode="" />
+        <!-- 用户的话 -->
+        <text>刘浩存好看，看起来也很有气质</text>
+        <!-- 头像 网名 赞的人数 -->
+        <view class="leftPhoto_avator">
+          <image src="/images/qcmap/man.jpg" mode="" class="leftPhotoImg"/>
+          <text class="leftPhoto_name">伟伟大同学</text>
+
+          <view class="leftPhoto_like">
+            <image src="/images/talkTime/icon/like.png" mode="" class="likeImg"/>
+            <text class="likeCount">400</text>
+          </view>
+        </view>
+      </view>
+
+      <!--  -->
+
+      <view class="leftPhoto">
+        <!-- 主图片 -->
+        <image src="https://i03piccdn.sogoucdn.com/b620f4b61d56600a" class="leftPhotoMain" mode="" />
+        <!-- 用户的话 -->
+        <text>刘浩存好看，看起来也很有气质</text>
+        <!-- 头像 网名 赞的人数 -->
+        <view class="leftPhoto_avator">
+          <image src="/images/qcmap/man.jpg" mode="" class="leftPhotoImg"/>
+          <text class="leftPhoto_name">伟伟大同学</text>
+
+          <view class="leftPhoto_like">
+            <image src="/images/talkTime/icon/like.png" mode="" class="likeImg"/>
+            <text class="likeCount">400</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 结束 -->
+    </view>
+  </view>
+</view>

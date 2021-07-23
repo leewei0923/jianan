@@ -7,7 +7,14 @@
     "pages/qcmap/qcmap",
     "pages/qcmap/details/details",
     "pages/talkTime/talkTime",
-    "pages/mine/mine"
+    "pages/talkTime/biaoBai/biaoBai",
+    "pages/talkTime/youQuan/youQuan",
+    "pages/talkTime/anLi/Anli",
+    "pages/talkTime/tuTu/tuTu",
+    "pages/talkTime/huoDong/huoDong",
+    "pages/mine/mine",
+    "component/my-article/my-article",
+    "component/my-comment/my-comment"
   ],
   "window":{
     "backgroundTextStyle":"light",

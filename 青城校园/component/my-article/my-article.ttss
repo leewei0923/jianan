@@ -1,0 +1,72 @@
+.my-article {
+    display: flex;
+    width: 95%;
+    height: 660rpx;
+    flex-direction: column;
+    margin-top: 20rpx;
+}
+
+/* 头像、昵称、来源、设备信息 */
+
+.my-article .chosen_header {
+    display: grid;
+    /* grid-template-columns: 100rpx 200rpx ; */
+    grid-template-areas: "left top top ." "left middleLeft middleRight middleRight";
+}
+
+.my-article .chosen_header .chosenAvator {
+    grid-area: left;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    justify-self: start;
+}
+
+.my-article .chosen_header .chosenName {
+    grid-area: top;
+    font-size: 30rpx;
+    position: relative;
+    left: -50rpx;
+}
+
+.my-article .chosen_header .chosenOriginn {
+    grid-area: middleLeft;
+    font-size: 24rpx;
+    position: relative;
+    left: -50rpx;
+}
+
+.my-article .chosen_header .chosenPhone {
+    grid-area: middleRight;
+    font-size: 24rpx;
+    position: relative;
+    left: -80rpx;
+}
+
+/* 具体文章 */
+.my-article .chosenAticle{
+    font-size: 32rpx;
+    width: 100%;
+    margin-top: 25rpx;
+}
+
+/* 图片 */
+.my-article .chosen_images{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20rpx;
+    width: 100%;
+    height: 350rpx;
+    justify-content: space-around;
+    margin-top: 25rpx;
+}
+.my-article .chosen_images .chosenImg{
+    background-color: #5ed6fd;
+}
+
+/* 交互区 */
+.my-article .chosen_interactive{
+    display: flex;
+    justify-content: space-around;
+}

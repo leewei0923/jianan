@@ -1,0 +1,26 @@
+<!-- 顶部tab栏 -->
+
+<view class="container">
+  <view class="top_bar_box">
+    <view class="topBar {{currentIdx == 0 ? 'activeBar' : ''}}" bindtap="changeBar" data-idx="0">
+      <text class="topBarTitle">表白</text>
+    </view>
+
+    <view class="topBar {{currentIdx == 1 ? 'activeBar' : ''}}" bindtap="changeBar" data-idx="1">
+      <text class="topBarTitle">失物</text>
+    </view>
+
+    <view class="topBar {{currentIdx == 2 ? 'activeBar' : ''}}" bindtap="changeBar" data-idx="2">
+      <text class="topBarTitle">求助</text>
+    </view>
+
+  </view>
+  <!-- bar内容 -->
+  <view class="bar_box">
+    <view tt:if="{{currentIdx == 0 ? true : false}}"  class="barContent">1</view>
+
+    <view tt:elif="{{currentIdx == 1 ? true : false}}" class="barContent">2</view>
+
+    <view tt:elif="{{currentIdx == 2 ? true : false}}" class="barContent">3</view>
+  </view>
+</view>
