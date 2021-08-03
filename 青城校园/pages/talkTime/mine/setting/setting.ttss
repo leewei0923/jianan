@@ -1,0 +1,96 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container .line{
+    width: 95%;
+    height: 1px;
+    background-color: black;
+}
+.item_box{
+    display: flex;
+    flex-direction: row;
+    height: 90rpx;
+    width: 95%;
+    align-items: center;
+}
+
+/* labbel部分 */
+
+.item_box .signText{
+    line-height: 90rpx;
+    text-align: center;
+}
+
+/* 头像部分 */
+.item_box .imgBox{
+    position: relative;
+    left: 73%;
+    width: 60rpx;
+    height: 60rpx;
+}
+.item_box .imgBox .setAvator{
+    width: 60rpx;
+    height: 60rpx;
+    background-color: chocolate;
+    border-radius: 50%;
+    
+}
+.item_box .pickView {
+    position: relative;
+    left: 75%;
+    margin-right: 10px;
+    width: 40rpx;
+    height: 50rpx;
+}
+
+/* 昵称输入 */
+
+.item_box .nameIn{
+    position: relative;
+    left: 5%;
+}
+/* 生日 */
+
+.item_box .pickDate{
+    position: relative;
+    left: 51%;
+    width: 290rpx;
+    height: 50rpx;
+}
+.toRight2{
+    width: 50rpx;
+    height: 50rpx;
+    position: relative;
+    left: 42%;
+}
+
+.item_box .toRight{
+    width: 50rpx;
+    height: 50rpx;
+    position: relative;
+    left: 74%;
+}
+
+/* 按钮部分 */
+
+.btn_box{
+    display: flex;
+    flex-direction: row;
+    margin: 40rpx;
+
+}
+.btn_box .edit{
+    margin: 20rpx;
+    background-color: #F85959;
+    color: #F0F9F0;
+}
+.btn_box .save{
+    margin: 20rpx;
+    background-color: #1AAD19;
+    color: #F0F9F0;
+}

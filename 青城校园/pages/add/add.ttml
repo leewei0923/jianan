@@ -1,0 +1,49 @@
+<view class="container">
+  <!-- 头像,昵称,pic图 -->
+  <view class="top_box">
+    <image src="{{addAvator}}" mode="" class="topAvator" />
+    <text class="topName">{{addUsername}}</text>
+    <image src="https://qi.7miaoyu.com/happy-new-year-4718894_1280.png" mode="" class="topDecorate" />
+  </view>
+
+  <!-- 内容区 -->
+
+  <view class="middle_content">
+    <textarea name="middle_content" id="middle_content" cols="30" rows="10" class="addContent" placeholder="分享新鲜事"  bindblur="subBlur"></textarea>
+  </view>
+
+  <!-- 图片区 -->
+
+  <view class="image_box">
+    <scroll-view class="image_scroll" scroll-y="true">
+      <view class="inner_image_box">
+        <view class="add_images_box">
+          <view tt:for="{{addImgList}}" tt:for-index="index" >
+            <image src="{{item}}" mode="" class="imgItem" bindtap="deleteCurImg" data-index="{{index}}" />
+          </view>
+        </view>
+
+        <!-- 添加图片的地方 -->
+        <view class="add_box" bindtap="getImg">
+          <image src="/images/icons/addImage.png" mode="" class="addImage" />
+          <text class="addTxt">图片</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 标签区域 -->
+
+  <view class="bottom_tags"> 
+  <image src="/images/icons/add_tag.png" mode="" class="tagImage"/>
+  <picker bindchange="tagChange" value="{{tagIndex}}" range="{{tagRange[signIndex]}}">
+    
+    <view class="tag">选择标签:{{tagRange[signIndex][tagIndex]}}</view>
+  </picker>
+  
+  </view>
+
+  <view class="btn_box">
+    <button class="btnSubmit" bindtap="addSubmit">发布</button>
+  </view>
+</view>

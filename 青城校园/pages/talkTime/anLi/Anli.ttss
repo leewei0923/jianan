@@ -1,1 +1,59 @@
-/* e:\byteProgram\qingCity\qingcity\青城校园\pages\talkTime\anLi\Anli.ttss */
+.container .topBar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
+    grid-gap: 30rpx;
+    justify-content: space-around;
+    justify-items: center;
+    grid-template-rows: 80rpx;
+}
+
+.container .topBar .anliSearchBox{
+    background-color: #ebe8e8;
+    display: flex;
+    flex-direction: row;
+    border-radius: 30rpx;
+}
+
+.container .topBar > text{
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.active{
+    font-size: 44rpx;
+    font-weight: 600;
+
+}
+
+.active::after{
+    content: "";
+    display: block;
+    width: 70rpx;
+    height: 10rpx;
+    background-color: chartreuse;
+}
+
+.container .topBar .anliSearchBox {
+    width: 90%;
+}
+.container .topBar .anliSearchBox image{
+    width: 70rpx;
+    height: 50rpx;
+    margin: 15rpx;
+    margin-right: 0;
+}
+.container .topBar .anliSearchBox>input{
+    margin: 15rpx;
+}
+
+/* 悬浮菜单 */
+
+.fixMenu{
+    position: fixed;
+    top: 80%;
+    left: 80%;
+}
+.fixMenu > image{
+    width: 100rpx;
+    height: 100rpx;
+}

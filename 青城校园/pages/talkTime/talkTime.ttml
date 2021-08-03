@@ -1,79 +1,68 @@
 <view class="container">
   <!-- 顶部标题 -->
 
-  <view class="topTitle">
+  <view class="topTitle {{isRight ? 'fixActive1' : ''}}">
     <text class="title_logo">青城校园</text>
   </view>
 
-  <!--轮播图 -->
-  <view class="container_lunbo">
-    <view class="lunbo">
-      <swiper indicator-dots="{{lunbo.indicatorDots}}" autoplay="{{lunbo.autoplay}}" interval="{{lunbo.interval}}">
-        <block tt:for="{{lunbo.url}}">
-          <swiper-item>
-            <image src="{{item}}" class="slide-image" style="width: 100%;" />
-          </swiper-item>
-        </block>
-      </swiper>
+  <view class="scroll_container">
+    <view class="scroll_container1">
+      <!-- 社区页面 -->
+      <view class="sheQu" id="sheQu">
+        <!--轮播图 -->
+        <view class="container_lunbo">
+          <view class="lunbo">
+            <swiper indicator-dots="{{lunbo.indicatorDots}}" autoplay="{{lunbo.autoplay}}" interval="{{lunbo.interval}}">
+              <block tt:for="{{lunbo.url}}">
+                <swiper-item>
+                  <image src="{{item}}" class="slide-image" style="width: 100%;" />
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+        </view>
+
+        <!-- bar栏 -->
+        <view class="talk_bar">
+          <navigator url="/pages/talkTime/biaoBai/biaoBai" hover-class="className" class="navBox">
+            <image src="/images/talkTime/icon/question.png" mode="" />
+            <text>表白</text>
+          </navigator>
+
+          <navigator url="/pages/talkTime/youQuan/youQuan" hover-class="className" class="navBox">
+            <image src="/images/talkTime/icon/friends.png" mode="" />
+            <text>有圈</text>
+          </navigator>
+
+          <navigator url="/pages/talkTime/anLi/Anli" hover-class="className" class="navBox">
+            <image src="/images/talkTime/icon/recommend.png" mode="" />
+            <text>安利</text>
+          </navigator>
+
+          <navigator url="/pages/talkTime/tuTu/tuTu" hover-class="className" class="navBox">
+            <image src="/images/talkTime/icon/communicate.png" mode="" />
+            <text>图图</text>
+          </navigator>
+
+          <navigator url="/pages/talkTime/huoDong/huoDong" hover-class="className" class="navBox">
+            <image src="/images/talkTime/icon/activity.png" mode="" />
+            <text>活动</text>
+          </navigator>
+        </view>
+
+        <!-- 内容区 -->
+        <my-article username="小明"></my-article>
+        <my-article></my-article>
+        <my-article></my-article>
+      </view>
     </view>
   </view>
 
-  <!-- bar栏 -->
-  <view class="talk_bar">
-    <navigator url="/pages/talkTime/biaoBai/biaoBai" redirect hover-class="className" class="navBox">
-      <image src="/images/talkTime/icon/question.png" mode="" />
-      <text>表白</text>
-    </navigator>
+  <!-- 悬浮的菜单 -->
 
-    <navigator url="/pages/talkTime/youQuan/youQuan" redirect hover-class="className" class="navBox">
-      <image src="/images/talkTime/icon/friends.png" mode="" />
-      <text>有圈</text>
-    </navigator>
-
-    <navigator url="/pages/talkTime/anLi/Anli" redirect hover-class="className" class="navBox">
-      <image src="/images/talkTime/icon/recommend.png" mode="" />
-      <text>安利</text>
-    </navigator>
-
-    <navigator url="/pages/talkTime/tuTu/tuTu" redirect hover-class="className" class="navBox">
-      <image src="/images/talkTime/icon/communicate.png" mode="" />
-      <text>图图</text>
-    </navigator>
-
-    <navigator url="/pages/talkTime/huoDong/huoDong" redirect hover-class="className" class="navBox">
-      <image src="/images/talkTime/icon/activity.png" mode="" />
-      <text>活动</text>
-    </navigator>
-  </view>
-
-  <!-- 内容区 -->
-
-  <view class="coBox">
-    <view style="width: 100%; height: 10rpx; background: #f0f0f0;"></view>
-    <view class="chosen_content">
-      <!-- 头像、昵称、来源、设备信息 -->
-      <view class="chosen_header">
-        <image src="/images/qcmap/man.jpg" mode="" class="chosenAvator" />
-        <text class="chosenName">天上的鱼儿飞呀飞</text>
-        <text class="chosenOriginn">来自头条推荐</text>
-        <text class="chosenPhone">华为MatePad11</text>
-      </view>
-
-      <!-- 文章的内容 -->
-      <text class="chosenAticle">分享note self,自己从咸鱼上吗面购买的,需要的自己取,记笔记还不错,有云端储存,可以导入模板</text>
-
-      <view class="chosen_images">
-        <!-- <image src="" mode="" class="chosenImg" /> -->
-        <view class="chosenImg" tt:for="{{[0,1,2,3,3,5]}}">{{item}}</view>
-      </view>
-
-      <!-- 点赞,评论,转发 -->
-      <view style="width: 100%; height: 4rpx; background-color: #e8e8e8; margin: 15rpx 0;"></view>
-      <view class="chosen_interactive">
-        <text class="likes">喜欢{{2}}</text>
-        <text class="comments">评论{{10}}</text>
-        <text class="share">分享{{12}}</text>
-      </view>
+  <view class="floatMenu">
+    <view class="toRight" bindtap="toRight">
+      <image src="/images/icons/personInfo.png" mode="" class="{{isRight ? 'rightActive':''}}" />
     </view>
   </view>
 </view>

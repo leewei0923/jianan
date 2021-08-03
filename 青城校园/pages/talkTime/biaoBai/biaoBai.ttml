@@ -23,4 +23,10 @@
 
     <view tt:elif="{{currentIdx == 2 ? true : false}}" class="barContent">3</view>
   </view>
+
+  <!-- 悬浮菜单 -->
+<view class="fixMenu" bindtap="add">
+<image src="/images/icons/add2.png" mode="" />
+</view>
+
 </view>

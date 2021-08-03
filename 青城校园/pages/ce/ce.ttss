@@ -1,0 +1,152 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 20rpx;
+    width: 95%;
+}
+/* 评论盒子 */
+.coment_Box{
+    display: flex;
+    flex-direction: column;
+}
+
+.coment_Box .mainComemnt{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 头像 , 昵称 点赞 */
+
+.mainComemnt .mainAvator{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.mainAvator .mainAvatorImg{
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+}
+
+.mainAvator .mainNickname{
+    font-size: 36rpx;
+    color: #74BCFA;
+    margin: 0 0 0 10rpx;
+}
+
+.mainAvator .mainDianzan{
+    width: 50rpx;
+    height: 50rpx;
+    position: relative;
+    left: 350rpx;
+}
+
+
+/* 内容 */
+.mainContent {
+    width: 88%;
+    margin: 0 0 20rpx 80rpx;
+}
+.mainContent .contentTxt{
+    font-size: 36rpx;
+    letter-spacing: 1px;
+}
+
+/* 时间, 回复按钮 */
+
+.mainTime{
+    margin: 0 0 0 80rpx;
+}
+
+.mainTime .timeTxt{
+    font-size: 28rpx;
+    color: #b1b1b1;
+}
+.mainTime .timeTxt::after{
+    content: "·";
+    padding: 10rpx;
+    color: #b1b1b1;
+}
+.mainTime .timeRplay{
+    font-size: 28rpx;
+    color: #b1b1b1;
+}
+
+/* -------------- */
+/* 次之评论 */
+
+
+.mainComemntRe{
+    display: flex;
+    flex-direction: column;
+    margin: 20rpx 0 0 80rpx;
+}
+
+.mainComemntRe .mainDianzanRe{
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    left: 88%;
+}
+/* 头像 , 昵称 点赞 */
+
+.mainAvatorRe {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.mainAvatorRe .mainAvatorImgRe{
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+
+}
+
+.mainAvatorRe .mainNicknameRe{
+    font-size: 36rpx;
+    color: #74BCFA;
+    margin: 0 0 0 10rpx;
+}
+
+/* 评论处 */
+
+
+.submitMessage{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    margin: 20rpx;
+    position: fixed;
+    top: 90%;
+    background-color: white;
+}
+.submitMessage2{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    margin: 20rpx;
+    position: fixed;
+    bottom: 560rpx;
+    background-color: white;
+}
+
+ .submitInput{
+    width: 70%;
+    height: 70rpx;
+    border: 1px solid #bfbfbf;
+    border-radius: 10rpx;
+}
+
+ .submitBtn{
+    width: 20%;
+    height: 70rpx;
+    background-color: #52ACFF;
+    font-size: 36rpx;
+    color: white;
+    line-height: 70rpx;
+}
+
+
+

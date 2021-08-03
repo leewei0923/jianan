@@ -24,25 +24,25 @@
       <text class="navTxt">招生</text>
     </navigator>
 
-    <navigator url="" redirect hover-class="className" class="navBox">
+    <navigator url=""  hover-class="className" class="navBox">
       <!-- <image src="" mode="" /> -->
       <view class="navImgShow"></view>
       <text class="navTxt">教育教学</text>
     </navigator>
 
-    <navigator url="" redirect hover-class="className" class="navBox">
+    <navigator url=""  hover-class="className" class="navBox">
       <view class="navImgShow"></view>
       <!-- <image src="" mode="" /> -->
       <text class="navTxt">大学生活</text>
     </navigator>
 
-    <navigator url="/pages/index/about/about" redirect hover-class="className" class="navBox">
+    <navigator url="/pages/index/about/about"  hover-class="className" class="navBox">
       <view class="navImgShow"></view>
       <!-- <image src="" mode="" /> -->
       <text class="navTxt">关于我们</text>
     </navigator>
 
-    <navigator url="" open-type="redirect" hover-class="className" class="navBox">
+    <navigator url="/pages/add/detail/detail"  hover-class="className" class="navBox">
       <view class="navImgShow"></view>
       <!-- <image src="" mode="" /> -->
       <text class="navTxt">青城圈</text>

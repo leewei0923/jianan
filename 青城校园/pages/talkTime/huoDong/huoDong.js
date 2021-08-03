@@ -4,6 +4,6 @@ Page({
 
   },
   onLoad: function (options) {
-
+    tt.hideHomeButton();
   }
 })

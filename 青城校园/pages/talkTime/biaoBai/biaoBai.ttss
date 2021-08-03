@@ -45,3 +45,15 @@
     
     margin-top: 10rpx;
 }
+
+/* 悬浮菜单 */
+
+.fixMenu{
+    position: fixed;
+    top: 80%;
+    left: 80%;
+}
+.fixMenu > image{
+    width: 100rpx;
+    height: 100rpx;
+}

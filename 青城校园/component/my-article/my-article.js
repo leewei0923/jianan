@@ -1,18 +1,34 @@
-// e:\byteProgram\qingCity\qingcity\青城校园\component\my-article\my-article
 Component({
   properties: {
-    // 这里定义了 headerText 属性，属性值可以在组件使用时指定
-    headerText: {
+    avator:{
       type: String,
-      value: "默认标题文案",
+      value:'头像'
     },
+    username:{
+      type:String,
+      value:'昵称'
+    },
+    usermotto:{
+      type:String,
+      value:'个性签名'
+    },
+    usertime:{
+      type:String,
+      value:'时间'
+    },
+    usercontent:{
+      type:String,
+      value:'内容'
+    },
+    userimage:{
+      type:Array,
+      value:''
+    }
   },
   data: {
-    // 组件内部数据
-    defaultStates: {},
+    
   },
   methods: {
-    // 自定义方法
-    customMethod: function () {},
+    
   },
 });

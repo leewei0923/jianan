@@ -1,0 +1,78 @@
+<view class="container">
+  <!-- 头像,日期,个签 -->
+  <view class="top_box">
+    <view class="topAvator">
+      <image src="/images/qcmap/man.jpg" mode="" class="topAvatorImg" />
+    </view>
+
+    <view class="top_text_box">
+      <text class="topName">天上的鱼儿飞呀飞</text>
+      <text class="topTime">今天10:38</text>
+      <text class="topMotto">我的未来不是梦</text>
+    </view>
+  </view>
+
+  <!-- 中间内容的部分 -->
+
+  <view class="middle_content_box">
+    <text class="contentText">时光荏苒，忽而盛夏。一季又一季的轮回中，始终不变的，是我们如一的守候，和相惜的等待。
+
+　　踏歌而行， 一个人是诗，两个人是画。总有一些陪伴，无言，也暖。总有一些风景，怎么看，都不够。
+
+　　或许，人生的路并不好走。但是因了有缘的际遇，亦会生出缕缕美好的诗意。
+
+　　悄悄，将文字融于季节的葱茏。婉约的诗意，就这样生于唇齿，凝于指尖。若你迎着阳光，轻轻走过。定会看见点点盎然绿意，瞬间沾满衣襟眉上。
+
+　　面对人生无常，我们一边奔跑，一边努力，也渐渐学会了感谢。感谢，岁月赠予我们的静好时光，感谢人生旅途中的每一程遇见，感谢四季赠予我们春夏秋冬的更迭。
+
+　　每一片走过的风景，繁花似锦，浸满它独特的芬芳。放下诗和远方，我们将平淡的日子融入柴米油盐，静静过成云淡风轻的曼妙，慢慢熬制成小溪的细水长流。
+
+　　那些铭心的过往，总有一天会成为记忆中泛黄的画卷，与我们渐行渐远。这，有又何妨呢？人生，本来就是边走边忘。记得也好，忘记也罢，且将它们都交给岁月去安排。
+
+　　行于时光匆匆，早已习惯了携一份禅意，慢慢的修行。我不是一个会安排生活的人，却也懂得生命不易。感谢自己，经过无数个风雨交加的日子，依然能够让生命安好。
+
+　　一壶清茶，一蓬绿意，一溪清水，皆让生活安静而恬淡。而那些因喧嚣生出的烦躁，亦会在细水长流的平淡中有了恰好的凉意。
+
+　　或许，沧海桑田的变幻，终究会让一切渐渐生出了荒芜而寂寥的薄凉，亦不要去遗憾蓦然回首时的物是人非。面对寻常四季的变幻，你只需以你自己喜欢的方式，好好生活，好好爱。
+
+　　人生，起起落落，每个人都在坚强的生活，一边奔跑，一边努力，纵使人生荒凉，也要内心繁华。
+
+　　花开花落，万事皆有定数，随缘就好。请相信，无论俗世多喧嚣，总会有那么一处幽居，为你安放漂泊的灵魂。无论红尘多纷扰，总会有那么一方净土，为你洗去生活的疲惫。
+
+　　所幸，我们总能在每一个炎热的夏天，为自己觅得一份清凉。亦能，在每一个寒冷的冬天，为自己寻到一份温暖。
+
+　　那么，便在绿肥红瘦的光阴里，做一个岁月的归人吧，无惧人生荒凉，让内心繁华似锦。
+
+　　每一天，迎着阳光，为自己开一扇晴朗的轩窗，无畏艰辛，亦不惧困苦。让每一季的来去，都能生出久别重逢的喜悦。</text>
+  </view>
+
+  <!-- 图片部分 -->
+
+  <view class="images_box">
+    <view>
+      <image src="https://img02.sogoucdn.com/app/a/100520093/f9d5c084396d06f6-0c7006bf1d0bb8d5-37108262e60f066bf064141912c92cc8.jpg" mode="{{1 ?  'widthFix':''}}" />
+    </view>
+  </view>
+
+  <!-- tag -->
+
+  <view class="tags_box">
+    <image src="/images/icons/article_tag_qu.png" mode="" />
+    <text>提问</text>
+  </view>
+
+  <!-- 点赞,评论,分享 -->
+  <view class="jiaohu_box">
+    <view class="imgItem" bindtap="dianzan">
+      <image src="/images/icons/article_dianzan1.png" mode="" />
+    </view>
+
+    <view class="imgItem" bindtap="pinglun">
+      <image src="/images/icons/article_pinglun.png" mode="" />
+    </view>
+
+    <view class="imgItem" bindtap="fenxiang">
+      <image src="/images/icons/article_fenxiang.png" mode="" />
+    </view>
+  </view>
+</view>

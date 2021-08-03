@@ -1,0 +1,86 @@
+<view class="container">
+  <!-- 第一个评论者 -->
+  <view class="coment_Box">
+
+    <view class="mainComemnt">
+      <!-- 头像 ,昵称 , 点赞-->
+      <view class="mainAvator">
+        <image src="/images/qcmap/man.jpg" mode="" class="mainAvatorImg" />
+
+        <text class="mainNickname">桃汁波波奶盖</text>
+
+        <image src="/images/icons/article_dianzan1.png" mode="" class="mainDianzan"/>
+      </view>
+
+      <!-- 内容 -->
+
+      <view class="mainContent">
+        <text class="contentTxt">大一女生宿舍还行 就是有点远 住一年就搬走校内 环境不敢恭维</text>
+      </view>
+
+      <!-- 时间,回复按钮 -->
+      <view class="mainTime">
+        <text class="timeTxt">前天17:31</text>
+        <text class="timeRplay">回复</text>
+      </view>
+
+    </view>
+
+    <!-- 次之评论者 -->
+
+    <view class="mainComemntRe">
+      <!-- 头像 ,昵称 , 点赞-->
+      <view class="mainAvatorRe">
+        <image src="/images/qcmap/man.jpg" mode="" class="mainAvatorImgRe" />
+
+        <text class="mainNicknameRe">八九</text>
+
+        <image src="/images/icons/article_dianzan1.png" mode="" class="mainDianzanRe"/>
+      </view>
+
+      <!-- 内容 -->
+
+      <view class="mainContent">
+        <text class="contentTxt">东区宿舍还是不错的</text>
+      </view>
+
+      <!-- 时间,回复按钮 -->
+      <view class="mainTime">
+        <text class="timeTxt">前天19:06</text>
+        <text class="timeRplay">回复</text>
+      </view>
+
+    </view>
+    <!-- 次之回复者 -->
+    <view class="mainComemntRe">
+      <!-- 头像 ,昵称 , 点赞-->
+      <view class="mainAvatorRe">
+        <image src="/images/qcmap/man.jpg" mode="" class="mainAvatorImgRe" />
+
+        <text class="mainNicknameRe">十里八乡有名的俊后生</text>
+
+        <image src="/images/icons/article_dianzan1.png" mode="" class="mainDianzanRe"/>
+      </view>
+
+      <!-- 内容 -->
+
+      <view class="mainContent">
+        <text class="contentTxt">回复八九: 西区也不差,北区去过几次,稍微差点</text>
+      </view>
+
+      <!-- 时间,回复按钮 -->
+      <view class="mainTime">
+        <text class="timeTxt">前天19:31</text>
+        <text class="timeRplay">回复</text>
+      </view>
+
+    </view>
+  </view>
+
+
+  <!-- 评论 -->
+  <view class="{{boolBounce ? 'submitMessage':'submitMessage2' }} ">
+    <input type="text" placeholder="评论"  class="submitInput" bindfocus="inputBind" bindblur="outBind"/>
+    <button class="submitBtn">发送</button>
+  </view>
+</view>

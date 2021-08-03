@@ -1,0 +1,126 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top_box {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 120rpx;
+    background-color: #a7a1e4;
+    background-image: linear-gradient(180deg, #a7a1e4 49%, #ffffff 99%);
+    align-items: center;
+    justify-content: space-around;
+}
+
+.top_box .topAvator {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+
+.top_box .topName {
+    font-weight: 500;
+    font-size: 34rpx;
+    position: relative;
+    left: -15rpx;
+}
+
+.top_box .topDecorate {
+    width: 256rpx;
+    height: 180rpx;
+    position: relative;
+    left: 20px;
+}
+
+/* 中间内容部分 */
+
+.middle_content {
+    width: 100%;
+}
+
+.middle_content .addContent {
+    padding: 20rpx;
+    width: 95%;
+}
+
+.middle_content .addContent::placeholder {
+    font-size: 40rpx;
+    margin: 20rpx;
+}
+
+/* 添加图片部分 */
+
+.image_scroll{
+    width: 100%;
+    max-height: 500rpx;
+    min-height: auto;
+}
+.add_box{
+    display: flex;
+    flex-direction: column;
+    width: 200rpx;
+    height: 200rpx;
+    background-color: #ebebeb;
+    justify-content: center;
+    align-items: center;
+    margin: 20rpx;
+}
+
+.add_box .addImage{
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.add_box .addTxt{
+    color: #cecccc;
+}
+.add_images_box{
+    display: grid;
+    width: 95%;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(auto,200rpx);
+    grid-gap: 10rpx;
+    margin: 20rpx;
+}
+.imgItem{
+    position: relative;
+    height: 200rpx;
+    width: 100%;
+    display: block;
+}
+/* 标签页 */
+.bottom_tags{
+    display: flex;
+    flex-direction: row;
+    margin: 20rpx;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebebeb;
+    width: 280rpx;
+    padding: 20rpx;
+    border-radius: 60rpx;
+}
+.bottom_tags .tagImage{
+    width: 40rpx;
+    height: 40rpx;
+
+}
+
+/* 发布按钮 */
+.btn_box{
+    border: none;
+}
+.btn_box .btnSubmit{
+    color: white;
+    background-color: #43A1FF;
+    width: 400rpx;
+    height: 100rpx;
+    border-radius: 60rpx;
+}
+.btn_box .btnSubmit::after{
+    border: none;
+}

@@ -124,3 +124,13 @@
     font-size: 25rpx;
     margin: 4rpx;
 }
+/* 悬浮菜单 */
+.fixMenu{
+    position: fixed;
+    top: 80%;
+    left: 80%;
+}
+.fixMenu > image{
+    width: 100rpx;
+    height: 100rpx;
+}

@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="searchBox">
+    <view class="search">
+      <image src="/images/talkTime/icon/search.png" mode="" />
+      <input type="search" name="searchDetial" value="{{serValue}}" id="" bindconfirm="enterSearch" placeholder="搜素你感兴趣的" />
+    </view>
+    <button bindtap="cancel" class="cancelBtn">取消</button>
+  </view>
+
+</view>

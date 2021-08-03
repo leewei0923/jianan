@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="item_box">
+    <text class="signText">头像</text>
+    <view bindtap="getImg" class="imgBox">
+      
+        <image src="{{currentImg}}" mode="" class="setAvator" />
+      
+    </view>
+    <image src="/images/talkTime/icon/right.png" class="toRight" mode="" />
+  </view>
+
+  <view class="line"></view>
+
+  <view class="item_box">
+    <text class="signText">昵称</text>
+    <input type="text" class="nameIn" placeholder="取一个好听的昵称吧" value="{{myName}}" bindconfirm="getName" bindblur="blurName"/>
+  </view>
+
+  <view class="line"></view>
+
+  <view class="item_box">
+    <text class="signText">签名</text>
+    <input type="text" class="nameIn" placeholder="个性签名" value="{{myQian}}" bindconfirm="getQian" bindblur="blurQian"/>
+  </view>
+
+<view class="line"></view>
+
+  <view class="item_box">
+    <text class="signText">性别</text>
+    <view class="pickView">
+      <picker value="{{genderIdx}}" range="{{gender}}" bindchange="genderChange">
+        <text>{{gender[genderIdx]}}</text>
+      </picker>
+    </view>
+    <image src="/images/talkTime/icon/right.png" class="toRight" mode="" />
+  </view>
+
+  <view class="line"></view>
+
+  <view class="item_box">
+    <text class="signText">生日</text>
+    <view class="pickDate">
+      <picker mode="date" value="{{birDate}}" start="1970-01-01" end="{{NewDate}}" bindchange="dateChange" fields="day">
+        <text tt:if="{{birDate}}">{{birDate}}</text>
+        <text tt:else>{{NewDate}}</text>
+      </picker>
+    </view>
+    <image src="/images/talkTime/icon/right.png" class="toRight2" mode="" />
+  </view>
+
+  <view class="btn_box">
+    <button class="edit" bindtap="edit">编辑资料</button>
+    <button class="save" bindtap="save">保存</button>
+  </view>
+</view>

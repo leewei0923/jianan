@@ -10,11 +10,18 @@
     "pages/talkTime/biaoBai/biaoBai",
     "pages/talkTime/youQuan/youQuan",
     "pages/talkTime/anLi/Anli",
+    "pages/talkTime/anLi/search/search",
     "pages/talkTime/tuTu/tuTu",
     "pages/talkTime/huoDong/huoDong",
+    "pages/talkTime/mine/dongtai/dongtai",
+    "pages/talkTime/mine/about/about",
+    "pages/talkTime/mine/setting/setting",
+    "pages/talkTime/mine/callback/callback",
+    "pages/talkTime/mine/personInfo/personInfo",
     "pages/mine/mine",
-    "component/my-article/my-article",
-    "component/my-comment/my-comment"
+    "pages/add/add",
+    "pages/add/detail/detail",
+    "pages/ce/ce"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -10,7 +10,11 @@ Page({
         "https://qi.7miaoyu.com/qicng.jpg",
         "https://qi.7miaoyu.com/qicng1.jpg"
       ]
-    }
+
+    },
+    // 悬浮菜单
+
+
   },
   onLoad: function (options) {
     // 设置标题顶部颜色为黑色
@@ -20,7 +24,7 @@ Page({
     })
 
     // 加载自定义字体
-    
+
 
   },
   onReady: function () {
@@ -32,5 +36,20 @@ Page({
       show: true
     })
   },
+  slide: function (e) {
+    console.log(e)
+    // let le = e.detail.scrollLeft 
+    if (e.detail.scrollLeft > 375) {
+      this.setData({
+        isRight: true,
+        toView: 'mine'
+      })
+    }
+  },
+  toRight: function (e) {
+    tt.navigateTo({
+      url: '/pages/talkTime/mine/personInfo/personInfo'
+    });
+  }
 
 })

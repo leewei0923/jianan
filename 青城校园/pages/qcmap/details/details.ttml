@@ -22,7 +22,8 @@
   </view>
 
   <!-- 留言板 -->
-  <view class="messageBord" tt:for="{{messageSign == messageData[Dpid].mod_data[c_idIndex].c_id ? messageData[Dpid].mod_data[Dcid].c_data : [1,2,3,4] }}">
+  <view>
+  <view class="messageBord" tt:for="{{messageData}}">
     <!-- 留言板-头像 -->
     <view class="messageAvator">
       <image src="{{item.avator}}" mode="" />
@@ -31,6 +32,7 @@
     <!-- 留言板 用户名-提交时间 -->
 
     <view class="liuyanBox">
+
       <view class="userBox">
         <view class="userName">
           <text>{{item.name}}</text>
@@ -45,9 +47,12 @@
         <text>{{item.content}}</text>
       </view>
     </view>
+    
+  </view>
+
   </view>
   <!-- 用来占位 -->
-      <view style="width: 100%; height: 120rpx; background: white; margin: 20rpx auto;"></view>
+     <view  tt:if="{{!boolIdx}}">暂时还没有留言,期待你的哦</view>
   <!--  发布留言的功能-->
 
     <form class="subTalk" bindsubmit="formSubmit">

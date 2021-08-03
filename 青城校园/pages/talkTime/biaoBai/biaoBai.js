@@ -8,7 +8,7 @@ Page({
   },
   onReady:function(){
     // 隐藏返回主页面控件
-    tt.hideHomeButton();
+    
   },
 
   changeBar:function(e){
@@ -17,6 +17,13 @@ Page({
     this.setData({
       currentIdx: e.currentTarget.dataset.idx
     })
-  }
+  },
 
+  // 写文章按钮
+
+  add:function(){
+    tt.navigateTo({
+      url: '/pages/add/add?signIndex=0' 
+    });
+  }
 })

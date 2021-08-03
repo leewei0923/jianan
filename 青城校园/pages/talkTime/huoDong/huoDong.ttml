@@ -1,2 +1,20 @@
-<!-- e:\byteProgram\qingCity\qingcity\青城校园\pages\talkTime\huoDong\huoDong.ttml -->
-<text>e:\byteProgram\qingCity\qingcity\青城校园\pages\talkTime\huoDong\huoDong.ttml</text>
+<view class="container">
+  <!-- 标题 -->
+
+  <view class="topTitle">
+    <text>最新活动</text>
+  </view>
+  <!-- 活动内容 -->
+  <view class="activityBox">
+    <image src="https://i03piccdn.sogoucdn.com/4dd8b2f183f35060" mode="" />
+    <text class="content">酷客故事局第四期———平凡的人生，热爱不凡</text>
+  </view>
+  <view class="activityBox">
+    <image src="https://i03piccdn.sogoucdn.com/e9f82675ab3e6044" mode="" />
+    <text class="content">酷客战队强势招新，邀你Carry全场</text>
+  </view>
+  <view class="activityBox">
+    <image src="https://i03piccdn.sogoucdn.com/0b29937c4f9bf815" mode="" />
+    <text class="content">iQOO活力酷玩战场次预告+王者战队招募</text>
+  </view>
+</view>

@@ -27,6 +27,20 @@
     font-family: 'pang', 'kaiTi';
 }
 
+.scroll_container1 {
+    width: 1500rpx;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+}
+
+/*  */
+
+.sheQu {
+    width: 750rpx;
+    display: block;
+}
+
 /* 轮播图部分 */
 
 .container_lunbo {
@@ -70,91 +84,161 @@
     height: 60rpx;
 }
 
-.talk_bar .navBox text{
+.talk_bar .navBox text {
     font-size: 30rpx;
 }
 
 /* 精选区 */
 
-.coBox{
+
+
+.mine {
+    width: 750rpx;
+    height: 100%;
+    display: inline-block;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
+    background-color: #ececec;
+    /* align-items: center; */
+    max-height: 750px;
+}
+
+
+/* 用户页面 */
+
+/* 顶部的头像,背景,昵称,个性签名 */
+
+.top_mine_box {
+    width: 750rpx;
+    position: relative;
+}
+
+.top_mine_box .mineBackImg {
+    width: 100%;
+    position: absolute;
+    background-color: cornflowerblue;
+    height: 400rpx;
+    z-index: 1;
+    top: 0;
+}
+
+.top_mine_box .person_info_box {
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    justify-content: center;
     align-items: center;
-    
 }
 
-.chosen_content {
-    display: flex;
-    width: 95%;
-    height: 660rpx;
-    flex-direction: column;
-    margin-top: 20rpx;
-}
-
-/* 头像、昵称、来源、设备信息 */
-
-.chosen_content .chosen_header {
-    display: grid;
-    /* grid-template-columns: 100rpx 200rpx ; */
-    grid-template-areas: "left top top ." "left middleLeft middleRight middleRight";
-}
-
-.chosen_content .chosen_header .chosenAvator {
-    grid-area: left;
-    width: 80rpx;
-    height: 80rpx;
+.top_mine_box .person_info_box .mineUserAvator {
+    width: 200rpx;
+    height: 200rpx;
     border-radius: 50%;
-    justify-self: start;
+    z-index: 10;
+    border: 10rpx solid white;
+    margin: 10rpx;
 }
 
-.chosen_content .chosen_header .chosenName {
-    grid-area: top;
+.top_mine_box .person_info_box .mineUsername {
+    z-index: 10;
+    color: white;
+    font-size: 40rpx;
+    margin: 20rpx;
+}
+
+.top_mine_box .person_info_box .mineMotto {
+    z-index: 10;
+    color: white;
     font-size: 30rpx;
+}
+
+/* 具体设置部分 */
+
+.mine_detail_setting {
     position: relative;
-    left: -50rpx;
-}
-
-.chosen_content .chosen_header .chosenOriginn {
-    grid-area: middleLeft;
-    font-size: 24rpx;
-    position: relative;
-    left: -50rpx;
-}
-
-.chosen_content .chosen_header .chosenPhone {
-    grid-area: middleRight;
-    font-size: 24rpx;
-    position: relative;
-    left: -80rpx;
-}
-
-/* 具体文章 */
-.chosen_content .chosenAticle{
-    font-size: 32rpx;
-    width: 100%;
-    margin-top: 25rpx;
-}
-
-/* 图片 */
-.chosen_content .chosen_images{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 20rpx;
-    width: 100%;
-    height: 350rpx;
-    justify-content: space-around;
-    margin-top: 25rpx;
-}
-.chosen_content .chosen_images .chosenImg{
-    background-color: #5ed6fd;
-}
-
-/* 交互区 */
-.chosen_content .chosen_interactive{
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    z-index: 10;
+    top: 100rpx;
+    width: 90%;
+    align-self: center;
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 20rpx 0; 
 }
 
 
+.mine_setting_box {
+    display: flex;
+    flex-direction: row;
+    margin: 10rpx 0rpx;
+    height: 80rpx;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.mine_setting_box:nth-of-type(3){
+    border-bottom: none;
+}
+
+
+
+.mine_setting_box .settingIcon {
+    position: relative;
+    left: 20rpx;
+    width: 60rpx;
+    height: 60rpx;
+
+}
+
+.mine_setting_box .setting_name {
+    position: relative;
+    left: 20rpx;
+    margin-left: 20rpx;
+    font-size: 30rpx;
+    color: #bdbdbd;
+    line-height: 60rpx;
+    text-align: center;
+}
+
+.mine_setting_box .settingNavIcon {
+    position: relative;
+    width: 60rpx;
+    height: 60rpx;
+    left: 55%;
+}
+
+
+/* 悬浮菜单区 */
+
+.floatMenu {
+    position: fixed;
+    z-index: 99;
+}
+
+.floatMenu .toRight {
+    position: fixed;
+    width: 100rpx;
+    height: 100rpx;
+    left: 80%;
+    top: 80%;
+}
+
+.floatMenu .toRight>image {
+    position: fixed;
+    width: 100rpx;
+    height: 100rpx;
+    left: 80%;
+    top: 80%;
+}
+
+.rightActive {
+    transform: rotateY(180deg);
+}
+
+.fixActive1{
+    position: fixed;
+}
+.fixActive{
+    position: fixed;
+    top: 10%;
+}

@@ -1,72 +1,120 @@
-.my-article {
+.container {
     display: flex;
-    width: 95%;
-    height: 660rpx;
     flex-direction: column;
-    margin-top: 20rpx;
-}
-
-/* 头像、昵称、来源、设备信息 */
-
-.my-article .chosen_header {
-    display: grid;
-    /* grid-template-columns: 100rpx 200rpx ; */
-    grid-template-areas: "left top top ." "left middleLeft middleRight middleRight";
-}
-
-.my-article .chosen_header .chosenAvator {
-    grid-area: left;
-    width: 80rpx;
-    height: 80rpx;
-    border-radius: 50%;
-    justify-self: start;
-}
-
-.my-article .chosen_header .chosenName {
-    grid-area: top;
-    font-size: 30rpx;
-    position: relative;
-    left: -50rpx;
-}
-
-.my-article .chosen_header .chosenOriginn {
-    grid-area: middleLeft;
-    font-size: 24rpx;
-    position: relative;
-    left: -50rpx;
-}
-
-.my-article .chosen_header .chosenPhone {
-    grid-area: middleRight;
-    font-size: 24rpx;
-    position: relative;
-    left: -80rpx;
-}
-
-/* 具体文章 */
-.my-article .chosenAticle{
-    font-size: 32rpx;
     width: 100%;
-    margin-top: 25rpx;
+}
+
+/* 头像,昵称等 */
+
+.top_box {
+    display: flex;
+    flex-direction: row;
+    margin: 20rpx;
+    align-items: center;
+    height: 100rpx;
+}
+
+.top_box .topAvator {}
+
+.top_box .topAvator .topAvatorImg {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+}
+
+.top_box .top_text_box {
+    display: grid;
+    grid-template-areas: "a a a" "b c c";
+    margin-left: 30rpx;
+}
+
+.top_box .top_text_box .topName {
+    grid-area: a;
+}
+
+.top_box .top_text_box .topTime {
+    grid-area: b;
+    font-size: 30rpx;
+    margin-top: 10rpx;
+}
+
+.top_box .top_text_box .topMotto {
+    grid-area: c;
+    font-size: 30rpx;
+    margin-top: 10rpx;
+    margin-left: 20rpx;
+    width: 280rpx;
+    text-overflow: ellipsis;
+}
+
+/* 文章内容部分 */
+
+.middle_content_box {
+    margin: 20rpx;
+    width: 100%;
+    min-height: 0;
+    max-height: 500rpx;
+    overflow: hidden;
+}
+
+.middle_content_box>text {
+    font-size: 38rpx;
+    letter-spacing: 4rpx;
+    height: 200rpx;
+    text-overflow: ellipsis;
 }
 
 /* 图片 */
-.my-article .chosen_images{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 20rpx;
+
+.images_box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
-    height: 350rpx;
-    justify-content: space-around;
-    margin-top: 25rpx;
-}
-.my-article .chosen_images .chosenImg{
-    background-color: #5ed6fd;
+    margin: 0 20rpx;
 }
 
-/* 交互区 */
-.my-article .chosen_interactive{
+.images_box  image {
+    width: 220rpx;
+    height: 240rpx;
+    margin: 5rpx;
+}
+
+/* 标签 */
+
+.tags_box {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    margin: 0 20rpx;
+}
+
+.tags_box>image {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.tags_box>text {
+    font-size: 36rpx;
+    margin: 0 0 0 20rpx;
+}
+
+/* 交互 */
+
+.jiaohu_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 100%;
+    margin: 20rpx;
+}
+
+.jiaohu_box .imgItem {
+    position: relative;
+    left: 43%;
+    margin: 0 40rpx;
+}
+
+.jiaohu_box .imgItem>image {
+    width: 60rpx;
+    height: 60rpx;
 }

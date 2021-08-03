@@ -1,0 +1,32 @@
+<view class="mine" id="mine">
+  <!-- 顶部头图 -->
+  <view class="top_mine_box" >
+    <!--头像,昵称,个签 -->
+    <view class="person_info_box">
+      <image src="{{avatorUrl}}" mode="/" class="mineUserAvator" tt:if="{{isGet}}" />
+      <view class="mineUserAvator avator_login" bindtap="loginBtn" tt:else>登录</view>
+      <text class="mineUsername">{{nickName}}</text>
+      <text class="mineMotto">{{motto}}</text>
+    </view>
+    <!-- 背景图 -->
+    <image src="https://qi.7miaoyu.com/boat_background.png" class="mineBackImg" mode="" />
+  </view>
+
+  <!-- <view class="login">
+  <text>登录</text>
+  </view> -->
+
+  <!-- 具体设置部分 -->
+  <view class="mine_detail_setting">
+    <view tt:for="{{mine_setting}}">
+      <navigator url="{{item.url}}" hover-class="className" class="mine_setting_box">
+        <image src="{{item.img}}" mode="" class="settingIcon" />
+        <text class="setting_name">{{item.name}}</text>
+
+        <image src="/images/talkTime/icon/right.png" class="settingNavIcon" mode="" />
+      </navigator>
+    </view>
+  </view>
+
+  <!--  -->
+</view>

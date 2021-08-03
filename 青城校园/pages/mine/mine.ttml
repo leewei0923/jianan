@@ -1,0 +1,50 @@
+<view class="container">
+  <!-- 头像,日期,个签 -->
+  <view class="top_box">
+    <view class="topAvator">
+      <image src="/images/qcmap/man.jpg" mode="" class="topAvatorImg" />
+    </view>
+
+    <view class="top_text_box">
+      <text class="topName">天上的鱼儿飞呀飞</text>
+      <text class="topTime">今天10:38</text>
+      <text class="topMotto">我的未来不是梦</text>
+    </view>
+  </view>
+
+  <!-- 中间内容的部分 -->
+
+  <view class="middle_content_box">
+    <text class="contentText">面对人生无常</text>
+  </view>
+
+  <!-- 图片部分 -->
+
+  <view class="images_box">
+    <view>
+      <image src="https://img02.sogoucdn.com/app/a/100520093/f9d5c084396d06f6-0c7006bf1d0bb8d5-37108262e60f066bf064141912c92cc8.jpg" mode="{{1 ?  'widthFix':''}}" />
+    </view>
+  </view>
+
+  <!-- tag -->
+
+  <view class="tags_box">
+    <image src="/images/icons/article_tag_qu.png" mode="" />
+    <text>提问</text>
+  </view>
+
+  <!-- 点赞,评论,分享 -->
+  <view class="jiaohu_box">
+    <view class="imgItem" bindtap="dianzan">
+      <image src="/images/icons/article_dianzan1.png" mode="" />
+    </view>
+
+    <view class="imgItem" bindtap="pinglun">
+      <image src="/images/icons/article_pinglun.png" mode="" />
+    </view>
+
+    <view class="imgItem" bindtap="fenxiang">
+      <image src="/images/icons/article_fenxiang.png" mode="" />
+    </view>
+  </view>
+</view>

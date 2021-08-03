@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "my-article":"../../component/my-article/my-article"
+  },
   "navigationBarTitleText": "青城圈",
   "navigationBarBackgroundColor": "#19097D",
   "navigationBarTextStyle": "white",
