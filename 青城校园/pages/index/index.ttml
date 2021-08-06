@@ -24,25 +24,25 @@
       <text class="navTxt">招生</text>
     </navigator>
 
-    <navigator url=""  hover-class="className" class="navBox">
+    <navigator url="" hover-class="className" class="navBox">
       <!-- <image src="" mode="" /> -->
       <view class="navImgShow"></view>
       <text class="navTxt">教育教学</text>
     </navigator>
 
-    <navigator url=""  hover-class="className" class="navBox">
+    <navigator url="" hover-class="className" class="navBox">
       <view class="navImgShow"></view>
       <!-- <image src="" mode="" /> -->
       <text class="navTxt">大学生活</text>
     </navigator>
 
-    <navigator url="/pages/index/about/about"  hover-class="className" class="navBox">
+    <navigator url="/pages/index/about/about" hover-class="className" class="navBox">
       <view class="navImgShow"></view>
       <!-- <image src="" mode="" /> -->
       <text class="navTxt">关于我们</text>
     </navigator>
 
-    <navigator url="/pages/add/detail/detail"  hover-class="className" class="navBox">
+    <navigator url="/pages/ce/ce" hover-class="className" class="navBox">
       <view class="navImgShow"></view>
       <!-- <image src="" mode="" /> -->
       <text class="navTxt">青城圈</text>
@@ -50,19 +50,26 @@
   </view>
 
   <!-- 新闻标题栏部分 -->
-  
-    <!-- 热点标题 -->
-    <view class="QCHot_logo" id="navbar">
-      <view class="column {{isFixedTop?'fixed':''}}" >
-        <view class="block active">学院头条</view>
-        
-      </view>
-      <!-- 用于吸顶后 占位用的 -->
-      <view class="column" wx:if="{{isFixedTop}}"></view>
-    </view>
-  
 
-  <block wx:for="{{20}}" wx:key="list">
- <view style="width: 100%; height: 120rpx; background: #f0f0f0; margin: 20rpx auto;"></view>
-</block>
+  <!-- 热点标题 -->
+  <view class="QCHot_logo" id="navbar">
+    <view class="column {{isFixedTop?'fixed':''}}">
+      <view class="block active">学院头条</view>
+    </view>
+    <!-- 用于吸顶后 占位用的 -->
+    <view class="column" wx:if="{{isFixedTop}}"></view>
+  </view>
+
+  <view class="newsContainer">
+    <view tt:for="{{news}}" tt:for-key="index">
+      <view class="newsBox" bindtap="toDetail" data-id="{{index}}">
+        <view class="imgBox">
+          <image src="{{item.coverImg}}" mode="center" class="titleImg" />
+        </view>
+        <view class="textBox">
+          <text>{{item.title}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

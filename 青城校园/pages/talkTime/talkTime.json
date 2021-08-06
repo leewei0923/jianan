@@ -5,5 +5,6 @@
   "navigationBarTitleText": "青城圈",
   "navigationBarBackgroundColor": "#19097D",
   "navigationBarTextStyle": "white",
-  "navigationStyle":"custom"
+  "navigationStyle":"custom",
+  "enablePullDownRefresh":true
 }

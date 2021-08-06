@@ -12,68 +12,33 @@
   <!-- 图片瀑布 -->
   <view class="tuTu_container">
     <view class="tuTu_photo_box">
-      <!-- 左边图片 -->
-      <view class="leftPhoto">
-        <!-- 主图片 -->
-        <image src="https://i03piccdn.sogoucdn.com/b620f4b61d56600a" class="leftPhotoMain" mode="" />
-        <!-- 用户的话 -->
-        <text>刘浩存好看</text>
-        <!-- 头像 网名 赞的人数 -->
-        <view class="leftPhoto_avator">
-          <image src="/images/qcmap/man.jpg" mode="" class="leftPhotoImg" />
-          <text class="leftPhoto_name">伟伟大同学</text>
+      <view tt:for="{{info.user.length}}" tt:for-key="index">
+        <!-- 左边图片 -->
+        <view class="leftPhoto">
+          <!-- 主图片 -->
+          <view bindtap="preView" data-id="{{index}}">
+            <image src="{{info.articleDeatil[index].imgurl[0]}}"  class="leftPhotoMain" mode="" />
+          </view>
 
-          <view class="leftPhoto_like">
-            <image src="/images/talkTime/icon/like.png" mode="" class="likeImg" />
-            <text class="likeCount">400</text>
+          <!-- 用户的话 -->
+          <text>{{info.articleDeatil[index].content}}</text>
+          <!-- 头像 网名 赞的人数 -->
+          <view class="leftPhoto_avator">
+            <image src="{{info.user[index].avatorUrl}}" mode="" class="leftPhotoImg" />
+            <text class="leftPhoto_name">{{info.user[index].nickname}}</text>
+
+            <view class="leftPhoto_like">
+              <image src="/images/talkTime/icon/like.png" mode="" class="likeImg" />
+              <text class="likeCount">400</text>
+            </view>
           </view>
         </view>
       </view>
-
-      <!-- 开始 -->
-
-      <view class="leftPhoto">
-        <!-- 主图片 -->
-        <image src="https://i03piccdn.sogoucdn.com/b620f4b61d56600a" class="leftPhotoMain" mode="" />
-        <!-- 用户的话 -->
-        <text>刘浩存好看，看起来也很有气质</text>
-        <!-- 头像 网名 赞的人数 -->
-        <view class="leftPhoto_avator">
-          <image src="/images/qcmap/man.jpg" mode="" class="leftPhotoImg" />
-          <text class="leftPhoto_name">伟伟大同学</text>
-
-          <view class="leftPhoto_like">
-            <image src="/images/talkTime/icon/like.png" mode="" class="likeImg" />
-            <text class="likeCount">400</text>
-          </view>
-        </view>
-      </view>
-
-      <!--  -->
-
-      <view class="leftPhoto">
-        <!-- 主图片 -->
-        <image src="https://i03piccdn.sogoucdn.com/b620f4b61d56600a" class="leftPhotoMain" mode="" />
-        <!-- 用户的话 -->
-        <text>刘浩存好看，看起来也很有气质</text>
-        <!-- 头像 网名 赞的人数 -->
-        <view class="leftPhoto_avator">
-          <image src="/images/qcmap/man.jpg" mode="" class="leftPhotoImg" />
-          <text class="leftPhoto_name">伟伟大同学</text>
-
-          <view class="leftPhoto_like">
-            <image src="/images/talkTime/icon/like.png" mode="" class="likeImg" />
-            <text class="likeCount">400</text>
-          </view>
-        </view>
-      </view>
-
-      <!-- 结束 -->
     </view>
   </view>
 
-      <!-- 悬浮菜单 -->
-<view class="fixMenu" bindtap="add">
-<image src="/images/icons/add2.png" mode="" />
-</view>
+  <!-- 悬浮菜单 -->
+  <view class="fixMenu" bindtap="add">
+    <image src="/images/icons/add2.png" mode="" />
+  </view>
 </view>

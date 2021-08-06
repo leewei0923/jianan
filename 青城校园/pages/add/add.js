@@ -17,7 +17,7 @@ Page({
 
     // 内容
     curContent: '', // 用户输入的内容,失去焦点获得的内容
-    subImgList:'' //提交的图片列表
+    subImgList: '' //提交的图片列表
   },
   onLoad: function (options) {
     // console.log(options) //测试一
@@ -49,9 +49,20 @@ Page({
         for (let i of res.tempFilePaths) {
           imgList.push(i)
         }
-        this.setData({
-          addImgList: imgList
-        })
+        if (imgList.length <= 9) {
+          this.setData({
+            addImgList: imgList
+          })
+        }else{
+          tt.showModal({
+            title:'只能选择九张图片O',
+            content:"请精挑细选出你喜欢的图片",
+            success: (res) => {
+              
+            }
+          });
+        }
+
       }
     });
   },
@@ -102,64 +113,63 @@ Page({
 
   addSubmit: function () {
     const _that = this
-      let subImgList = [] //图片暂时储存地址   
-      
-      async function upload(){
-          // 图片上传
-        const serviceId = 'qc5i9s'; // serviceId
-        const inspirecloud = new InspireCloud({ serviceId });
-        const fileUploadToken = '48bbb4c7-9a40-472e-b3a1-069aaf25187e'; // 客户端上传 token，
+    let subImgList = [] //图片暂时储存地址   
 
-        // 调用小程序上传api
+    async function upload() {
+      // 图片上传
+      const serviceId = 'qc5i9s'; // serviceId
+      const inspirecloud = new InspireCloud({ serviceId });
+      const fileUploadToken = '48bbb4c7-9a40-472e-b3a1-069aaf25187e'; // 客户端上传 token，
 
-        let update = new Date();
-        let curTime = update.getTime(); //获取当前时间戳
+      // 调用小程序上传api
 
+      let update = new Date();
+      let curTime = update.getTime(); //获取当前时间戳
 
-        for (let x in _that.data.addImgList) {
-          const imgName = _that.data.openid + curTime + _that.data.signIndex + x + '.jpg'
-         await inspirecloud.file.upload(imgName, _that.data.addImgList[x], { token: fileUploadToken })
-            .then((data) => {
-              // 上传成功
-              console.log("图片提交成功");
-              subImgList.push(data.url)
-              
-              
-            })
-            .catch((error) => {
-              // 调用失败，进行错误处理
-              console.log(error)
-            });
-
+      for (let x in _that.data.addImgList) {
+        const imgName = _that.data.openid + curTime + _that.data.signIndex + x + '.jpg'
+        let file = {
+          path: _that.data.addImgList[x]
         }
-        
-       await torequest()
+        await inspirecloud.file.upload(imgName, file, { token: fileUploadToken })
+          .then((data) => {
+            // 上传成功
+            console.log("图片提交成功");
+            subImgList.push(data.url)
+          })
+          .catch((error) => {
+            // 调用失败，进行错误处理
+            console.log(error)
+          });
+
       }
+      await torequest()
+    }
 
-      upload()
-        
-      function torequest() {
-        let update = new Date();
-        let curTime = update.getTime(); //获取当前时间戳
-        let curTag = _that.data.signIndex + _that.data.tagIndex
-        let curArtcleId = _that.data.openid + curTime
-        let subdate = formatDate()
+    upload()
 
-        // 提交内容
+    function torequest() {
+      let update = new Date();
+      let curTime = update.getTime(); //获取当前时间戳
+      let curTag = _that.data.signIndex + _that.data.tagIndex
+      let curArtcleId = _that.data.openid + curTime
+      let sudate = formatDate()
 
-        subRequest('https://qc5i9s.fn.thelarkcloud.com/addArticle', {
-          openid: _that.data.openid, //标识
-          unionid: _that.data.unionid, //唯一标识
-          content: _that.data.curContent, //提交的内容
-          imgurl: subImgList, //提交图片地址
-          tags: curTag,  //表示当前的标签
-          article_id: curArtcleId, //唯一文章id
-          recommend: 1,  //推荐指数
-          subdate: subdate //提交的时间
-        }).then(res => {
-          console.log(res.data)
-        })
-      }
-      
+      // 提交内容
+
+      subRequest('https://qc5i9s.fn.thelarkcloud.com/addArticle', {
+        openid: _that.data.openid, //标识
+        unionid: _that.data.unionid, //唯一标识
+        content: _that.data.curContent, //提交的内容
+        imgurl: subImgList, //提交图片地址
+        tags: curTag,  //表示当前的标签
+        article_id: curArtcleId, //唯一文章id
+        recommend: 1,  //推荐指数
+        subdate: sudate //提交的时间
+      }).then(res => {
+        console.log(res.data)
+      })
+    }
+
   }
 })

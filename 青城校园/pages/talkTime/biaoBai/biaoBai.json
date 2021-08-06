@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "my-article":"../../../component/my-article/my-article"
+  },
   "navigationBarTitleText": "表白"
 }

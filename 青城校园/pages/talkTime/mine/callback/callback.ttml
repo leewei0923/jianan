@@ -1,2 +1,6 @@
-<!-- e:\byteProgram\qingCity\qingcity\青城校园\pages\talkTime\mine\callback\callback.ttml -->
-<text>e:\byteProgram\qingCity\qingcity\青城校园\pages\talkTime\mine\callback\callback.ttml</text>
+<view class="container">
+
+<textarea name="" id="" cols="30" rows="10" class="callbackContent" placeholder="填写你的问题"></textarea>
+
+<button class="sub" type="default" bindtap="sub">提交</button>
+</view>

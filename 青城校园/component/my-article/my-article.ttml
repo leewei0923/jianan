@@ -14,15 +14,15 @@
 
   <!-- 中间内容的部分 -->
 
-  <view class="middle_content_box">
+  <view class="middle_content_box" bindtap="onTap">
     <text class="contentText">{{usercontent}}</text>
   </view>
 
   <!-- 图片部分 -->
 
   <view class="images_box">
-    <view tt:for="{{userimage}}">
-      <image src="{{item}}" mode="{{userimage.length == 1 ?  'widthFix':''}}" />
+    <view tt:for="{{userimage}}" tt:for-index="index">
+      <image src="{{item}}" data-id="{{index}}" mode="{{userimage.length === 1 ?  'widthFix':''}}" bindtap="prePhoto"/>
     </view>
   </view>
 
@@ -36,7 +36,7 @@
   <!-- 点赞,评论,分享 -->
   <view class="jiaohu_box">
     <view class="imgItem" bindtap="dianzan">
-      <image src="/images/icons/article_dianzan1.png" mode="" />
+      <image src="{{dianzanImg}}" mode="" />
     </view>
 
     <view class="imgItem" bindtap="pinglun">
@@ -46,5 +46,6 @@
     <view class="imgItem" bindtap="fenxiang">
       <image src="/images/icons/article_fenxiang.png" mode="" />
     </view>
+    
   </view>
 </view>

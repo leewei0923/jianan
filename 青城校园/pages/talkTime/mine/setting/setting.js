@@ -108,7 +108,6 @@ Page({
   // 保存按钮
 
   save: function (e) {
-    console.log(this)
     let _that = this
     // 获取个人信息
     getRequest('https://qc5i9s.fn.thelarkcloud.com/infoEdit',{
@@ -120,7 +119,8 @@ Page({
       motto:_that.data.myQian,
       birday:_that.data.birDate
     }).then(res =>{
-      console.log(res)
+      tt.showToast({title: '保存成功'});
+      tt.navigateBack();
     })
 
 

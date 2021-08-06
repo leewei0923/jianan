@@ -40,7 +40,7 @@ Page({
     // 先进行比对
     // 获取封装的获取本地数据的接口
     getStorage('userInfo').then(res => {
-      console.dir(res) //测试1
+      // console.dir(res) //测试1
       if (res.errMsg == "getStorage:ok") {
         // 从服务器加载数据
 
@@ -51,10 +51,7 @@ Page({
           console.log(res)
           tt.setStorage({
             key: 'userInfo', // 缓存数据的key
-            data: res.data, // 要缓存的数据
-            success: (res) => {
-              console.log("成功")
-            }
+            data: res.data // 要缓存的数据
           });
         })
 
@@ -137,5 +134,11 @@ Page({
     });
 
 
+  },
+
+  // 刷新
+
+  onPullDownRefresh:function(){
+    
   }
 })

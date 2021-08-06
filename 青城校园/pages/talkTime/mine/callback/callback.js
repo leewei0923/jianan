@@ -5,5 +5,8 @@ Page({
   },
   onLoad: function (options) {
 
+  },
+  sub:function(){
+    tt.showToast({title: '感谢提交反馈'});
   }
 })

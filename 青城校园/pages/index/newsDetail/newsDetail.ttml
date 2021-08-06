@@ -1,0 +1,6 @@
+<view tt:if="{{isArray}}">
+  <view tt:for="{{newsCon}}" class="container">
+    <rich-text nodes="{{item.html}}" bindtap="{{item.click}}"></rich-text>
+  </view>
+</view>
+

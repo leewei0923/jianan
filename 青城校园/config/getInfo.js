@@ -25,7 +25,7 @@ function formatNumber(n) {
 // 封装字节的request
 
 function request(url, data = {}, method = 'POST') {
-    return new Promise((resolve, rejet) => {
+    return new Promise((resolve, reject) => {
 
         // 发送到目标服务器
         tt.request({

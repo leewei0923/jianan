@@ -10,21 +10,22 @@
 
 .topTitle {
     width: 100%;
-    height: 150rpx;
+    height: 160rpx;
     display: flex;
     justify-content: space-around;
 }
 
 .topTitle .title_logo {
-    width: 100;
-    height: 130rpx;
-    line-height: 130rpx;
+    width: 100%;
+    height: 160rpx;
+    line-height: 80px;
     text-align: center;
     font-size: 30px;
-    position: relative;
-    top: 20%;
+    position: fixed;
     letter-spacing: 15px;
     font-family: 'pang', 'kaiTi';
+    background-color: white;
+    z-index: 100;
 }
 
 .scroll_container1 {

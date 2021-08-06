@@ -1,5 +1,6 @@
 const app = getApp()
 
+const news = app.globalData.qdc.news
 Page({
     data: {
         photoSet: {
@@ -22,6 +23,7 @@ Page({
 
         navbarInitTop: 0, //导航栏初始化距顶部的距离
         isFixedTop: false, //是否固定顶部
+        news:news
         
     },
     onLoad: function() {
@@ -70,6 +72,15 @@ Page({
         }
         that.setData({
             isFixedTop: isSatisfy
+        });
+    },
+
+    toDetail:function(e){
+
+        console.log("80序列"+e.currentTarget.dataset.id)
+        let currentIdx = e.currentTarget.dataset.id
+        tt.navigateTo({
+          url: "/pages/index/newsDetail/newsDetail?nid="+currentIdx, // 指定页面的url
         });
     }
 

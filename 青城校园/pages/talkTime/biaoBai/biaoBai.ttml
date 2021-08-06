@@ -17,11 +17,31 @@
   </view>
   <!-- bar内容 -->
   <view class="bar_box">
-    <view tt:if="{{currentIdx == 0 ? true : false}}"  class="barContent">1</view>
+    <view tt:if="{{currentIdx == 0 ? true : false}}"  class="barContent">
+       <!-- 内容区 -->
+        <view tt:for="{{info.user.length}}" tt:for-index="index" >
+          <my-article data-id="{{index}}" username="{{info.user[index].nickname}}" avator="{{info.user[index].avatorUrl}}" usermotto="{{info.user[index].motto}}" usertime="2020.08.21 12:20" userimage="{{info.articleDeatil[index].imgurl}}" usercontent="{{info.articleDeatil[index].content}}" tag="{{info.articleDeatil[index].tags}}" bind:click="toDetail" bind:pre="preView"></my-article>
+        </view>
+    
+    </view>
 
-    <view tt:elif="{{currentIdx == 1 ? true : false}}" class="barContent">2</view>
+    <view tt:elif="{{currentIdx == 1 ? true : false}}" class="barContent">
+    
+     <!-- 内容区 -->
+        <view tt:for="{{info.user.length}}" tt:for-index="index" >
+          <my-article data-id="{{index}}" username="{{info.user[index].nickname}}" avator="{{info.user[index].avatorUrl}}" usermotto="{{info.user[index].motto}}" usertime="2020.08.21 12:20" userimage="{{info.articleDeatil[index].imgurl}}" usercontent="{{info.articleDeatil[index].content}}" tag="{{info.articleDeatil[index].tags}}" bind:click="toDetail" bind:pre="preView"></my-article>
+        </view>
 
-    <view tt:elif="{{currentIdx == 2 ? true : false}}" class="barContent">3</view>
+    </view>
+
+    <view tt:elif="{{currentIdx == 2 ? true : false}}" class="barContent">
+    
+         <!-- 内容区 -->
+        <view tt:for="{{info.user.length}}" tt:for-index="index" >
+          <my-article data-id="{{index}}" username="{{info.user[index].nickname}}" avator="{{info.user[index].avatorUrl}}" usermotto="{{info.user[index].motto}}" usertime="2020.08.21 12:20" userimage="{{info.articleDeatil[index].imgurl}}" usercontent="{{info.articleDeatil[index].content}}" tag="{{info.articleDeatil[index].tags}}" bind:click="toDetail" bind:pre="preView"></my-article>
+        </view>
+        
+    </view>
   </view>
 
   <!-- 悬浮菜单 -->

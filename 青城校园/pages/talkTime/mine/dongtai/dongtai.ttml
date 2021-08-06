@@ -1,2 +1,31 @@
-<!-- e:\byteProgram\qingCity\qingcity\青城校园\pages\talkTime\mine\dongtai\dongtai.ttml -->
-<text>e:\byteProgram\qingCity\qingcity\青城校园\pages\talkTime\mine\dongtai\dongtai.ttml</text>
+<view class="container">
+
+<view tt:for="{{info}}" tt:key="index">
+  <view class="articleBox">
+    <view class="contentBox">
+      <text class="content">{{item.content}}</text>
+    </view>
+
+    <view class="imgBox">
+      <image src="{{item.imgurl[0]}}" mode="aspectFit" />
+    </view>
+
+    <view class="menu" bindtap="clickMenu" data-id="{{index}}">
+      <image src="/images/icons/menu.png" mode="aspectFit" class="menuImg" />
+    </view>
+  </view>
+  <view style="width: 95%; margin: 20rpx; border: 2px solid #e6e6e6;"></view>
+
+  </view>
+  <!-- 结束 -->
+
+  <view class="back" tt:if="{{isShow}}" bindtap="cancel" >
+    <view class="menuFix">
+      <image src="/images/icons/updown.png" mode="aspectFit" bindtap="cancel" />
+      <button type="primary" class="edit" bindtap="edit">编辑</button>
+      <button type="primary" class="delete" bindtap="delete">删除</button>
+      <button type="default" open-type="share" class="share" bindtap="share">分享</button>
+      <button type="default" class="cancel" bindtap="cancle">取消</button>
+    </view>
+  </view>
+</view>

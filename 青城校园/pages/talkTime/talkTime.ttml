@@ -51,9 +51,10 @@
         </view>
 
         <!-- 内容区 -->
-        <my-article username="小明"></my-article>
-        <my-article></my-article>
-        <my-article></my-article>
+        <view tt:for="{{info.user.length}}" tt:for-index="index" >
+          <my-article data-id="{{index}}" username="{{info.user[index].nickname}}" avator="{{info.user[index].avatorUrl}}" usermotto="{{info.user[index].motto}}" usertime="2020.08.21 12:20" userimage="{{info.articleDeatil[index].imgurl}}" usercontent="{{info.articleDeatil[index].content}}" tag="{{info.articleDeatil[index].tags}}"  bind:click="toDetail" bind:pre="preView" bind:dian="dianzan" ></my-article>
+        </view>
+        
       </view>
     </view>
   </view>

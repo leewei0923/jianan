@@ -4,6 +4,7 @@
     "pages/index/zhaosheng/zhaosheng",
     "pages/index/zhaosheng/detail/detail",
     "pages/index/about/about",
+    "pages/index/newsDetail/newsDetail",
     "pages/qcmap/qcmap",
     "pages/qcmap/details/details",
     "pages/talkTime/talkTime",

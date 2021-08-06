@@ -1,7 +1,7 @@
 <view class="container">
   <view class="topBar">
-    <text class="anliRecommend {{currentIdx == 0 ? 'active':''}}" bindtap="changeBtn" data-idx="0">推荐</text>
-    <text class="anliNewwest {{currentIdx == 1 ? 'active':''}}" bindtap="changeBtn" data-idx="1">最新</text>
+    <text class="anliRecommend {{currentIdx == 0 ? 'active':''}}" bindtap="changeBtn" data-idx="0" data-recommend="3">推荐</text>
+    <text class="anliNewwest {{currentIdx == 1 ? 'active':''}}" bindtap="changeBtn" data-idx="1" data-recommend="1">最新</text>
 
     <view class="anliSearchBox">
       <image src="/images/talkTime/icon/search.png" mode="" />
@@ -9,8 +9,16 @@
     </view>
   </view>
 
-    <!-- 悬浮菜单 -->
-<view class="fixMenu" bindtap="add">
-<image src="/images/icons/add2.png" mode="" />
-</view>
+  <!-- 内容部分 -->
+  <view class="anliContent">
+    <!-- 内容区 -->
+    <view tt:for="{{info.user.length}}" tt:for-index="index">
+      <my-article data-id="{{index}}" username="{{info.user[index].nickname}}" avator="{{info.user[index].avatorUrl}}" usermotto="{{info.user[index].motto}}" usertime="2020.08.21 12:20" userimage="{{info.articleDeatil[index].imgurl}}" usercontent="{{info.articleDeatil[index].content}}" tag="{{info.articleDeatil[index].tags}}" bind:click="toDetail" bind:pre="preView" bind:dian="dianzan"></my-article>
+    </view>
+  </view>
+
+  <!-- 悬浮菜单 -->
+  <view class="fixMenu" bindtap="add">
+    <image src="/images/icons/add2.png" mode="" />
+  </view>
 </view>

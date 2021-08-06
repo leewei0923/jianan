@@ -1,1 +1,16 @@
-/* e:\byteProgram\qingCity\qingcity\青城校园\pages\talkTime\mine\callback\callback.ttss */
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.container .callbackContent{
+    width: 95%;
+    margin: 20rpx;
+
+}
+
+.container .sub{
+    width: 40%;
+    height: 100rpx;
+    background-color: teal;
+    color: white;
+}

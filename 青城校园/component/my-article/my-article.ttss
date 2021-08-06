@@ -115,6 +115,6 @@
 }
 
 .jiaohu_box .imgItem>image {
-    width: 60rpx;
-    height: 60rpx;
+    width: 50rpx;
+    height: 50rpx;
 }

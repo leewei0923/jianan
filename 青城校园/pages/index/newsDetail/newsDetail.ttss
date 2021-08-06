@@ -1,0 +1,15 @@
+.container{
+    width: 95%;
+    margin: 20rpx;
+    display: flex;
+    flex-direction: column;
+    text-indent: 10rpx;
+    text-align: justify;
+    word-spacing: 2rpx;
+}
+
+.singleImg{
+    width: 95%;
+    margin: 20rpx;
+}
+
