@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --border-fiil: #3498db;
+  --border-wid: rgba(153, 153, 153, 0.603);
+}
+
+.progress_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f6f7fb;
+}
+
+.progress_container .circleBox {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.progress_container .circleBox .circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 4px solid #999;
+  line-height: 25px;
+  text-align: center;
+  z-index: 10;
+  background: #f6f7fb;
+}
+.progress_container .circleBox .active {
+  border: 4px solid var(--border-fiil);
+}
+.progress_container .circleBox .progressBar {
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  background: var(--border-fiil);
+  top: 50%;
+  z-index: 2;
+}
+
+.progress_container .circleBox .progressBar::before {
+  content: '';
+  width: 350px;
+  height: 4px;
+  position: absolute;
+  background: var(--border-wid);
+  top: 50%;
+  z-index: 1;
+}
+
+.progress_container .btnBoxs {
+  margin: 10px;
+}
+.progress_container .btnBoxs button {
+  margin: 10px;
+  width: 80px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--border-fiil);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.progress_container .btnBoxs button:disabled {
+  background-color: var(--border-wid);
+  cursor: not-allowed;
+}
