@@ -36,13 +36,12 @@
  - mark 2021.05.19 线性表-单链表
  - mark 2021.05.21 循环链表及双向链表
 
-# jsSuanFa js的算法题目
- - 两个数之和/twosum 2021.5.19
- - 两边相加 / addTwoNumbers 2021.5.20
- - 无重复字符的最长子串 / longest substring without repeating character 2021.05.21
- - 寻找两个正序数组的中位数 / median of two sorted arrays 2021.05.22
- - 最长回文子串  / longest palindromic substring  2021.05.23
- - [翻转数字 / reverse integer ](/jsSuanFa/reverse.md) 2021.05.27
- - [字符串转换成整数 /string to integer atoi](/jsSuanFa/string-to-integer-atoi.md) 2021.05.28
- - [回文数  / palindrome number](/jsSuanFa/palindrome-number.md) 2021.05.31
+# SuanFa js的算法题目
+
+
+| 题目(力扣地址)                                               | 日期  | 我的代码地址   | 方法      |
+| ------------------------------------------------------------ | ----- | -------------- | --------- |
+| [旅行终点站](https://leetcode-cn.com/problems/destination-city/) | 10.01 | [旅行终点站]() | `哈希表 ` |
+| [Pow(x, n)](https://leetcode-cn.com/problems/powx-n/)        | 10.01 |                | `快速幂`  |
+|                                                              |       |                |           |
 
