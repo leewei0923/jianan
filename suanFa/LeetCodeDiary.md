@@ -181,7 +181,7 @@ var firstUniqChar = function (s) {
 
 ```
 
-## 10.02
+## 10.03
 
 ### [166. 分数到小数](https://leetcode-cn.com/problems/fraction-to-recurring-decimal/)
 
@@ -304,3 +304,243 @@ var fractionToDecimal = function (numerator, denominator) {
    };
    ```
 
+## 10.04
+
+###  [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
+
+
+      给定一个字符串 `s` ，请你找出其中不含有重复字符的 **最长子串** 的长度。
+      
+      ```
+      输入: s = "pwwkew"
+      输出: 3
+      解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+           请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+      ```
+      
+      ```javascript
+      var lengthOfLongestSubstring = function(s) {
+        const map = new Map();
+        let start = 0, res = 0;
+        for(let i = 0; i < s.length; i++){
+          if(map.has(s[i])){
+            start = Math.max(map.get(s[i]),start);
+          }
+          res = Math.max(res,i - start + 1);
+          map.set(s[i],i+1);
+        }
+        return res;
+      };
+      ```
+      
+      > 思路
+      
+      ```
+      1. 对于做重复的题首先想到的是哈希表
+      2. 定义开始序号start 和 结果变量res
+      3. 再对该字符串进行遍历, 在哈希表表中出现过, 对start进行更新(变为最大序号)
+      4. res就用当前遍历下标 i - start + 1 (为什么 + 1 ? )
+      
+      ```
+
+### [482. 密钥格式化](https://leetcode-cn.com/problems/license-key-formatting/)
+
+难度简单96
+
+有一个密钥字符串 S ，只包含字母，数字以及 '-'（破折号）。其中， N 个 '-' 将字符串分成了 N+1 组。
+
+给你一个数字 K，请你重新格式化字符串，使每个分组恰好包含 K 个字符。特别地，第一个分组包含的字符个数必须小于等于 K，但至少要包含 1 个字符。两个分组之间需要用 '-'（破折号）隔开，并且将所有的小写字母转换为大写字母。
+
+给定非空字符串 S 和数字 K，按照上面描述的规则进行格式化。
+
+ 
+
+**示例 1：**
+
+```
+输入：S = "5F3Z-2e-9-w", K = 4
+输出："5F3Z-2E9W"
+解释：字符串 S 被分成了两个部分，每部分 4 个字符；
+     注意，两个额外的破折号需要删掉。
+```
+
+我的错误思考
+
+```javascript
+var licenseKeyFormatting = function(s, k) {
+  if(s.length < k) return s.toUpperCase();
+  
+  let list = s.split("-").join(''); // 去掉"-"生成新数组
+  list = list.split('');
+  let remainder = list.length % k; //余数
+  if(remainder === 0){
+    for(let i = 1; i < Math.floor(list.length / k); i++){
+      list.splice(k * i , 0 , '-');
+    } 
+  }else{
+    list.splice(remainder , 0 , '-');
+
+     for(let i = 2; i < Math.floor(list.length / k); i++){
+      list.splice(k * i , 0 , '-');
+    } 
+  }
+
+  return list.join('').toUpperCase();
+};
+```
+
+```
+以上代码解决一般是没什么问题，但是可能会出现死循环问题，运行到崩溃，但是我的思路是正确的
+```
+
+
+
+## 10.05
+
+### [284. 顶端迭代器](https://leetcode-cn.com/problems/peeking-iterator/)  (再回头)
+
+难度中等129
+
+请你设计一个迭代器，除了支持 `hasNext` 和 `next` 操作外，还支持 `peek` 操作。
+
+实现 `PeekingIterator` 类：
+
+- `PeekingIterator(int[] nums)` 使用指定整数数组 `nums` 初始化迭代器。
+- `int next()` 返回数组中的下一个元素，并将指针移动到下个元素处。
+- `bool hasNext()` 如果数组中存在下一个元素，返回 `true` ；否则，返回 `false` 。
+- `int peek()` 返回数组中的下一个元素，但 **不** 移动指针。
+
+ 
+
+**示例：**
+
+```
+输入：
+["PeekingIterator", "next", "peek", "next", "next", "hasNext"]
+[[[1, 2, 3]], [], [], [], [], []]
+输出：
+[null, 1, 2, 2, 3, false]
+
+解释：
+PeekingIterator peekingIterator = new PeekingIterator([1, 2, 3]); // [1,2,3]
+peekingIterator.next();    // 返回 1 ，指针移动到下一个元素 [1,2,3]
+peekingIterator.peek();    // 返回 2 ，指针未发生移动 [1,2,3]
+peekingIterator.next();    // 返回 2 ，指针移动到下一个元素 [1,2,3]
+peekingIterator.next();    // 返回 3 ，指针移动到下一个元素 [1,2,3]
+peekingIterator.hasNext(); // 返回 False
+```
+
+```javascript
+ let iter , element;
+var PeekingIterator = function(iterator) {
+    iter = iterator;
+    element = null;
+};
+
+/**
+ * @return {number}
+ */
+PeekingIterator.prototype.peek = function() {
+       
+       element == null ? element = iter.next() : '';
+    return element;
+};
+
+/**
+ * @return {number}
+ */
+PeekingIterator.prototype.next = function() {
+    if(element != null){
+        let newVal = element;
+        element = null;
+        return newVal;
+    }
+    return iter.next();
+};
+
+/**
+ * @return {boolean}
+ */
+PeekingIterator.prototype.hasNext = function() {
+    return element != null || iter.hasNext(); 
+};
+```
+
+## 10.06
+
+### [414. 第三大的数](https://leetcode-cn.com/problems/third-maximum-number/)
+
+难度简单297
+
+给你一个非空数组，返回此数组中 **第三大的数** 。如果不存在，则返回数组中最大的数。
+
+ 
+
+**示例 1：**
+
+```
+输入：[3, 2, 1]
+输出：1
+解释：第三大的数是 1 。
+```
+
+
+
+```js
+var thirdMax = function (nums) {
+    nums.sort((a, b) => {
+        return b - a
+    }
+    );
+    let res = [];
+    nums.filter((item, index, array) => {
+        if (array.indexOf(item) === index) {
+            res.push(item);
+        }
+    }
+    )
+    if (res.length < 3) {
+        return res[0];
+    } else {
+        return res[2]
+    }
+};
+```
+
+```
+思路:排序
+	1. 首先对传入的数组进行排序
+	2. 再利用filter函数去重(这个效率低)
+	2. 判断去重后的数组，小于3个返回下标为0 ，否则返回下标为2的数组
+```
+
+----
+
+> 回溯算法
+
+### [40. 组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)
+
+
+
+难度中等705
+
+给定一个数组 `candidates` 和一个目标数 `target` ，找出 `candidates` 中所有可以使数字和为 `target` 的组合。
+
+`candidates` 中的每个数字在每个组合中只能使用一次。
+
+**注意：**解集不能包含重复的组合。 
+
+ 
+
+**示例 1:**
+
+```
+输入: candidates = [10,1,2,7,6,1,5], target = 8,
+输出:
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]
+```
