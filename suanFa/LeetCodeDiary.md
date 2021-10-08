@@ -6,7 +6,7 @@
 
 
 
-## 10.01
+### 10.01
 
 ### [1436. 旅行终点站](https://leetcode-cn.com/problems/destination-city/)
 
@@ -470,7 +470,7 @@ PeekingIterator.prototype.hasNext = function() {
 
 ### [414. 第三大的数](https://leetcode-cn.com/problems/third-maximum-number/)
 
-难度简单297
+
 
 给你一个非空数组，返回此数组中 **第三大的数** 。如果不存在，则返回数组中最大的数。
 
@@ -522,8 +522,6 @@ var thirdMax = function (nums) {
 
 
 
-难度中等705
-
 给定一个数组 `candidates` 和一个目标数 `target` ，找出 `candidates` 中所有可以使数字和为 `target` 的组合。
 
 `candidates` 中的每个数字在每个组合中只能使用一次。
@@ -544,3 +542,90 @@ var thirdMax = function (nums) {
 [2,6]
 ]
 ```
+
+
+
+## 10.07
+
+
+
+### [434. 字符串中的单词数](https://leetcode-cn.com/problems/number-of-segments-in-a-string/)
+
+> #### 原地法
+
+统计字符串中的单词个数，这里的单词指的是连续的不是空格的字符。
+
+请注意，你可以假定字符串里不包括任何不可打印的字符。
+
+**示例:**
+
+```
+输入: "Hello, my name is John"
+输出: 5
+解释: 这里的单词是指连续的不是空格的字符，所以 "Hello," 算作 1 个单词。
+```
+
+```js
+var countSegments = function (s) {
+    let count = 0;
+    for (let i = 0; i < s.length; i++) {
+        if ((i == 0 || s[i - 1] == ' ') && s[i] !== ' ') {
+            count++;
+        }
+    }
+
+    return count
+};
+```
+
+思路:
+
+```
+1. 这题存在一些坑
+```
+
+
+
+## 10.08
+
+> 周五
+
+#### [260. 只出现一次的数字 III](https://leetcode-cn.com/problems/single-number-iii/)
+
+
+
+给定一个整数数组 `nums`，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 **任意顺序** 返回答案。
+
+
+
+```javascript
+var singleNumber = function(nums) {
+  const map = new Map();
+  let res = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (map.has(nums[i])) {
+      let val = map.get(nums[i]);
+      map.set(nums[i], val + 1);
+    } else {
+      map.set(nums[i], 1);
+    }
+  }
+
+  for (let[key,value] of map.entries()) {
+    if (value == 1) {
+      res.push(key);
+    }
+  }
+
+  return res;
+};
+```
+
+```
+
+看到重复的题,我一般选择用哈希
+1. 先用哈希筛选一遍, 出现重复的给value + 1 ,否则为 1 
+2. 再遍历哈希表, value 不等于 1 的数添加到res中
+3. return res
+```
+
