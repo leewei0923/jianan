@@ -590,7 +590,7 @@ var countSegments = function (s) {
 
 > 周五
 
-#### [260. 只出现一次的数字 III](https://leetcode-cn.com/problems/single-number-iii/)
+### [260. 只出现一次的数字 III](https://leetcode-cn.com/problems/single-number-iii/)
 
 
 
@@ -628,4 +628,54 @@ var singleNumber = function(nums) {
 2. 再遍历哈希表, value 不等于 1 的数添加到res中
 3. return res
 ```
+
+### [187. 重复的DNA序列](https://leetcode-cn.com/problems/repeated-dna-sequences/)
+
+难度中等283
+
+所有 DNA 都由一系列缩写为 `'A'`，`'C'`，`'G'` 和 `'T'` 的核苷酸组成，例如：`"ACGAATTCCG"`。在研究 DNA 时，识别 DNA 中的重复序列有时会对研究非常有帮助。
+
+编写一个函数来找出所有目标子串，目标子串的长度为 10，且在 DNA 字符串 `s` 中出现次数超过一次。
+
+ 
+
+**示例 1：**
+
+```
+输入：s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+输出：["AAAAACCCCC","CCCCCAAAAA"]
+```
+
+```js
+var findRepeatedDnaSequences = function (s) {
+     let start = 0 , end = 10;
+    if(s.length < 10) return [];
+    let res =[];
+    const map = new Map();
+    while(end <= s.length){
+      let str = s.slice(start,end);
+      if(map.has(str)){
+        let val = map.get(str);
+        map.set(str,val + 1)
+      }else{
+          map.set(str,1)
+      }
+      start++;
+      end++;
+    }
+
+    for(let [key , value] of map){
+        if(value != 1){
+            res.push(key)
+        }
+    }
+    return res;
+};
+```
+
+```
+这题 我觉得和上面的那题, 想法类似, 遇到重复问题 , 可以使用哈希表
+```
+
+
 
