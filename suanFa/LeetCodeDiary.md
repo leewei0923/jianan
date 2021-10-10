@@ -679,3 +679,112 @@ var findRepeatedDnaSequences = function (s) {
 
 
 
+## 10.09
+
+
+
+### [829. 连续整数求和](https://leetcode-cn.com/problems/consecutive-numbers-sum/)
+
+难度困难117
+
+给定一个正整数 `N`，试求有多少组连续正整数满足所有数字之和为 `N`?
+
+**示**例 1:
+
+```
+输入: 5
+输出: 2
+解释: 5 = 5 = 2 + 3，共有两组连续整数([5],[2,3])求和后为 5。
+```
+
+```javascript
+var consecutiveNumbersSum = function (S) {
+    let res = 0;
+
+    for (let n = 1; n <= S; n++) {
+        let a = (2 * S + n - n ** 2) / (2 * n);
+        if (a < 0) return res;
+        if (a % 1 == 0 && a > 0) {
+            res = res + 1;
+        }
+    }
+
+    return res;
+};
+```
+
+```
+数学等差数列的知识
+1. 定义一个计数的 res
+2. 对 i 进行遍历
+3. 光进行枚举的话,时间一定会超
+```
+
+
+
+### [352. 将数据流变为多个不相交区间](https://leetcode-cn.com/problems/data-stream-as-disjoint-intervals/)
+
+难度困难139
+
+ 给你一个由非负整数 `a1, a2, ..., an` 组成的数据流输入，请你将到目前为止看到的数字总结为不相交的区间列表。
+
+实现 `SummaryRanges` 类：
+
+- `SummaryRanges()` 使用一个空数据流初始化对象。
+- `void addNum(int val)` 向数据流中加入整数 `val` 。
+- `int[][] getIntervals()` 以不相交区间 `[starti, endi]` 的列表形式返回对数据流中整数的总结。
+
+ ```javascript
+ var SummaryRanges = function() {
+     this.nums = []; // nums 进行初始化
+ };
+ 
+ /** 
+  * @param {number} val
+  * @return {void}
+  */
+ SummaryRanges.prototype.addNum = function(val) {
+     // nums中存在 val 的值 就直接返回 
+     if(this.nums.includes(val)) return ; 
+     // 不存在就 推进 ,然后进行排序
+     this.nums.push(val);
+     this.nums.sort((a,b) => {return a - b });
+ 
+ };
+ 
+ /**
+  * @return {number[][]}
+  */
+ SummaryRanges.prototype.getIntervals = function() {
+     // 定义一个输出的res
+     const res = [];
+     // len 保存 nums 长度
+     const len = this.nums.length;
+     if(!len) return res;
+ 
+     for(let i = 0; i < len; i++){
+         const curNum = this.nums[i];
+ 
+         if(!res.length){
+             res.push([curNum,curNum]);
+         } else {
+             const lastSideNum = res[res.length - 1];
+             lastSideNum[1] + 1 === curNum ? lastSideNum[1]++ : res.push([curNum,curNum])
+         }
+     }
+ 
+     return res;
+ };
+ 
+ /**
+  * Your SummaryRanges object will be instantiated and called as such:
+  * var obj = new SummaryRanges()
+  * obj.addNum(val)
+  * var param_2 = obj.getIntervals()
+  */
+ ```
+
+```
+没怎么弄懂,看题解写的,
+```
+
