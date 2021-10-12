@@ -788,3 +788,290 @@ var consecutiveNumbersSum = function (S) {
 没怎么弄懂,看题解写的,
 ```
 
+
+
+## 10.10
+
+### [268. 丢失的数字](https://leetcode-cn.com/problems/missing-number/)
+
+难度简单450
+
+给定一个包含 `[0, n]` 中 `n` 个数的数组 `nums` ，找出 `[0, n]` 这个范围内没有出现在数组中的那个数。
+
+
+
+**示例 1：**
+
+```
+输入：nums = [3,0,1]
+输出：2
+解释：n = 3，因为有 3 个数字，所以所有的数字都在范围 [0,3] 内。2 是丢失的数字，因为它没有出现在 nums 中。
+```
+
+> 方法一
+
+```js
+var missingNumber = function(nums) {
+    nums.sort((a,b)=>{return a-b})
+
+    for(let i = 0; i < nums.length; i++){
+      if(nums[i] != i) {
+        return nums[i] - 1;
+      }
+    }
+
+    return nums[nums.length-1] + 1;
+
+};
+```
+
+```
+1. 先进行排序,
+2. 根据数组的长度进行遍历
+3. 不相同的数直接return 因为后一位的数占了位置,后一位的数要 -1 return
+4. 还有就是结尾的数要 +1 之后可以return
+```
+
+> 方法二
+
+
+
+```js
+var missingNumber = function(nums) {
+    for(let i = 0; i < nums.length; i++){
+        if(!nums.includes(i)){
+            return i;
+        }
+    }
+    return nums.length;
+};
+```
+
+
+
+
+### [441. 排列硬币](https://leetcode-cn.com/problems/arranging-coins/)
+
+难度简单160
+
+你总共有 `n` 枚硬币，并计划将它们按阶梯状排列。对于一个由 `k` 行组成的阶梯，其第 `i` 行必须正好有 `i` 枚硬币。阶梯的最后一行 **可能** 是不完整的。
+
+给你一个数字 `n` ，计算并返回可形成 **完整阶梯行** 的总行数。
+
+ ```js
+ //JavaScript
+ var arrangeCoins = function (n) {
+     let res = 0;
+     while (res < n) {
+         n = n - 1 - res;
+         res++;
+     }
+     return res;
+ };
+ ```
+
+
+
+```	c
+//C
+int arrangeCoins(int n){
+    int res = 0;
+
+		while (res < n) {
+			n = n - 1 - res;
+			res++;
+		}
+		return res;
+}
+```
+
+
+
+```
+数学方式  等差数列
+1. 下层比上层多一个
+2. res 记录层级
+```
+
+## 10.11
+
+### 273. 整数转换英文表示(再回头)
+将非负整数 num 转换为其对应的英文表示。
+
+
+```
+示例 1：
+
+输入：num = 123
+输出："One Hundred Twenty Three"
+```
+
+
+
+```js
+var numberToWords = function (num) {
+    const singles = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+    const teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+    const tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+    const thousands = ["", "Thousand", "Million", "Billion"];
+
+    const handle = (tem, num) => {
+        if (num == 0) {
+            return;
+        } else if (num < 10) {
+            return tem.push(singles[num % 10] + ' ');
+        } else if (num < 20) {
+            return tem.push(teens[num - 10] + ' ');
+        } else if (num < 100) {
+            tem.push(tens[Math.floor(num / 10)] + " ");
+            handle(tem, num % 10);
+        } else {
+
+            tem.push(singles[Math.floor(num / 100)] + " Hundred ");
+            handle(tem, num % 100);
+        }
+    }
+    if (num == 0)
+        return 'Zero';
+    const res = [];
+    for (let i = 3, unit = 1000000000; i >= 0; i--,
+        unit = Math.floor(unit / 1000)) {
+        const curNum = Math.floor(num / unit);
+        if (curNum !== 0) {
+            num -= curNum * unit;
+            const tem = [];
+            handle(tem, curNum);
+            tem.push(thousands[i] + " ");
+            res.push(tem.join(''));
+        }
+    }
+    return res.join('').trim();
+};
+```
+
+
+
+### [62. 不同路径](https://leetcode-cn.com/problems/unique-paths/)
+
+难度中等1141
+
+一个机器人位于一个 `m x n` 网格的左上角 （起始点在下图中标记为 “Start” ）。
+
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+
+问总共有多少条不同的路径？
+
+
+
+```js
+var uniquePaths = function (m, n) {
+    // 创建 "棋盘"
+  const board= Array(m).fill().map(item => Array(n))    
+    for (let i = 0; i < m; i++) {
+        board[i][0] = 1;
+    }
+    
+    for (let i = 0; i < n; i++) {
+        board[0][i] = 1;
+    }
+    
+    for (let i = 1; i < m; i++) {
+        for (let j = 1; j < n; j++) {
+            board[i][j] = board[i - 1][j] + board[i][j - 1];
+        }
+    }
+
+
+    return board[m - 1][n - 1];
+};
+```
+
+
+
+## 10.02
+
+### [29. 两数相除](https://leetcode-cn.com/problems/divide-two-integers/)
+
+难度中等725
+
+给定两个整数，被除数 `dividend` 和除数 `divisor`。将两数相除，要求不使用乘法、除法和 mod 运算符。
+
+返回被除数 `dividend` 除以除数 `divisor` 得到的商。
+
+整数除法的结果应当截去（`truncate`）其小数部分，例如：`truncate(8.345) = 8` 以及 `truncate(-2.7335) = -2`
+
+ 
+
+> 位运算
+
+```js
+var divide = function (dividend, divisor) {
+    let flag = 1;
+
+    const [MIN, MAX] = [-(2 ** 31), 2 ** 31 - 1];
+    if (dividend === MIN && divisor === -1)
+        return MAX;
+    if (dividend === MIN && divisor === 1)
+        return MIN;
+
+    if (dividend < 0 && divisor < 0) {
+        dividend = -dividend;
+        divisor = -divisor;
+    } else if (divisor < 0) {
+        divisor = -divisor;
+        flag = -1;
+    } else if (dividend < 0) {
+        dividend = -dividend;
+        flag = -1;
+    }
+
+    let res = 0;
+    for (let i = 31; i >= 0; i--) {
+        // 找出满足条件的最大的倍数
+        if (dividend >>> i >= divisor) {
+            // 累加上这个倍数
+            res += 1 << i;
+            // 被除数减去这个倍数*b
+            dividend -= divisor << i;
+        }
+    }
+
+    if (res == 0)
+        return res;
+    return res * flag;
+};
+```
+
+### [43. 字符串相乘](https://leetcode-cn.com/problems/multiply-strings/)
+
+难度中等737
+
+给定两个以字符串形式表示的非负整数 `num1` 和 `num2`，返回 `num1` 和 `num2` 的乘积，它们的乘积也表示为字符串形式。
+
+**示例 1:**
+
+```
+输入: num1 = "2", num2 = "3"
+输出: "6"
+```
+
+```js
+var multiply = function (num1, num2) {
+   if (num1 === '0' || num2 === '0') {
+        return '0';
+    }
+    var l1 = num1.length, l2 = num2.length, p = new Array(l1 + l2).fill(0)
+    for (var i = l1; i--;) {
+        for (var j = l2; j--;) {
+            var tmp = num1[i] * num2[j] + p[i + j + 1]
+            p[i + j + 1] = tmp % 10;
+            p[i + j] += 0 | tmp / 10;
+        } 
+    }
+    while(p[0] === 0) {
+        p.shift()
+    }
+    return p.join('');
+};
+```
+
