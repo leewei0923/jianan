@@ -6,7 +6,7 @@
 
 
 
-### 10.01
+## 10.01
 
 ### [1436. 旅行终点站](https://leetcode-cn.com/problems/destination-city/)
 
@@ -1074,4 +1074,79 @@ var multiply = function (num1, num2) {
     return p.join('');
 };
 ```
+
+
+
+## 10.13
+
+### [412. Fizz Buzz](https://leetcode-cn.com/problems/fizz-buzz/)
+
+难度简单137
+
+给你一个整数 `n` ，找出从 `1` 到 `n` 各个整数的 Fizz Buzz 表示，并用字符串数组 `answer`（**下标从 1 开始**）返回结果，其中：
+
+- `answer[i] == "FizzBuzz"` 如果 `i` 同时是 `3` 和 `5` 的倍数。
+- `answer[i] == "Fizz"` 如果 `i` 是 `3` 的倍数。
+- `answer[i] == "Buzz"` 如果 `i` 是 `5` 的倍数。
+- `answer[i] == i` 如果上述条件全不满足。
+
+ 
+
+**示例 1：**
+
+```
+输入：n = 3
+输出：["1","2","Fizz"]
+```
+
+
+
+```js
+var fizzBuzz = function (n) {
+    let res = [];
+    for (let i = 1; i <= n; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            res.push('FizzBuzz')
+        } else if (i % 3 === 0) {
+            res.push('Fizz')
+        } else if (i % 5 === 0) {
+            res.push('Buzz')
+        } else {
+            res.push(i.toString())
+        }
+    }
+    return res;
+};
+```
+
+
+
+### [377. 组合总和 Ⅳ](https://leetcode-cn.com/problems/combination-sum-iv/)
+
+难度中等501
+
+给你一个由 **不同** 整数组成的数组 `nums` ，和一个目标整数 `target` 。请你从 `nums` 中找出并返回总和为 `target` 的元素组合的个数。
+
+题目数据保证答案符合 32 位整数范围。
+
+
+
+> 动态规划
+
+```js
+var combinationSum4 = function (nums, target) {
+    let DP = new Array(target + 1).fill(0);
+    DP[0] = 1;
+    for (let i = 1; i <= target; i++) {
+        for (let x of nums) {
+            if (x <= i) {
+                DP[i] += DP[i - x];
+            }
+        }
+    }
+    return DP[target];
+};
+```
+
+
 
