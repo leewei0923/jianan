@@ -1150,3 +1150,181 @@ var combinationSum4 = function (nums, target) {
 
 
 
+## 10.14
+
+### [剑指 Offer II 069. 山峰数组的顶部](https://leetcode-cn.com/problems/B1IidL/)
+
+难度简单24
+
+符合下列属性的数组 `arr` 称为 **山峰数组**（**山脉数组）** ：
+
+- `arr.length >= 3`
+
+- 存在
+
+  ```
+  i(0 < i < arr.length - 1
+  ```
+
+  ）使得：
+
+  - `arr[0] < arr[1] < ... arr[i-1] < arr[i]`
+  - `arr[i] > arr[i+1] > ... > arr[arr.length - 1]`
+
+给定由整数组成的山峰数组 `arr` ，返回任何满足 `arr[0] < arr[1] < ... arr[i - 1] < arr[i] > arr[i + 1] > ... > arr[arr.length - 1]` 的下标 `i` ，即山峰顶部。
+
+
+
+```javascript
+//
+var peakIndexInMountainArray = function (arr) {
+    let ini = arr[0];
+    let res;
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > ini) {
+            ini = arr[i];
+            res = i;
+        }
+    }
+    return res;
+};
+```
+
+```
+思路
+1. 就是遍历的方法,寻找最大值.
+```
+
+> 二分查找
+
+```js
+let left = 1, right = arr.length - 1;
+
+    while (left <= right) {
+        const middle = ~~((left + right) / 2);
+        if (arr[middle] > arr[middle - 1] && arr[middle] > arr[middle + 1]) {
+            return middle;
+        } else if (arr[middle] > arr[middle - 1]) {
+            left = middle + 1;
+        } else {
+            right = middle - 1;
+        }
+
+    }
+    return l;
+```
+
+## 10.15
+
+### [38. 外观数列](https://leetcode-cn.com/problems/count-and-say/)
+
+难度中等808
+
+给定一个正整数 `n` ，输出外观数列的第 `n` 项。
+
+「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。
+
+你可以将其视作是由递归公式定义的数字字符串序列：
+
+- `countAndSay(1) = "1"`
+- `countAndSay(n)` 是对 `countAndSay(n-1)` 的描述，然后转换成另一个数字字符串。
+
+前五项如下：
+
+
+
+```
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+第一项是数字 1 
+描述前一项，这个数是 1 即 “ 一 个 1 ”，记作 "11"
+描述前一项，这个数是 11 即 “ 二 个 1 ” ，记作 "21"
+描述前一项，这个数是 21 即 “ 一 个 2 + 一 个 1 ” ，记作 "1211"
+描述前一项，这个数是 1211 即 “ 一 个 1 + 一 个 2 + 二 个 1 ” ，记作 "111221"
+```
+
+
+
+```js
+let str = "1";
+    for (let i = 2; i <= n; ++i) {
+        const sb = [];
+        let start = 0;
+        let pos = 0;
+
+        while (pos < str.length) {
+            while (pos < str.length && str[pos] === str[start]) {
+                pos++;
+            }
+            sb.push('' + (pos - start) + str[start]);
+            start = pos;
+        }
+        str = sb.join('');
+    }
+    
+    return str;
+```
+
+
+
+## 10.16
+
+### [282. 给表达式添加运算符](https://leetcode-cn.com/problems/expression-add-operators/)
+
+难度困难323
+
+给定一个仅包含数字 `0-9` 的字符串 `num` 和一个目标值整数 `target` ，在 `num` 的数字之间添加 **二元** 运算符（不是一元）`+`、`-` 或 `*` ，返回所有能够得到目标值的表达式。
+
+ 
+
+**示例 1:**
+
+```
+输入: num = "123", target = 6
+输出: ["1+2+3", "1*2*3"] 
+```
+
+**示例 2:**
+
+```
+输入: num = "232", target = 8
+输出: ["2*3+2", "2+3*2"]
+```
+
+```js
+const ops = ["-", "*", "+", ""];
+var addOperators = function(num, target) {    
+    const ans = [], path = [];
+
+    const dfs = (idx, sign, curv, val) => {
+        let c = num.charAt(idx);
+        curv = 10 * curv + (c - '0');
+        if(idx == num.length - 1){
+            if(target - val == sign * curv){
+                path.push(c);
+                ans.push(path.join(""));
+                path.pop();
+            }
+        }
+        else{
+            for(let i=0;i<ops.length;i++){
+                path.push(c + ops[i]);
+                if(i == 1)
+                    dfs(idx+1,sign * curv, 0, val);
+                else if(i < 3)
+                    dfs(idx+1,i-1, 0, val + sign * curv);
+                else if(curv > 0 || c != '0')
+                    dfs(idx+1,sign,curv,val);
+                path.pop();
+            }
+        }
+    }
+
+    dfs(0, 1, 0, 0);
+    return ans;
+};
+```
+
