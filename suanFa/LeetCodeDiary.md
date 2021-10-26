@@ -1328,3 +1328,147 @@ var addOperators = function(num, target) {
 };
 ```
 
+
+
+
+
+## 10.18
+
+
+
+### [476. 数字的补数](https://leetcode-cn.com/problems/number-complement/)
+
+难度简单259
+
+对整数的二进制表示取反（`0` 变 `1` ，`1` 变 `0`）后，再转换为十进制表示，可以得到这个整数的补数。
+
+- 例如，整数 `5` 的二进制表示是 `"101"` ，取反后得到 `"010"` ，再转回十进制表示得到补数 `2` 。
+
+给你一个整数 `num` ，输出它的补数。
+
+**示例 1：**
+
+```
+输入：num = 5
+输出：2
+解释：5 的二进制表示为 101（没有前导零位），其补数为 010。所以你需要输出 2 。
+```
+
+> 普通的解法
+
+```js
+var findComplement = function (num) {
+    let num2 = Number.parseInt(num, 10).toString(2);
+    let res = '';
+    for (let x of num2) {
+        if (x == '1') {
+            res = res + '0';
+        } else if (x === '0') {
+            res = res + '1';
+        }
+    }
+    return Number.parseInt(res, 2).toString(10);
+};
+```
+
+```
+1. 先把传入的字符转换为二进制再进行遍历
+2. 进行判断字符 等于 1 进行取反
+3. 再把转换的字符变成 10 进制的
+```
+
+## 10.22
+
+### [229. 求众数 II](https://leetcode-cn.com/problems/majority-element-ii/)
+
+难度中等503
+
+给定一个大小为 *n* 的整数数组，找出其中所有出现超过 `⌊ n/3 ⌋` 次的元素。
+
+**示例 1：**
+
+```
+输入：[3,2,3]
+输出：[3]
+```
+
+```js
+var majorityElement = function (nums) {
+    const len = ~~(nums.length / 3);
+    const map = new Map();
+    let res = [];
+    for (let i = 0; i < nums.length; i++) {
+        if (map.has(nums[i]) && map.get(nums) != -1) {
+            let val = map.get(nums[i]);
+            if (val > len) {
+                res.push(nums[i]);
+                map.set(nums[i], -1);
+            } else {
+                map.set(nums[i], val + 1);
+            }
+
+        } else {
+            map.set(nums[i], 1)
+        }
+    }
+    for (let [key, value] of map.entries()) {
+        value > len ? res.push(key) : '';
+    }
+
+    return res
+};
+```
+
+
+
+```
+1. 哈希表用来处理重复数列
+```
+
+## 10.24
+
+
+
+### [240. 搜索二维矩阵 II](https://leetcode-cn.com/problems/search-a-2d-matrix-ii/)
+
+难度中等828
+
+编写一个高效的算法来搜索 `*m* x *n*` 矩阵 `matrix` 中的一个目标值 `target` 。该矩阵具有以下特性：
+
+- 每行的元素从左到右升序排列。
+- 每列的元素从上到下升序排列。
+
+
+
+```js
+var searchMatrix = function (matrix, target) {
+    const n = matrix[0].length;
+
+    for (let i = 0; i < matrix.length; i++) {
+        let l = 0, r = n - 1, mid;
+        if (target >= matrix[i][0] && target <= matrix[i][n - 1]) {
+            while (l <= r) {
+                mid = Math.floor((l + r) / 2);
+                if (target == matrix[i][mid]) {
+                    return true;
+                } else if (target < matrix[i][mid]) {
+                    r = mid - 1;
+                } else {
+                    l = mid + 1;
+                }
+            }
+        }
+    }
+
+    return false;
+};
+```
+
+```
+思路 二分法
+
+1. 因为是一个矩形 所以每个矩阵内长度是相同的 先定义这个长度
+2. 对该矩阵进行遍历 
+3. 对矩阵内部元素进行判断 , 由于是排列好的 可以使用二分法
+```
+
