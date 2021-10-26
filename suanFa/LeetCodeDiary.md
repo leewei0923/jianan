@@ -1425,7 +1425,7 @@ var majorityElement = function (nums) {
 1. 哈希表用来处理重复数列
 ```
 
-## 10.24
+## 10.25
 
 
 
@@ -1470,5 +1470,68 @@ var searchMatrix = function (matrix, target) {
 1. 因为是一个矩形 所以每个矩阵内长度是相同的 先定义这个长度
 2. 对该矩阵进行遍历 
 3. 对矩阵内部元素进行判断 , 由于是排列好的 可以使用二分法
+```
+
+![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/11/25/searchgrid2.jpg)
+
+```js
+var searchMatrix = (matrix, target) => {
+    const m = matrix.length, n = matrix[0].length;
+
+    let y = m - 1, x = 0;
+    while (x < n && y >= 0) {
+
+        if (matrix[y][x] === target) {
+            return true
+        }
+
+        if (matrix[y][x] > target) {
+            y--;
+        } else {
+            x++;
+        }
+    }
+
+    return false;
+}
+```
+
+
+
+```
+由图所示 , 找目标值就是找右下角的数,
+```
+
+
+
+## 10.26
+
+
+
+### [496. 下一个更大元素 I](https://leetcode-cn.com/problems/next-greater-element-i/)
+
+难度简单580
+
+给你两个 **没有重复元素** 的数组 `nums1` 和 `nums2` ，其中`nums1` 是 `nums2` 的子集。
+
+请你找出 `nums1` 中每个元素在 `nums2` 中的下一个比其大的值。
+
+nums1` 中数字 `x` 的下一个更大元素是指 `x` 在 `nums2` 中对应位置的右边的第一个比 `x` 大的元素。如果不存在，对应位置输出 `-1
+
+```js
+var nextGreaterElement = function (nums1, nums2) {
+    const res = new Array(nums1.length).fill(0);
+
+    for (let i = 0; i < nums1.length; i++) {
+        let idx = nums2.indexOf(nums1[i]);
+        let k = idx + 1;
+        while (k < nums2.length && nums2[k] < nums2[idx]) {
+            ++k;
+        }
+        res[i] = k < nums2.length ? nums2[k] : -1;
+
+    }
+    return res;
+};
 ```
 
