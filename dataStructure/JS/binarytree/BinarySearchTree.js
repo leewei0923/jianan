@@ -1,3 +1,17 @@
+// 二叉搜索树（BST）
+
+/**
+ * author leewei
+ * task 二叉搜索树
+ * time 2021 10.26
+ */
+
+
+/**
+ * 二叉搜索树（BST）是二叉树的一种，但是它只允许你在左侧节点存储（比父节点）小的值，
+在右侧节点存储（比父节点）大（或者等于）的值。上一节的图中就展现了一棵二叉搜索树。
+ */
+
 function BinarySearchTree() {
   var Node = function (key) {
     this.key = key;

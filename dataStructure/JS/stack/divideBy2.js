@@ -1,9 +1,18 @@
+// 主要为ES5
+
+
+/**
+ * anthor leewei
+ * time 2021 10.25
+ * task 10进制转为二进制
+ */
 const Stack = require('./stack');
 // 十进制转为二进制
 
 function divideBy2(decNumber) {
-    var remStack = new Stack(),
-      rem, binaryString = '';
+    var remStack = new Stack();
+    var rem;
+    var binaryString = '';
 
     while (decNumber > 0){ // {1}
         rem = Math.floor(decNumber % 2);
@@ -20,4 +29,4 @@ function divideBy2(decNumber) {
 
 
 // console.log(divideBy2(10));
-console.log(Stack)
+console.log(divideBy2(2))
