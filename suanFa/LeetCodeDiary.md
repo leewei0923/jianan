@@ -4,9 +4,9 @@
 
 首先祝福伟大的祖国生日快乐，祝繁荣昌盛！10.01日伟大的日子，我决定开始自己的力扣日记，记录刷题的日常，我会尽量的坚持下去。
 
+## 10月
 
-
-## 10.01
+10.01
 
 ### [1436. 旅行终点站](https://leetcode-cn.com/problems/destination-city/)
 
@@ -83,7 +83,7 @@ function quickMut(x, n) {
 };
 ```
 
-## 10.02
+10.02
 
 ###  [405. 数字转换为十六进制数](https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/)
 
@@ -181,7 +181,7 @@ var firstUniqChar = function (s) {
 
 ```
 
-## 10.03
+10.03
 
 ### [166. 分数到小数](https://leetcode-cn.com/problems/fraction-to-recurring-decimal/)
 
@@ -304,7 +304,7 @@ var fractionToDecimal = function (numerator, denominator) {
    };
    ```
 
-## 10.04
+10.04
 
 ###  [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
 
@@ -395,7 +395,7 @@ var licenseKeyFormatting = function(s, k) {
 
 
 
-## 10.05
+ 10.05
 
 ### [284. 顶端迭代器](https://leetcode-cn.com/problems/peeking-iterator/)  (再回头)
 
@@ -466,7 +466,7 @@ PeekingIterator.prototype.hasNext = function() {
 };
 ```
 
-## 10.06
+ 10.06
 
 ### [414. 第三大的数](https://leetcode-cn.com/problems/third-maximum-number/)
 
@@ -545,7 +545,7 @@ var thirdMax = function (nums) {
 
 
 
-## 10.07
+ 10.07
 
 
 
@@ -586,7 +586,7 @@ var countSegments = function (s) {
 
 
 
-## 10.08
+10.08
 
 > 周五
 
@@ -679,7 +679,7 @@ var findRepeatedDnaSequences = function (s) {
 
 
 
-## 10.09
+10.09
 
 
 
@@ -790,7 +790,7 @@ var consecutiveNumbersSum = function (S) {
 
 
 
-## 10.10
+10.10
 
 ### [268. 丢失的数字](https://leetcode-cn.com/problems/missing-number/)
 
@@ -893,7 +893,7 @@ int arrangeCoins(int n){
 2. res 记录层级
 ```
 
-## 10.11
+ 10.11
 
 ### 273. 整数转换英文表示(再回头)
 将非负整数 num 转换为其对应的英文表示。
@@ -988,7 +988,7 @@ var uniquePaths = function (m, n) {
 
 
 
-## 10.02
+ 10.02
 
 ### [29. 两数相除](https://leetcode-cn.com/problems/divide-two-integers/)
 
@@ -1077,7 +1077,7 @@ var multiply = function (num1, num2) {
 
 
 
-## 10.13
+ 10.13
 
 ### [412. Fizz Buzz](https://leetcode-cn.com/problems/fizz-buzz/)
 
@@ -1150,7 +1150,7 @@ var combinationSum4 = function (nums, target) {
 
 
 
-## 10.14
+10.14
 
 ### [剑指 Offer II 069. 山峰数组的顶部](https://leetcode-cn.com/problems/B1IidL/)
 
@@ -1214,7 +1214,7 @@ let left = 1, right = arr.length - 1;
     return l;
 ```
 
-## 10.15
+10.15
 
 ### [38. 外观数列](https://leetcode-cn.com/problems/count-and-say/)
 
@@ -1270,7 +1270,7 @@ let str = "1";
 
 
 
-## 10.16
+ 10.16
 
 ### [282. 给表达式添加运算符](https://leetcode-cn.com/problems/expression-add-operators/)
 
@@ -1328,13 +1328,7 @@ var addOperators = function(num, target) {
 };
 ```
 
-
-
-
-
-## 10.18
-
-
+ 10.18
 
 ### [476. 数字的补数](https://leetcode-cn.com/problems/number-complement/)
 
@@ -1377,7 +1371,7 @@ var findComplement = function (num) {
 3. 再把转换的字符变成 10 进制的
 ```
 
-## 10.22
+10.22
 
 ### [229. 求众数 II](https://leetcode-cn.com/problems/majority-element-ii/)
 
@@ -1425,7 +1419,7 @@ var majorityElement = function (nums) {
 1. 哈希表用来处理重复数列
 ```
 
-## 10.25
+10.25
 
 
 
@@ -1504,7 +1498,7 @@ var searchMatrix = (matrix, target) => {
 
 
 
-## 10.26
+10.26
 
 
 
@@ -1534,4 +1528,387 @@ var nextGreaterElement = function (nums1, nums2) {
     return res;
 };
 ```
+
+
+
+10.28
+
+
+
+### [869. 重新排序得到 2 的幂](https://leetcode-cn.com/problems/reordered-power-of-2/)
+
+难度中等129
+
+给定正整数 `N` ，我们按任何顺序（包括原始顺序）将数字重新排序，注意其前导数字不能为零。
+
+如果我们可以通过上述方式得到 2 的幂，返回 `true`；否则，返回 `false`。
+
+
+
+```js
+var reorderedPowerOf2 = function (n) {
+    const set = new Set();
+    // 一共有30个2的幂
+    for (let i = 0; i < 30; i++) {
+        // 将每个2的幂的字符串排序后，放入set
+        const str = String(2 ** i)
+            .split('')
+            .sort()
+            .join('');
+        set.add(str);
+    }
+    // 查找n的字符串，排序后，有没有在set中出现过
+    return set.has(n.toString().split('').sort().join(''));
+};
+```
+
+10.29
+
+### [67. 二进制求和](https://leetcode-cn.com/problems/add-binary/)
+
+难度简单687
+
+给你两个二进制字符串，返回它们的和（用二进制表示）。
+
+输入为 **非空** 字符串且只包含数字 `1` 和 `0`。
+
+ 示例 1:
+
+输入: a = "11", b = "1"
+输出: "100"
+示例 2:
+
+输入: a = "1010", b = "1011"
+输出: "10101"
+
+
+提示：
+
+每个字符串仅由字符 '0' 或 '1' 组成。
+1 <= a.length, b.length <= 10^4
+字符串如果不是 "0" ，就都不含前导零。
+
+```js
+var addBinary = function (a, b) {
+    // 获取最长字符串长度
+    let len = Math.max(a.length, b.length);
+    // 用于拼接结果
+    let result = '';
+    // 用来进位
+    let dividedNumber = 0;
+
+    for (let i = 0; i <= len; i++) {
+        // 从字符串末尾取值
+        let num1 = parseInt(i >= a.length ? 0 : a[a.length - 1 - i]);
+        // 从字符串末尾取值
+        let num2 = parseInt(i >= b.length ? 0 : b[b.length - 1 - i]);
+        // 取余数
+        let mainNumber = (num1 + dividedNumber + num2) % 2;
+		// 
+        result = '' + mainNumber + result;
+
+        dividedNumber = Math.floor((num1 + num2 + dividedNumber) / 2);
+    }
+
+    if (result[0] == 0) {
+        return result.slice(1, result.length)
+    } else {
+        return result;
+    }
+};
+```
+
+
+
+ 10.30
+
+### [260. 只出现一次的数字 III](https://leetcode-cn.com/problems/single-number-iii/)
+
+难度中等492
+
+给定一个整数数组 `nums`，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 **任意顺序** 返回答案。
+
+ 
+
+**进阶：**你的算法应该具有线性时间复杂度。你能否仅使用常数空间复杂度来实现？
+
+ 
+
+**示例 1：**
+
+```
+输入：nums = [1,2,1,3,2,5]
+输出：[3,5]
+解释：[5, 3] 也是有效的答案。
+```
+
+**示例 2：**
+
+```
+输入：nums = [-1,0]
+输出：[-1,0]
+```
+
+**示例 3：**
+
+```
+输入：nums = [0,1]
+输出：[1,0]
+```
+
+**提示：**
+
+- `2 <= nums.length <= 3 * 104`
+- `-231 <= nums[i] <= 231 - 1`
+- 除两个只出现一次的整数外，`nums` 中的其他数字都出现两次
+
+> 方法一
+
+> 数组操作
+
+```js
+var singleNumber = function (nums) {
+    let res = [];
+
+    for (let x of nums) {
+        if (res.includes(x)) {
+            let idx = res.indexOf(x);
+            res.splice(idx, 1);
+        } else {
+            res.push(x)
+        }
+    }
+
+    return res;
+};
+```
+
+> 方法二`
+
+> map
+
+```js
+var singleNumber = function (nums) {
+    const map = new Map();
+    let res = [];
+    for (let i = 0; i < nums.length; i++) {
+        if (map.has(nums[i])) {
+            let val = map.get(nums[i]);
+            map.set(nums[i], val + 1);
+        } else {
+            map.set(nums[i], 1)
+        }
+    }
+
+    for (let [key, value] of map.entries()) {
+        if (value == 1) {
+            res.push(key);
+        }
+    }
+
+    return res;
+};
+```
+
+> 方法三
+
+```js
+var singleNumber = function (nums) {
+    const set = new Set();
+    let res = [];
+    for (let x of nums) {
+        if (set.has(x)) {
+            set.delete(x)
+        } else {
+            set.add(x)
+        }
+    }
+
+    for (let v of set.keys()) {
+        res.push(v);
+    }
+
+    return res;
+};
+```
+
+
+
+### [1111. 有效括号的嵌套深度](https://leetcode-cn.com/problems/maximum-nesting-depth-of-two-valid-parentheses-strings/)
+
+难度中等146
+
+**有效括号字符串** 定义：对于每个左括号，都能找到与之对应的右括号，反之亦然。详情参见题末「**有效括号字符串**」部分。
+
+**嵌套深度** `depth` 定义：即有效括号字符串嵌套的层数，`depth(A)` 表示有效括号字符串 `A` 的嵌套深度。详情参见题末「**嵌套深度**」部分。
+
+有效括号字符串类型与对应的嵌套深度计算方法如下图所示：
+
+![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/04/01/1111.png)
+
+ 
+
+给你一个「有效括号字符串」 `seq`，请你将其分成两个不相交的有效括号字符串，`A` 和 `B`，并使这两个字符串的深度最小。
+
+- 不相交：每个 `seq[i]` 只能分给 `A` 和 `B` 二者中的一个，不能既属于 `A` 也属于 `B` 。
+- `A` 或 `B` 中的元素在原字符串中可以不连续。
+- `A.length + B.length = seq.length`
+- 深度最小：`max(depth(A), depth(B))` 的可能取值最小。 
+
+划分方案用一个长度为 `seq.length` 的答案数组 `answer` 表示，编码规则如下：
+
+- `answer[i] = 0`，`seq[i]` 分给 `A` 。
+- `answer[i] = 1`，`seq[i]` 分给 `B` 。
+
+如果存在多个满足要求的答案，只需返回其中任意 **一个** 即可。
+
+ 
+
+**示例 1：**
+
+```
+输入：seq = "(()())"
+输出：[0,1,1,1,1,0]
+```
+
+**示例 2：**
+
+```
+输入：seq = "()(())()"
+输出：[0,0,0,1,1,0,1,1]
+解释：本示例答案不唯一。
+按此输出 A = "()()", B = "()()", max(depth(A), depth(B)) = 1，它们的深度最小。
+像 [1,1,1,0,0,1,1,1]，也是正确结果，其中 A = "()()()", B = "()", max(depth(A), depth(B)) = 1 。 
+```
+
+ 
+
+**提示：**
+
+- `1 < seq.size <= 10000`
+
+ 
+
+**有效括号字符串：**
+
+```
+仅由 "(" 和 ")" 构成的字符串，对于每个左括号，都能找到与之对应的右括号，反之亦然。
+下述几种情况同样属于有效括号字符串：
+
+  1. 空字符串
+  2. 连接，可以记作 AB（A 与 B 连接），其中 A 和 B 都是有效括号字符串
+  3. 嵌套，可以记作 (A)，其中 A 是有效括号字符串
+```
+
+**嵌套深度：**
+
+```
+类似地，我们可以定义任意有效括号字符串 s 的 嵌套深度 depth(S)：
+
+  1. s 为空时，depth("") = 0
+  2. s 为 A 与 B 连接时，depth(A + B) = max(depth(A), depth(B))，其中 A 和 B 都是有效括号字符串
+  3. s 为嵌套情况，depth("(" + A + ")") = 1 + depth(A)，其中 A 是有效括号字符串
+
+例如：""，"()()"，和 "()(()())" 都是有效括号字符串，嵌套深度分别为 0，1，2，而 ")(" 和 "(()" 都不是有效括号字符串。
+```
+
+
+
+
+
+```js
+var maxDepthAfterSplit = function(seq) {
+    // 标记深度   
+    let depth = 0;
+
+    return seq.split("").map((value) => {
+        if (value === ')') {
+            --depth;
+            return depth % 2;
+        } else {
+            let ans = depth % 2;
+            ++depth;
+            return ans;
+        }
+    });
+};
+```
+
+
+
+10.31
+
+
+
+### [500. 键盘行](https://leetcode-cn.com/problems/keyboard-row/)
+
+难度简单180
+
+给你一个字符串数组 `words` ，只返回可以使用在 **美式键盘** 同一行的字母打印出来的单词。键盘如下图所示。
+
+**美式键盘** 中：
+
+- 第一行由字符 `"qwertyuiop"` 组成。
+- 第二行由字符 `"asdfghjkl"` 组成。
+- 第三行由字符 `"zxcvbnm"` 组成。
+
+![American keyboard](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/keyboard.png)
+
+ 
+
+**示例 1：**
+
+```
+输入：words = ["Hello","Alaska","Dad","Peace"]
+输出：["Alaska","Dad"]
+```
+
+**示例 2：**
+
+```
+输入：words = ["omk"]
+输出：[]
+```
+
+**示例 3：**
+
+```
+输入：words = ["adsdf","sfd"]
+输出：["adsdf","sfd"]
+```
+
+ 
+
+```js
+var findWords = function (words) {
+    let list = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+
+    const map = new Map();
+    let res = [];
+    for (let i = 0; i < list.length; i++) {
+        for (let x of list[i]) {
+            map.set(x, i);
+        }
+    }
+
+    for (let i = 0; i < words.length; i++) {
+        let flag = map.get(words[i][0].toLowerCase());
+        let flag2 = 1;
+        for (let x of words[i]) {
+            if (map.get(x.toLowerCase()) == flag) {
+                flag = map.get(x.toLowerCase());
+            } else {
+                flag2 = -1;
+            }
+        }
+        if (flag2 != -1) {
+            res.push(words[i]);
+        }
+    }
+
+    return res;
+};
+```
+
+
 
