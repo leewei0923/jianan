@@ -1949,3 +1949,212 @@ var distributeCandies = function(candyType) {
 };
 ```
 
+## 11月
+
+
+
+11.02
+
+### [53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)
+
+难度简单3907
+
+给定一个整数数组 `nums` ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+
+ 
+
+**示例 1：**
+
+```
+输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
+输出：6
+解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+```
+
+**示例 2：**
+
+```
+输入：nums = [1]
+输出：1
+```
+
+
+
+```js
+var maxSubArray = function (nums) {
+    let pre = 0, res = nums[0];
+    for (let x of nums) {
+        pre = Math.max(x, pre + x);
+        res = Math.max(pre, res);
+
+    }
+
+    return res;
+};
+```
+
+
+
+11.04
+
+#### [367. 有效的完全平方数](https://leetcode-cn.com/problems/valid-perfect-square/)
+
+难度简单279
+
+给定一个 **正整数** `num` ，编写一个函数，如果 `num` 是一个完全平方数，则返回 `true` ，否则返回 `false` 。
+
+**进阶：不要** 使用任何内置的库函数，如 `sqrt` 。
+
+ 
+
+**示例 1：**
+
+```
+输入：num = 16
+输出：true
+```
+
+**示例 2：**
+
+```
+输入：num = 14
+输出：false
+```
+
+
+
+> 二分法
+
+```js
+var isPerfectSquare = function (num) {
+    let left = 0, right = num;
+
+    while (left <= right) {
+        let mid = Math.floor((right - left) / 2) + left;
+        if (mid * mid > num) {
+            right = mid - 1;
+        } else if (mid * mid < num) {
+            left = mid + 1;
+        } else {
+            return true;
+        }
+    }
+
+    return false;
+};
+```
+
+
+
+```C++
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+       int left = 0, right = num;
+
+	while (left <= right) {
+		int mid = floor((right - left) / 2) + left;
+        long sqr = (long) mid *mid;
+		if (sqr > num) {
+			right = mid - 1;
+		}
+		else if (sqr < num) {
+			left = mid + 1;
+		}
+		else {
+			return true;
+		}
+	}
+
+	return false;
+    }
+};
+```
+
+
+
+### [1021. 删除最外层的括号](https://leetcode-cn.com/problems/remove-outermost-parentheses/)
+
+难度简单183
+
+有效括号字符串为空 `""`、`"(" + A + ")"` 或 `A + B` ，其中 `A` 和 `B` 都是有效的括号字符串，`+` 代表字符串的连接。
+
+- 例如，`""`，`"()"`，`"(())()"` 和 `"(()(()))"` 都是有效的括号字符串。
+
+如果有效字符串 `s` 非空，且不存在将其拆分为 `s = A + B` 的方法，我们称其为**原语（primitive）**，其中 `A` 和 `B` 都是非空有效括号字符串。
+
+给出一个非空有效字符串 `s`，考虑将其进行原语化分解，使得：`s = P_1 + P_2 + ... + P_k`，其中 `P_i` 是有效括号字符串原语。
+
+对 `s` 进行原语化分解，删除分解中每个原语字符串的最外层括号，返回 `s` 。
+
+ 
+
+**示例 1：**
+
+```
+输入：s = "(()())(())"
+输出："()()()"
+解释：
+输入字符串为 "(()())(())"，原语化分解得到 "(()())" + "(())"，
+删除每个部分中的最外层括号后得到 "()()" + "()" = "()()()"。
+```
+
+**示例 2：**
+
+```
+输入：s = "(()())(())(()(()))"
+输出："()()()()(())"
+解释：
+输入字符串为 "(()())(())(()(()))"，原语化分解得到 "(()())" + "(())" + "(()(()))"，
+删除每个部分中的最外层括号后得到 "()()" + "()" + "()(())" = "()()()()(())"。
+```
+
+**示例 3：**
+
+```
+输入：s = "()()"
+输出：""
+解释：
+输入字符串为 "()()"，原语化分解得到 "()" + "()"，
+删除每个部分中的最外层括号后得到 "" + "" = ""。
+```
+
+1.将原始字符串进行拆分，存在一个二维数组里。
+2.将数组里的每项头尾删除，剩余的字符拼接即可。
+
+问题的关键在与如何拆分字符串，将字符串拆成多个数组？
+1.维护一个栈，遍历字符串。如果是左括号，则将字符插进栈里，如果是右边括号，则将栈中的最顶元素删掉。
+2.在循环中可以根据栈是否为空来决定是否往二维数组里面push新的数组元素，字符则始终往二维数组的最后一个数组元素中push
+
+```js
+var removeOuterParentheses = function (s) {
+    // 字符串长度
+    const len = s.length;
+    let res = [];
+    let stack = [];
+    let resStr = '';
+
+    for (let i in s) {
+        if (stack.length === 0) {
+            res.push([]);
+        }
+
+        res[res.length - 1].push(s[i]);
+
+        if (s[i] === '(') {
+            stack.push(s[i])
+        } else {
+            stack.pop();
+        }
+    }
+
+    res.forEach(item => {
+        item.pop()
+        item.shift()
+        resStr = resStr + item.join('')
+    })
+
+    return resStr
+};
+```
+
