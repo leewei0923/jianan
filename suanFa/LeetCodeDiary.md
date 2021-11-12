@@ -1997,7 +1997,7 @@ var maxSubArray = function (nums) {
 
 11.04
 
-#### [367. 有效的完全平方数](https://leetcode-cn.com/problems/valid-perfect-square/)
+### [367. 有效的完全平方数](https://leetcode-cn.com/problems/valid-perfect-square/)
 
 难度简单279
 
@@ -2155,6 +2155,262 @@ var removeOuterParentheses = function (s) {
     })
 
     return resStr
+};
+```
+
+
+
+### [1218. 最长定差子序列](https://leetcode-cn.com/problems/longest-arithmetic-subsequence-of-given-difference/)
+
+难度中等169
+
+给你一个整数数组 `arr` 和一个整数 `difference`，请你找出并返回 `arr` 中最长等差子序列的长度，该子序列中相邻元素之间的差等于 `difference` 。
+
+**子序列** 是指在不改变其余元素顺序的情况下，通过删除一些元素或不删除任何元素而从 `arr` 派生出来的序列。
+
+ 
+
+**示例 1：**
+
+```
+输入：arr = [1,2,3,4], difference = 1
+输出：4
+解释：最长的等差子序列是 [1,2,3,4]。
+```
+
+**示例 2：**
+
+```
+输入：arr = [1,3,5,7], difference = 1
+输出：1
+解释：最长的等差子序列是任意单个元素。
+```
+
+**示例 3：**
+
+```
+输入：arr = [1,5,7,8,5,3,4,2,1], difference = -2
+输出：4
+解释：最长的等差子序列是 [7,5,3,1]。
+```
+
+
+
+```js
+var longestSubsequence = function (arr, difference) {
+    let count = 1;
+    const map = new Map();
+    for (let x of arr) {
+        if (map.has(x - difference)) {
+            const v = map.get(x - difference) + 1;
+            map.set(x, v);
+            count = Math.max(count, v);
+        } else {
+            map.set(x, 1)
+        }
+    }
+
+    return count;
+};
+```
+
+2021 11-07
+
+### [598. 范围求和 II](https://leetcode-cn.com/problems/range-addition-ii/)
+
+难度简单105
+
+给定一个初始元素全部为 **0**，大小为 m*n 的矩阵 **M** 以及在 **M** 上的一系列更新操作。
+
+操作用二维数组表示，其中的每个操作用一个含有两个**正整数 a** 和 **b** 的数组表示，含义是将所有符合 **0 <= i < a** 以及 **0 <= j < b** 的元素 **M[i][j]** 的值都**增加 1**。
+
+在执行给定的一系列操作后，你需要返回矩阵中含有最大整数的元素个数。
+
+**示例 1:**
+
+```
+输入: 
+m = 3, n = 3
+operations = [[2,2],[3,3]]
+输出: 4
+解释: 
+初始状态, M = 
+[[0, 0, 0],
+ [0, 0, 0],
+ [0, 0, 0]]
+
+执行完操作 [2,2] 后, M = 
+[[1, 1, 0],
+ [1, 1, 0],
+ [0, 0, 0]]
+
+执行完操作 [3,3] 后, M = 
+[[2, 2, 1],
+ [2, 2, 1],
+ [1, 1, 1]]
+
+M 中最大的整数是 2, 而且 M 中有4个值为2的元素。因此返回 4。
+```
+
+```js
+var maxCount = function (m, n, ops) {
+    let len = ops.length;
+    if (len !== 0) {
+        let l = ops[0][0], r = ops[0][1];
+        for (let x of ops) {
+            l = Math.min(l, x[0]);
+            r = Math.min(r, x[1]);
+        }
+
+        return l * r;
+    } else {
+        return m * n;
+    }
+};
+```
+
+这里需要注意传入数组为空的情况。
+
+11.12
+
+> 二分法
+
+### [374. 猜数字大小](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)
+
+难度简单165
+
+猜数字游戏的规则如下：
+
+- 每轮游戏，我都会从 **1** 到 ***n*** 随机选择一个数字。 请你猜选出的是哪个数字。
+- 如果你猜错了，我会告诉你，你猜测的数字比我选出的数字是大了还是小了。
+
+你可以通过调用一个预先定义好的接口 `int guess(int num)` 来获取猜测结果，返回值一共有 3 种可能的情况（`-1`，`1` 或 `0`）：
+
+- -1：我选出的数字比你猜的数字小 `pick < num`
+- 1：我选出的数字比你猜的数字大 `pick > num`
+- 0：我选出的数字和你猜的数字一样。恭喜！你猜对了！`pick == num`
+
+返回我选出的数字。
+
+ 
+
+**示例 1：**
+
+```
+输入：n = 10, pick = 6
+输出：6
+```
+
+**示例 2：**
+
+```
+输入：n = 1, pick = 1
+输出：1
+```
+
+**示例 3：**
+
+```
+输入：n = 2, pick = 1
+输出：1
+```
+
+**示例 4：**
+
+```
+输入：n = 2, pick = 2
+输出：2
+```
+
+```js
+var guessNumber = function(n) {
+  let l = 0 , r = n;
+  let mid = 0
+  while (l <= r) {
+    mid = ~~(l + (r - l) / 2);
+    if (guess(mid) === 1) {
+      l = mid + 1;
+    } else if (guess(mid) === -1) {
+      r = mid - 1;
+    } else {
+      return mid;
+    }
+  }
+
+  return mid;
+};
+
+let pick = 2
+let guess = function(n) {
+  if (pick < n) {
+    return -1;
+  } else if (pick > n) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+guessNumber(2)
+
+```
+
+### [9. 回文数](https://leetcode-cn.com/problems/palindrome-number/)
+
+难度简单1682
+
+给你一个整数 `x` ，如果 `x` 是一个回文整数，返回 `true` ；否则，返回 `false` 。
+
+回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。例如，`121` 是回文，而 `123` 不是。
+
+ 
+
+**示例 1：**
+
+```
+输入：x = 121
+输出：true
+```
+
+**示例 2：**
+
+```
+输入：x = -121
+输出：false
+解释：从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
+```
+
+**示例 3：**
+
+```
+输入：x = 10
+输出：false
+解释：从右向左读, 为 01 。因此它不是一个回文数。
+```
+
+**示例 4：**
+
+```
+输入：x = -101
+输出：false
+```
+
+```js
+var isPalindrome = function (x) {
+    let str = x.toString();
+    let l = 0;
+    let r = str.length - 1;
+
+    while (l < r) {
+        if (str[l] === str[r]) {
+            l++;
+            r--;
+        } else {
+            return false;
+        }
+    }
+
+    return true;
 };
 ```
 
