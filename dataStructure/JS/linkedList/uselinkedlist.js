@@ -11,5 +11,6 @@ list.append(6);
 list.append(7);
 list.append(8);
 list.append(5);
-console.log(list.size());
+list.removeAt(2);
+console.log(list.toString());
 

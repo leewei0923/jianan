@@ -2414,3 +2414,118 @@ var isPalindrome = function (x) {
 };
 ```
 
+### [520. 检测大写字母](https://leetcode-cn.com/problems/detect-capital/)
+
+难度简单152
+
+我们定义，在以下情况时，单词的大写用法是正确的：
+
+- 全部字母都是大写，比如 `"USA"` 。
+- 单词中所有字母都不是大写，比如 `"leetcode"` 。
+- 如果单词不只含有一个字母，只有首字母大写， 比如 `"Google"` 。
+
+给你一个字符串 `word` 。如果大写用法正确，返回 `true` ；否则，返回 `false` 。
+
+ 
+
+**示例 1：**
+
+```
+输入：word = "USA"
+输出：true
+```
+
+**示例 2：**
+
+```
+输入：word = "FlaG"
+输出：false
+```
+
+
+
+```js
+var detectCapitalUse = function(word) {
+
+  if (typeof word !== 'string')
+    return false;
+
+
+if(word === word.toUpperCase() || word === word.toLowerCase() || word === firstUpper(word)) {
+  return true;
+} else {
+  return false;
+}
+
+
+  function firstUpper(x) {
+    let len = x.length;
+
+    return x.substr(0, 1).toUpperCase() + x.substr(1, len).toLowerCase();
+  }
+};
+```
+
+
+
+### [677. 键值映射](https://leetcode-cn.com/problems/map-sum-pairs/)
+
+难度中等116
+
+实现一个 `MapSum` 类，支持两个方法，`insert` 和 `sum`：
+
+- `MapSum()` 初始化 `MapSum` 对象
+- `void insert(String key, int val)` 插入 `key-val` 键值对，字符串表示键 `key` ，整数表示值 `val` 。如果键 `key` 已经存在，那么原来的键值对将被替代成新的键值对。
+- `int sum(string prefix)` 返回所有以该前缀 `prefix` 开头的键 `key` 的值的总和。
+
+ 
+
+**示例：**
+
+```
+输入：
+["MapSum", "insert", "sum", "insert", "sum"]
+[[], ["apple", 3], ["ap"], ["app", 2], ["ap"]]
+输出：
+[null, null, 3, null, 5]
+
+解释：
+MapSum mapSum = new MapSum();
+mapSum.insert("apple", 3);  
+mapSum.sum("ap");           // return 3 (apple = 3)
+mapSum.insert("app", 2);    
+mapSum.sum("ap");           // return 5 (apple + app = 3 + 2 = 5)
+```
+
+
+
+```js
+var MapSum = function() {
+    this.map = new Map();
+};
+
+/** 
+ * @param {string} key 
+ * @param {number} val
+ * @return {void}
+ */
+MapSum.prototype.insert = function(key, val) {
+    this.map.set(key, val);
+};
+
+/** 
+ * @param {string} prefix
+ * @return {number}
+ */
+MapSum.prototype.sum = function(prefix) {
+    let lenHead = prefix.length;
+    let res = 0;
+    this.map.forEach((v,k) => {
+        if(k.substr(0,lenHead) == prefix) {
+            res += v;
+        } 
+    })
+    return res;
+};
+```
+
