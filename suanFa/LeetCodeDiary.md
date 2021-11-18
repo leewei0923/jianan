@@ -4,6 +4,20 @@
 
 首先祝福伟大的祖国生日快乐，祝繁荣昌盛！10.01日伟大的日子，我决定开始自己的力扣日记，记录刷题的日常，我会尽量的坚持下去。
 
+> 二分法 确定中点
+
+```
+mid=(L+R)/2  //L和R特别大时容易产生溢出
+mid=L+(R-L)/2  //除号不够快
+mid=L+((R-L)>>1)  //右移1位最佳
+
+//附2^n的写法：1<<n  即1左移n位
+```
+
+
+
+
+
 ## 10月
 
 10.01
@@ -2563,3 +2577,511 @@ MapSum.prototype.sum = function(prefix) {
 输入：nums = [0]
 输出：[]
 ```
+
+
+
+### [704. 二分查找](https://leetcode-cn.com/problems/binary-search/)
+
+> 二分查找
+
+难度简单493
+
+给定一个 `n` 个元素有序的（升序）整型数组 `nums` 和一个目标值 `target` ，写一个函数搜索 `nums` 中的 `target`，如果目标值存在返回下标，否则返回 `-1`。
+
+
+**示例 1:**
+
+```
+输入: nums = [-1,0,3,5,9,12], target = 9
+输出: 4
+解释: 9 出现在 nums 中并且下标为 4
+```
+
+**示例 2:**
+
+```
+输入: nums = [-1,0,3,5,9,12], target = 2
+输出: -1
+解释: 2 不存在 nums 中因此返回 -1
+```
+
+
+
+```js
+var search = function (nums, target) {
+    let L = 0;
+    let R = nums.length;
+    let mid = 0;
+    while (L <= R) {
+        mid = ~~((R - L) / 2 + L);
+        // mid = ((R - L) >> 1) + L;
+        if (nums[mid] === target) {
+            return mid;
+        } else if (nums[mid] > target) {
+            R = mid - 1;
+        } else {
+            L = mid + 1;
+        }
+    }
+
+    return -1;
+};
+```
+
+
+
+### [278. 第一个错误的版本](https://leetcode-cn.com/problems/first-bad-version/)
+
+难度简单468
+
+你是产品经理，目前正在带领一个团队开发新的产品。不幸的是，你的产品的最新版本没有通过质量检测。由于每个版本都是基于之前的版本开发的，所以错误的版本之后的所有版本都是错的。
+
+假设你有 `n` 个版本 `[1, 2, ..., n]`，你想找出导致之后所有版本出错的第一个错误的版本。
+
+你可以通过调用 `bool isBadVersion(version)` 接口来判断版本号 `version` 是否在单元测试中出错。实现一个函数来查找第一个错误的版本。你应该尽量减少对调用 API 的次数。
+
+**示例 1：**
+
+```
+输入：n = 5, bad = 4
+输出：4
+解释：
+调用 isBadVersion(3) -> false 
+调用 isBadVersion(5) -> true 
+调用 isBadVersion(4) -> true
+所以，4 是第一个错误的版本。
+```
+
+```js
+var solution = function(isBadVersion) {
+    /**
+     * @param {integer} n Total versions
+     * @return {integer} The first bad version
+     */
+    return function(n) {
+        let L = 1;
+        let R = n;
+        let mid = 0;
+        while(L < R) {
+            mid = L + ((R - L) >> 1);
+            if(isBadVersion(mid)) {
+                R = mid;
+            } else {
+                L = mid + 1;
+            }
+        }
+        return L;
+    };
+};
+```
+
+### [35. 搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/)
+
+难度简单1170
+
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+
+请必须使用时间复杂度为 `O(log n)` 的算法。
+
+ 
+
+**示例 1:**
+
+```
+输入: nums = [1,3,5,6], target = 5
+输出: 2
+```
+
+**示例 2:**
+
+```
+输入: nums = [1,3,5,6], target = 2
+输出: 1
+```
+
+**示例 3:**
+
+```
+输入: nums = [1,3,5,6], target = 7
+输出: 4
+```
+
+**示例 4:**
+
+```
+输入: nums = [1,3,5,6], target = 0
+输出: 0
+```
+
+**示例 5:**
+
+```
+输入: nums = [1], target = 0
+输出: 0
+```
+
+```js
+var searchInsert = function (nums, target) {
+    let L = 0;
+    let R = nums.length;
+    let mid = 0;
+// 插入
+    if (target < nums[0]) {
+        return 0;
+    } else if (target > nums[nums.length - 1]) {
+        return nums.length;
+    }
+
+    while (L <= R) {
+        mid = ~~(L + ((R - L) >> 1));
+        if (nums[mid - 1] < target && target < nums[mid]) {
+            return mid;
+        } else if (nums[mid] > target) {
+            R = mid - 1;
+        } else if (nums[mid] < target) {
+            L = mid + 1;
+        } else if ((nums[mid] === target)) {
+            return mid;
+        }
+    }
+};
+```
+
+### [138. 复制带随机指针的链表](https://leetcode-cn.com/problems/copy-list-with-random-pointer/)
+
+难度中等763
+
+给你一个长度为 `n` 的链表，每个节点包含一个额外增加的随机指针 `random` ，该指针可以指向链表中的任何节点或空节点。
+
+构造这个链表的 **[深拷贝](https://baike.baidu.com/item/深拷贝/22785317?fr=aladdin)**。 深拷贝应该正好由 `n` 个 **全新** 节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的 `next` 指针和 `random` 指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。**复制链表中的指针都不应指向原链表中的节点** 。
+
+例如，如果原链表中有 `X` 和 `Y` 两个节点，其中 `X.random --> Y` 。那么在复制链表中对应的两个节点 `x` 和 `y` ，同样有 `x.random --> y` 。
+
+返回复制链表的头节点。
+
+用一个由 `n` 个节点组成的链表来表示输入/输出中的链表。每个节点用一个 `[val, random_index]` 表示：
+
+- `val`：一个表示 `Node.val` 的整数。
+- `random_index`：随机指针指向的节点索引（范围从 `0` 到 `n-1`）；如果不指向任何节点，则为 `null` 。
+
+你的代码 **只** 接受原链表的头节点 `head` 作为传入参数。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/01/09/e1.png)
+
+```
+输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
+```
+
+**示例 2：**
+
+![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/01/09/e2.png)
+
+```
+输入：head = [[1,1],[2,1]]
+输出：[[1,1],[2,1]]
+```
+
+**示例 3：**
+
+**![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/01/09/e3.png)**
+
+```
+输入：head = [[3,null],[3,0],[3,null]]
+输出：[[3,null],[3,0],[3,null]]
+```
+
+
+
+```js
+var copyRandomList = function(head) {
+    const map = new Map();
+    if(!head) return null;
+    let node = head;
+
+    while (node) {
+        map.set(node , new Node(node.val));
+        node = node.next;
+    }
+
+    node = head;
+
+     while (node) {
+        map.get(node).next = node.next ? map.get(node.next) : null;
+        map.get(node).random = node.random ? map.get(node.random) : null;
+        node = node.next;
+    }
+    return map.get(head);
+
+};
+```
+
+### [977. 有序数组的平方](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)
+
+难度简单346
+
+给你一个按 **非递减顺序** 排序的整数数组 `nums`，返回 **每个数字的平方** 组成的新数组，要求也按 **非递减顺序** 排序。
+
+
+
+ 
+
+**示例 1：**
+
+```
+输入：nums = [-4,-1,0,3,10]
+输出：[0,1,9,16,100]
+解释：平方后，数组变为 [16,1,0,9,100]
+排序后，数组变为 [0,1,9,16,100]
+```
+
+**示例 2：**
+
+```
+输入：nums = [-7,-3,2,3,11]
+输出：[4,9,9,49,121]
+```
+
+> reduce 解法
+
+```js
+var sortedSquares = function (nums) {
+    let squar = nums.reduce((ini, val) => {
+        ini.push(val * val)
+        return ini;
+    }, [])
+    let res = squar.sort((a, b) => a - b);
+    return res;
+};
+// 速度慢
+```
+
+
+
+### [189. 轮转数组](https://leetcode-cn.com/problems/rotate-array/)
+
+难度中等1198
+
+给你一个数组，将数组中的元素向右轮转 `k` 个位置，其中 `k` 是非负数。
+
+ 
+
+**示例 1:**
+
+```
+输入: nums = [1,2,3,4,5,6,7], k = 3
+输出: [5,6,7,1,2,3,4]
+解释:
+向右轮转 1 步: [7,1,2,3,4,5,6]
+向右轮转 2 步: [6,7,1,2,3,4,5]
+向右轮转 3 步: [5,6,7,1,2,3,4]
+```
+
+> 普通方法
+
+```js
+var rotate = function (nums, k) {
+    let len = nums.length;
+
+  let list = new Array(len).fill(0);
+
+  for (let i = 0; i < len; i++) {
+    list[(i + k) % len] = nums[i];
+  }
+  for (let i = 0; i < list.length; i++) {
+    nums[i] = list[i];
+  }
+};
+```
+
+
+
+
+
+>  双指针
+
+```js
+var rotate = function (nums, k) {
+    const len = nums.length;
+    k = k % len;
+
+    reverse(nums, 0, len - 1);
+    reverse(nums, 0, k - 1);
+    reverse(nums, k, len - 1);
+
+    function reverse(list, L, R) {
+        while (L < R) {
+            let tem = list[R];
+            list[R--] = list[L];
+            list[L++] = tem;
+        }
+    }
+    return nums;
+};
+```
+
+2021 11.18
+
+> 双指针
+
+### [283. 移动零](https://leetcode-cn.com/problems/move-zeroes/)
+
+难度简单1302
+
+给定一个数组 `nums`，编写一个函数将所有 `0` 移动到数组的末尾，同时保持非零元素的相对顺序。
+
+**示例:**
+
+```
+输入: [0,1,0,3,12]
+输出: [1,3,12,0,0]
+```
+
+> 快慢指针
+
+```js
+var moveZeroes = function(nums) {
+    let fast = 0;
+    let slow = 0;
+    const len = nums.length;
+
+    while(fast < len) {
+        if(nums[fast] != 0) {
+            [nums[slow] ,nums[fast]] = [nums[fast] , nums[slow]];
+            slow++;
+        }
+        fast++;
+    }
+    return nums;
+};
+```
+
+
+
+### [167. 两数之和 II - 输入有序数组](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/)
+
+难度简单620
+
+给定一个已按照 **非递减顺序排列** 的整数数组 `numbers` ，请你从数组中找出两个数满足相加之和等于目标数 `target` 。s
+
+函数应该以长度为 `2` 的整数数组的形式返回这两个数的下标值*。*`numbers` 的下标 **从 1 开始计数** ，所以答案数组应当满足 `1 <= answer[0] < answer[1] <= numbers.length` 。
+
+你可以假设每个输入 **只对应唯一的答案** ，而且你 **不可以** 重复使用相同的元素。
+
+**示例 1：**
+
+```
+输入：numbers = [2,7,11,15], target = 9
+输出：[1,2]
+解释：2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。
+```
+
+**示例 2：**
+
+```
+输入：numbers = [2,3,4], target = 6
+输出：[1,3]
+```
+
+**示例 3：**
+
+```
+输入：numbers = [-1,0], target = -1
+输出：[1,2]
+```
+
+ 
+
+```js
+var twoSum = function (numbers, target) {
+    const len = numbers.length;
+    let res = [];
+
+    let L = 0;
+    let R = len - 1;
+    while (L < R) {
+        if (numbers[R] > target && numbers[L] > 0) {
+            R--;
+        } else if (numbers[L] + numbers[R] > target) {
+            R--;
+        } else if (numbers[L] + numbers[R] < target) {
+            L++;
+        } else if (numbers[L] + numbers[R] == target) {
+            res.push(L + 1);
+            res.push(R + 1);
+            return res;
+        }
+    }
+    return [];
+};
+```
+
+
+
+#### [563. 二叉树的坡度](https://leetcode-cn.com/problems/binary-tree-tilt/)
+
+难度简单227
+
+给定一个二叉树，计算 **整个树** 的坡度 。
+
+一个树的 **节点的坡度** 定义即为，该节点左子树的节点之和和右子树节点之和的 **差的绝对值** 。如果没有左子树的话，左子树的节点之和为 0 ；没有右子树的话也是一样。空结点的坡度是 0 。
+
+**整个树** 的坡度就是其所有节点的坡度之和。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode.com/uploads/2020/10/20/tilt1.jpg)
+
+```
+输入：root = [1,2,3]
+输出：1
+解释：
+节点 2 的坡度：|0-0| = 0（没有子节点）
+节点 3 的坡度：|0-0| = 0（没有子节点）
+节点 1 的坡度：|2-3| = 1（左子树就是左子节点，所以和是 2 ；右子树就是右子节点，所以和是 3 ）
+坡度总和：0 + 0 + 1 = 1
+```
+
+**示例 2：**
+
+![img](https://assets.leetcode.com/uploads/2020/10/20/tilt2.jpg)
+
+```
+输入：root = [4,2,9,3,5,null,7]
+输出：15
+解释：
+节点 3 的坡度：|0-0| = 0（没有子节点）
+节点 5 的坡度：|0-0| = 0（没有子节点）
+节点 7 的坡度：|0-0| = 0（没有子节点）
+节点 2 的坡度：|3-5| = 2（左子树就是左子节点，所以和是 3 ；右子树就是右子节点，所以和是 5 ）
+节点 9 的坡度：|0-7| = 7（没有左子树，所以和是 0 ；右子树正好是右子节点，所以和是 7 ）
+节点 4 的坡度：|(3+5+2)-(9+7)| = |10-16| = 6（左子树值为 3、5 和 2 ，和是 10 ；右子树值为 9 和 7 ，和是 16 ）
+坡度总和：0 + 0 + 0 + 2 + 7 + 6 = 15
+```
+
+```js
+var findTilt = function(root) {
+    let ans = 0;
+    const dfs = (node) => {
+        if(!node) {
+            return 0;
+        }
+
+        const sumLeft = dfs(node.left);
+        const sumRight = dfs(node.right);
+        ans += Math.abs(sumLeft - sumRight);
+        return sumRight + sumLeft + node.val;
+    }
+
+    dfs(root);
+
+    return ans;
+};
+```
+
