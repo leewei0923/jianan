@@ -3022,7 +3022,7 @@ var twoSum = function (numbers, target) {
 
 
 
-#### [563. 二叉树的坡度](https://leetcode-cn.com/problems/binary-tree-tilt/)
+### [563. 二叉树的坡度](https://leetcode-cn.com/problems/binary-tree-tilt/)
 
 难度简单227
 
@@ -3082,6 +3082,288 @@ var findTilt = function(root) {
     dfs(root);
 
     return ans;
+};
+```
+
+### [397. 整数替换](https://leetcode-cn.com/problems/integer-replacement/)
+
+难度中等163
+
+给定一个正整数 `n` ，你可以做如下操作：
+
+1. 如果 `n` 是偶数，则用 `n / 2`替换 `n` 。
+2. 如果 `n` 是奇数，则可以用 `n + 1`或`n - 1`替换 `n` 。
+
+`n` 变为 `1` 所需的最小替换次数是多少？
+
+ 
+
+**示例 1：**
+
+```
+输入：n = 8
+输出：3
+解释：8 -> 4 -> 2 -> 1
+```
+
+**示例 2：**
+
+```
+输入：n = 7
+输出：4
+解释：7 -> 8 -> 4 -> 2 -> 1
+或 7 -> 6 -> 3 -> 2 -> 1
+```
+
+**示例 3：**
+
+```
+输入：n = 4
+输出：2
+```
+
+
+
+```js
+var integerReplacement = function (n) {
+    if (n === 1) {
+        return 0;
+    }
+    if (n % 2 === 0) {
+        return 1 + integerReplacement(~~(n >> 1));
+    }
+
+    return 2 + Math.min(integerReplacement(~~(n >> 1)), integerReplacement(~~(n >> 1) + 1));
+};
+```
+
+
+
+### [557. 反转字符串中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
+
+难度简单364
+
+给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。
+
+ 
+
+**示例：**
+
+```
+输入："Let's take LeetCode contest"
+输出："s'teL ekat edoCteeL tsetnoc"
+```
+
+> 双指针
+
+
+
+```js
+var reverseWords = function (s) {
+
+    let start = 0;
+    let end = 0;
+    const len = s.length;
+    let res = '';
+
+    while (end <= len) {
+
+        if (s[end] === ' ' || end === len) {
+            res += reverse(s.slice(start, end).trim());
+            end = end;
+            start = end;
+        }
+
+        end++;
+    }
+
+    return res.trim();
+};
+
+function reverse(x) {
+    let tem = '';
+    let n = x.length - 1;
+    while (n >= 0) {
+        tem += x[n];
+        n--;
+    }
+    return tem + ' ';
+}
+```
+
+
+
+### [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)
+
+难度简单485
+
+编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 `s` 的形式给出。
+
+不要给另外的数组分配额外的空间，你必须**[原地](https://baike.baidu.com/item/原地算法)修改输入数组**、使用 O(1) 的额外空间解决这一问题。
+
+ 
+
+**示例 1：**
+
+```
+输入：s = ["h","e","l","l","o"]
+输出：["o","l","l","e","h"]
+```
+
+**示例 2：**
+
+```
+输入：s = ["H","a","n","n","a","h"]
+输出：["h","a","n","n","a","H"]
+```
+
+> 双指针
+
+
+
+```js
+var reverseString = function (s) {
+    const len = s.length;
+    let L = 0;
+    let R = len - 1;
+    while (L < R) {
+        let temp = s[R];
+        s[R] = s[L];
+        s[L] = temp;
+        R--;
+        L++;
+    }
+    return s;
+};
+```
+
+### [876. 链表的中间结点](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+
+难度简单439
+
+给定一个头结点为 `head` 的非空单链表，返回链表的中间结点。
+
+如果有两个中间结点，则返回第二个中间结点。
+
+ 
+
+**示例 1：**
+
+```
+输入：[1,2,3,4,5]
+输出：此列表中的结点 3 (序列化形式：[3,4,5])
+返回的结点值为 3 。 (测评系统对该结点序列化表述是 [3,4,5])。
+注意，我们返回了一个 ListNode 类型的对象 ans，这样：
+ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, 以及 ans.next.next.next = NULL.
+```
+
+```js
+var middleNode = function(head) {
+    let H = [head];
+    while(H[H.length - 1].next !== null) {
+        H.push(H[H.length - 1].next);
+    }
+    return H[~~(H.length >> 1)];
+};
+```
+
+### [19. 删除链表的倒数第 N 个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+
+难度中等1658
+
+给你一个链表，删除链表的倒数第 `n` 个结点，并且返回链表的头结点。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode.com/uploads/2020/10/03/remove_ex1.jpg)
+
+```
+输入：head = [1,2,3,4,5], n = 2
+输出：[1,2,3,5]
+```
+
+**示例 2：**
+
+```
+输入：head = [1], n = 1
+输出：[]
+```
+
+**示例 3：**
+
+```
+输入：head = [1,2], n = 1
+输出：[1]
+```
+
+> 链表 双指针(快慢针)
+
+```js
+var removeNthFromEnd = function (head, n) {
+    let pre = new ListNode(0);
+    pre.next = head;
+
+    let fast = pre, slow = pre;
+
+    while(n--) {
+        fast = fast.next;
+    }
+
+    while(fast && fast.next) {
+        fast = fast.next;
+        slow = slow.next;
+    }
+    slow.next = slow.next.next;
+    return pre.next;
+     
+};
+```
+
+
+
+### [594. 最长和谐子序列](https://leetcode-cn.com/problems/longest-harmonious-subsequence/)
+
+难度简单260
+
+和谐数组是指一个数组里元素的最大值和最小值之间的差别 **正好是 `1`** 。
+
+现在，给你一个整数数组 `nums` ，请你在所有可能的子序列中找到最长的和谐子序列的长度。
+
+数组的子序列是一个由数组派生出来的序列，它可以通过删除一些元素或不删除元素、且不改变其余元素的顺序而得到。
+
+ 
+
+**示例 1：**
+
+```
+输入：nums = [1,3,2,2,5,2,3,7]
+输出：5
+解释：最长的和谐子序列是 [3,2,2,2,3]
+```
+
+> 排序 双指针
+
+```js
+var findLHS = function (nums) {
+    // 排序
+    nums.sort((a, b) => a - b);
+    
+    let min = 0;
+    let res = 0;
+
+    for (let max = 0; max < nums.length; max++) {
+        while (nums[max] - nums[min] > 1) {
+            min++;
+        }
+
+        if (nums[max] - nums[min] == 1) {
+            res = Math.max(res, max - min + 1);
+        }
+    }
+
+    return res;
 };
 ```
 

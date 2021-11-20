@@ -1,16 +1,9 @@
 const LinkedList = require('./LinkedList');
 
-let list = new LinkedList();
+let list = new LinkedList(0);
 
 
 
-list.append(2)
-list.append(4)
 
-list.append(6);
-list.append(7);
-list.append(8);
-list.append(5);
-list.removeAt(2);
-console.log(list.toString());
+console.log(list);
 

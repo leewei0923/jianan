@@ -144,7 +144,14 @@ function LinkedList (){
     }
 
     this.print = function() {
+        const nodes = [];
 
+        let current = head;
+        while(current) {
+            nodes.push(current.element);
+            current = current.next;
+        }
+        return nodes.join(' -> ');
     }
 }
 
