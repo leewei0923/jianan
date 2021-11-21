@@ -3367,3 +3367,154 @@ var findLHS = function (nums) {
 };
 ```
 
+
+
+### [1047. 删除字符串中的所有相邻重复项](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/)
+
+难度简单302
+
+给出由小写字母组成的字符串 `S`，**重复项删除操作**会选择两个相邻且相同的字母，并删除它们。
+
+在 S 上反复执行重复项删除操作，直到无法继续删除。
+
+在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。
+
+ 
+
+**示例：**
+
+```
+输入："abbaca"
+输出："ca"
+解释：
+例如，在 "abbaca" 中，我们可以删除 "bb" 由于两字母相邻且相同，这是此时唯一可以执行删除操作的重复项。之后我们得到字符串 "aaca"，其中又只有 "aa" 可以执行重复项删除操作，所以最后的字符串为 "ca"。
+```
+
+> 栈方法
+
+```js
+var removeDuplicates = function (s) {
+    let stack = [];
+    for (let x of s) {
+        if (stack.length && stack[stack.length - 1] == x) {
+            stack.pop();
+        } else {
+            stack.push(x);
+        }
+    }
+    return stack.join('');
+};
+```
+
+```
+1. 栈方法就是符合要求的入栈否则出栈
+```
+
+
+
+### [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
+
+难度中等6440
+
+给定一个字符串 `s` ，请你找出其中不含有重复字符的 **最长子串** 的长度。
+
+ 
+
+**示例 1:**
+
+```
+输入: s = "abcabcbb"
+输出: 3 
+解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+```
+
+**示例 2:**
+
+```
+输入: s = "bbbbb"
+输出: 1
+解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+```
+
+**示例 3:**
+
+```
+输入: s = "pwwkew"
+输出: 3
+解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+     请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+```
+
+**示例 4:**
+
+```
+输入: s = ""
+输出: 0
+```
+
+> 哈希表   滑动窗口                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
+```js
+var lengthOfLongestSubstring = function(s) {
+  const map = new Map();
+    // start 开始的下标 res 用来记录结果
+  let start = 0, res = 0;
+  for(let i = 0; i < s.length; i++){
+      // 用来更改开始的下标 
+    if(map.has(s[i])){
+      start = Math.max(map.get(s[i]),start);
+    }
+    res = Math.max(res,i - start + 1);
+    map.set(s[i],i+1);
+  }
+  return res;
+};
+```
+
+#### [559. N 叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/)
+
+难度简单231
+
+给定一个 N 叉树，找到其最大深度。
+
+最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。
+
+N 叉树输入按层序遍历序列化表示，每组子节点由空值分隔（请参见示例）。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode.com/uploads/2018/10/12/narytreeexample.png)
+
+```
+输入：root = [1,null,3,2,4,null,5,6]
+输出：3
+```
+
+**示例 2：**
+
+![img](https://assets.leetcode.com/uploads/2019/11/08/sample_4_964.png)
+
+```
+输入：root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+输出：5
+```
+
+> 深度优先搜索
+
+```js
+var maxDepth = function(root) {
+    if(!root) return 0;
+
+    let maxdepth = 0;
+    let children = root.children;
+    for(let x of children) {
+        const childDepth = maxDepth(x);
+        maxdepth = Math.max(maxdepth ,childDepth);
+    } 
+
+    return maxdepth + 1;
+};
+```
+
