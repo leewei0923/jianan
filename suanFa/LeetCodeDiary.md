@@ -3373,6 +3373,8 @@ var findLHS = function (nums) {
 
 难度简单302
 
+[2]
+
 给出由小写字母组成的字符串 `S`，**重复项删除操作**会选择两个相邻且相同的字母，并删除它们。
 
 在 S 上反复执行重复项删除操作，直到无法继续删除。
@@ -3471,7 +3473,7 @@ var lengthOfLongestSubstring = function(s) {
 };
 ```
 
-#### [559. N 叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/)
+### [559. N 叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/)
 
 难度简单231
 
@@ -3515,6 +3517,138 @@ var maxDepth = function(root) {
     } 
 
     return maxdepth + 1;
+};
+```
+
+
+
+### [733. 图像渲染](https://leetcode-cn.com/problems/flood-fill/)
+
+难度简单237
+
+有一幅以二维整数数组表示的图画，每一个整数表示该图画的像素值大小，数值在 0 到 65535 之间。
+
+给你一个坐标 `(sr, sc)` 表示图像渲染开始的像素值（行 ，列）和一个新的颜色值 `newColor`，让你重新上色这幅图像。
+
+为了完成上色工作，从初始坐标开始，记录初始坐标的上下左右四个方向上像素值与初始坐标相同的相连像素点，接着再记录这四个方向上符合条件的像素点与他们对应四个方向上像素值与初始坐标相同的相连像素点，……，重复该过程。将所有有记录的像素点的颜色值改为新的颜色值。
+
+最后返回经过上色渲染后的图像。
+
+**示例 1:**
+
+```
+输入: 
+image = [[1,1,1],[1,1,0],[1,0,1]]
+sr = 1, sc = 1, newColor = 2
+输出: [[2,2,2],[2,2,0],[2,0,1]]
+解析: 
+在图像的正中间，(坐标(sr,sc)=(1,1)),
+在路径上所有符合条件的像素点的颜色都被更改成2。
+注意，右下角的像素没有更改为2，
+因为它不是在上下左右四个方向上与初始点相连的像素点。
+```
+
+**注意:**
+
+- `image` 和 `image[0]` 的长度在范围 `[1, 50]` 内。
+- 给出的初始点将满足 `0 <= sr < image.length` 和 `0 <= sc < image[0].length`。
+- `image[i][j]` 和 `newColor` 表示的颜色值在范围 `[0, 65535]`内。
+
+> BFS 广度搜索优先
+
+```js
+const m = image[0].length;
+  const n = image.length;
+  const olderColor = image[sr][sc];
+
+  let queue = [[sr,sc]];
+
+  if(olderColor == newColor) return image;
+
+  while(queue.length) {
+    let [i, j] = queue.shift();
+     
+     image[i][j] = newColor;
+
+     if(i - 1 >= 0 && image[i - 1][j] == olderColor) queue.push([i - 1, j]);
+
+     if(i + 1 < n && image[i + 1][j] == olderColor) queue.push([i + 1, j]);
+
+     if(j - 1 >= 0 && image[i][j - 1] == olderColor) queue.push([i ,j - 1]);
+
+     if(j + 1 < m && image[i][j + 1] == olderColor) queue.push([i, j + 1]);
+
+  }
+
+  return image;
+```
+
+### [695. 岛屿的最大面积](https://leetcode-cn.com/problems/max-area-of-island/)
+
+难度中等600
+
+给你一个大小为 `m x n` 的二进制矩阵 `grid` 。
+
+**岛屿** 是由一些相邻的 `1` (代表土地) 构成的组合，这里的「相邻」要求两个 `1` 必须在 **水平或者竖直的四个方向上** 相邻。你可以假设 `grid` 的四个边缘都被 `0`（代表水）包围着。
+
+岛屿的面积是岛上值为 `1` 的单元格的数目。
+
+计算并返回 `grid` 中最大的岛屿面积。如果没有岛屿，则返回面积为 `0` 。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode.com/uploads/2021/05/01/maxarea1-grid.jpg)
+
+```
+输入：grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
+输出：6
+解释：答案不应该是 11 ，因为岛屿只能包含水平或垂直这四个方向上的 1 。
+```
+
+**示例 2：**
+
+```
+输入：grid = [[0,0,0,0,0,0,0,0]]
+输出：0
+```
+
+> DFS 深度优先搜索
+
+```js
+var maxAreaOfIsland = function (grid) {
+    const m = grid.length; // 高
+    const n = grid[0].length; // 宽
+    function dfs(i, j) {
+
+        // 超出边界
+        if (i < 0 || j < 0 || i >= m || j >= n) return 0;
+
+        if (grid[i][j] == 0) return 0;
+        // 将 (i , j) 淹没为海水
+
+        grid[i][j] = 0;
+
+        return (dfs(i - 1, j) + //上
+            dfs(i + 1, j) + //下
+            dfs(i, j - 1) + //左
+            dfs(i, j + 1) + 1 // 右
+        )
+    }
+
+    let count = 0;
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] == 1) {
+                count = Math.max(count, dfs(i, j));
+            }
+
+        }
+    }
+
+    return count;
 };
 ```
 
