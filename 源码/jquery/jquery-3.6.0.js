@@ -3123,7 +3123,12 @@ jQuery.fn.extend( {
 
 
 // Initialize a jQuery object
-
+// 初始化一个对象
+/**
+ * author leewei
+ * date 2021-11-26
+ * task 2130 - 
+ */
 
 // A central reference to the root jQuery(document)
 var rootjQuery,
@@ -3138,6 +3143,7 @@ var rootjQuery,
 		var match, elem;
 
 		// HANDLE: $(""), $(null), $(undefined), $(false)
+		// 如果传入的选择器是null, 空, undefined ,false 直接返回this 指向jQuery.fn.init
 		if ( !selector ) {
 			return this;
 		}
@@ -3153,7 +3159,9 @@ var rootjQuery,
 				selector.length >= 3 ) {
 
 				// Assume that strings that start and end with <> are HTML and skip the regex check
+				// 如果是html标签的形式跳过 正则
 				match = [ null, selector, null ];
+				
 
 			} else {
 				match = rquickExpr.exec( selector );
