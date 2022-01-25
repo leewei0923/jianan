@@ -8,20 +8,15 @@
 
 
 	file
-	- daily / 日常活动记录
-		- 搜索文档.md
-		- 日志.md
-	- dataStructure / 数据结构
-	- suanFa / 算法
+	- codeRepo / 源码储存
+	- daily(abandoned) / 日常活动记录(已废弃)
+	- dailyPractice / 日常练习记录
+		- java
+		- javascript
+		- dichotomy / 二分法
+		- stack / 栈
+	- dataStructure / 数据结构(已废弃)
+	- Js手写题
 
-
-
-
-# SuanFa js的算法题目
-
-
-| 题目(力扣地址)                                               | 日期  | 次数   | 方法      |
-| ------------------------------------------------------------ | ----- | -------------- | --------- |
-| [有效的括号](https://leetcode-cn.com/problems/valid-parentheses/) | 11.26 | 2 | `栈 `, `哈希表` |
 
 
